@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-5);
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: url(#linear-gradient);
+        stroke-miterlimit: 10;
+        stroke-width: 12px;
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-5 {
+        fill: url(#linear-gradient-4);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="70.98" y1="264.02" x2="463.58" y2="264.02" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f9c213"/>
+      <stop offset="1" stop-color="#ffd86c"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="180.33" y1="264.02" x2="211.02" y2="264.02" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="229.57" y1="278.54" x2="244.03" y2="278.54" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="254.8" y1="264.7" x2="299.54" y2="264.7" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-5" x1="308.68" y1="264.02" x2="354.24" y2="264.02" xlink:href="#linear-gradient"/>
+  </defs>
+  <circle class="cls-3" cx="267.28" cy="264.02" r="190.3"/>
+  <g>
+    <path class="cls-1" d="m196.01,238.92h-15.69v-10.64c12.68,0,17.19-2.73,20.6-12h10.09v95.48h-15v-72.84Z"/>
+    <path class="cls-4" d="m229.57,245.33h14.46v14.46h-14.46v-14.46Zm0,51.97h14.46v14.46h-14.46v-14.46Z"/>
+    <path class="cls-5" d="m254.8,289.11v-7.5h14.18v8.59c0,6.82,3,9.28,7.78,9.28s7.77-2.46,7.77-9.28v-21.41c0-6.82-3-9.41-7.77-9.41s-7.78,2.59-7.78,9.41v.82h-14.18l2.73-53.33h39.56v13.64h-26.19l-1.23,22.78h.27c2.73-4.5,6.96-6.96,12.96-6.96,11.05,0,16.64,7.77,16.64,21.82v21.55c0,15.28-7.64,24.01-22.37,24.01s-22.37-8.73-22.37-24.01Z"/>
+    <path class="cls-2" d="m308.68,289.11v-50.2c0-15.28,8.05-24.01,22.78-24.01s22.78,8.73,22.78,24.01v50.2c0,15.28-8.05,24.01-22.78,24.01s-22.78-8.73-22.78-24.01Zm30.55.95v-52.1c0-6.82-3-9.41-7.78-9.41s-7.77,2.59-7.77,9.41v52.1c0,6.82,3,9.41,7.77,9.41s7.78-2.59,7.78-9.41Z"/>
+  </g>
+</svg>

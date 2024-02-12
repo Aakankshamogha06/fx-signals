@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-4);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="64.67" y1="270.93" x2="208.79" y2="270.93" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f9c213"/>
+      <stop offset="1" stop-color="#ffd86c"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="28.64" y1="415.06" x2="244.82" y2="415.06" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-3" x1="237.6" y1="170.54" x2="489.83" y2="170.54" xlink:href="#linear-gradient"/>
+    <linearGradient id="linear-gradient-4" x1="300.53" y1="154.79" x2="426.89" y2="154.79" xlink:href="#linear-gradient"/>
+  </defs>
+  <path class="cls-3" d="m208.79,270.93c0-39.74-32.33-72.06-72.06-72.06s-72.06,32.33-72.06,72.06,32.33,72.06,72.06,72.06,72.06-32.33,72.06-72.06Zm-72.06,36.03c-19.87,0-36.03-16.16-36.03-36.03s16.16-36.03,36.03-36.03,36.03,16.16,36.03,36.03-16.16,36.03-36.03,36.03Z"/>
+  <path class="cls-1" d="m136.73,342.99c-59.6,0-108.09,48.49-108.09,108.09v36.03h216.19v-36.03c0-59.6-48.49-108.09-108.09-108.09Zm-72.06,108.09c0-39.74,32.33-72.06,72.06-72.06s72.06,32.33,72.06,72.06H64.67Z"/>
+  <path class="cls-2" d="m471.82,61.95c-9.93,0-18.02-8.08-18.02-18.01v-18.02h-180.16v18.02c0,9.93-8.08,18.01-18.02,18.01h-18.02v84.23c0,75.92,48.39,143.06,120.41,167.07l5.7,1.9,5.7-1.9c72.02-24.01,120.41-91.15,120.41-167.07V61.95h-18.02.01Zm-18.02,84.23c0,58.37-35.95,110.2-90.08,130.84-54.13-20.65-90.08-72.49-90.08-130.84v-51.29c15.33-5.43,27.51-17.6,32.95-32.95h114.26c5.43,15.33,17.62,27.51,32.95,32.95v51.29h.01Z"/>
+  <path class="cls-4" d="m349.31,155.38l-23.29-23.29-25.48,25.47,48.77,48.77,77.59-77.59-25.48-25.47-52.12,52.12h.02Z"/>
+</svg>
