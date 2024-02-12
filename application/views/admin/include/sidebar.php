@@ -109,6 +109,9 @@
 						<a href="<?= base_url('admin/news_type/news_type_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-envelope" style="color:white;"></i></span><span class="pcoded-mtext">NEWS TYPE</span></a>
 					</li>
 					<li class="nav-item">
+						<a href="<?= base_url('admin/author_role/author_role_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR ROLE</span></a>
+					</li>
+					<li class="nav-item">
 						<a href="<?= base_url('admin/author/author_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR</span></a>
 					</li>
 					<li class="nav-item">
@@ -116,6 +119,9 @@
 					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/author_pricing_features/author_pricing_features_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-cogs" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR PRICING FEATURES</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/currency_pair/currency_pair_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">CURRENCY PAIR</span></a>
 					</li>
 				<?php endif; ?>
 

@@ -288,13 +288,19 @@ $route['author_pricing_features/edit_author_pricing_features/(:any)'] = 'admin/a
 $route['author_pricing_features/author_pricing_features_update_data'] = 'admin/author_pricing_features/author_pricing_features_update_data';
 $route['author_pricing_features/author_pricing_features_delete/(:any)'] = 'admin/author_pricing_features/author_pricing_features_delete/$1';
 
-// author_role ****************
-$route['author_role/add_author_role'] = 'admin/author_role/add_author_role';
-$route['author_role/author_role_submit_data'] = 'admin/author_role/author_role_submit_data';
-$route['author_role/view_author_role']        = 'admin/author_role/author_role_view';
-$route['author_role/edit_author_role/(:any)'] = 'admin/author_role/author_role_edit/$1';
-$route['author_role/author_role_update_data'] = 'admin/author_role/author_role_update_data';
-$route['author_role/author_role_delete/(:any)'] = 'admin/author_role/author_role_delete/$1';
+// currency_pair ****************
+$route['currency_pair/add_currency_pair'] = 'admin/currency_pair/add_currency_pair';
+$route['currency_pair/currency_pair_submit_data'] = 'admin/currency_pair/currency_pair_submit_data';
+$route['currency_pair/view_currency_pair']        = 'admin/currency_pair/currency_pair_view';
+$route['currency_pair/edit_currency_pair/(:any)'] = 'admin/currency_pair/currency_pair_edit/$1';
+$route['currency_pair/currency_pair_update_data'] = 'admin/currency_pair/currency_pair_update_data';
+$route['currency_pair/currency_pair_delete/(:any)'] = 'admin/currency_pair/currency_pair_delete/$1';
+
+
+
+
+
+
 
 /* API */
 $route['api/register'] = 'api/User/register';

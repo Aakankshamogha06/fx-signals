@@ -32,7 +32,7 @@ class currency_pair_model extends CI_Model
 
 	public function currency_pair_view()
 	{
-		$result = $this->db->query("SELECT * FROM `currency_pair` ");
+		$result = $this->db->query("SELECT *,(SELECT name FROM news_category WHERE news_category.id=currency_pair.pair_category)as pair_category FROM `currency_pair` ");
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -74,6 +74,19 @@ class currency_pair_model extends CI_Model
 			return $result->result();
 		} else {
 			return 0;
+		}
+	}
+
+	public function role_fetch()
+	{
+
+		$role_data = $this->db->query("SELECT * FROM `news_category`");
+
+		$fetch = $role_data->num_rows();
+		if ($fetch > 0) {
+			return $fetch = $role_data->result_array();
+		} else {
+			return false;
 		}
 	}
 
