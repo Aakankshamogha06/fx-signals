@@ -60,18 +60,7 @@
                                         <option value="">Select sub Category</option>
                                     </select>
                                 </div>
-                                <!-- <div class="form-group col-md-6">
-                                <label for="sub_category" class="form-label"> sub Category <span class="text-danger">*</span></label>
-                                    <select id="sub_category" class="form-control" name="sub_category">
-                                        <option value="">Select sub Category</option>
-                                        <?php
-                                        $sub_category_fetch_data = $this->news_model->sub_category_fetch();
-                                        foreach ($sub_category_fetch_data as $data) { ?>
-                                            <option value="<?php echo $data['id']; ?>"><?php echo $data['pair_name']; ?></option>
-                                        <?php } ?>
-
-                                    </select>
-                                </div> -->
+                                
                                 <div class="form-group col-md-6">
                                 <label for="news_type" class="form-label"> news_type <span class="text-danger">*</span></label>
                                     <select id="news_type" class="form-control" name="news_type">

@@ -123,6 +123,9 @@
 					<li class="nav-item">
 						<a href="<?= base_url('admin/currency_pair/currency_pair_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">CURRENCY PAIR</span></a>
 					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/trading_signals/trading_signals_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-signal" style="color:white;"></i></span><span class="pcoded-mtext">TRADING SIGNAL</span></a>
+					</li>
 				<?php endif; ?>
 
 

@@ -296,7 +296,13 @@ $route['currency_pair/edit_currency_pair/(:any)'] = 'admin/currency_pair/currenc
 $route['currency_pair/currency_pair_update_data'] = 'admin/currency_pair/currency_pair_update_data';
 $route['currency_pair/currency_pair_delete/(:any)'] = 'admin/currency_pair/currency_pair_delete/$1';
 
-
+// trading_signals ****************
+$route['trading_signals/add_trading_signals'] = 'admin/trading_signals/add_trading_signals';
+$route['trading_signals/trading_signals_submit_data'] = 'admin/trading_signals/trading_signals_submit_data';
+$route['trading_signals/view_trading_signals']        = 'admin/trading_signals/trading_signals_view';
+$route['trading_signals/edit_trading_signals/(:any)'] = 'admin/trading_signals/trading_signals_edit/$1';
+$route['trading_signals/trading_signals_update_data'] = 'admin/trading_signals/trading_signals_update_data';
+$route['trading_signals/trading_signals_delete/(:any)'] = 'admin/trading_signals/trading_signals_delete/$1';
 
 
 
