@@ -4,17 +4,20 @@ class trading_signals_model extends CI_Model
 
 
 	public function trading_signals_data_submit($data)
-	{
+	{echo("jii");
 		$data = [
-			'entry_price' => $data['entry_price'],
+			'entry_point' => $data['entry_point'],
+			'exit_point' => $data['exit_point'],
 			'package' => $data['package'],
 			'date' => $data['date'],
-			'pair' => $data['pair'],
+			'category' => $data['category'],
+			'sub_category' => $data['sub_category'],
 			'action' => $data['action'],
             'status' => $data['status'],
 			'stop_loss' => $data['stop_loss'],
 			'take_profit' => $data['take_profit'],
 		];
+		print_r($data);
 		if ($this->db->insert('trading_signals', $data)) {
 
 			return $data;
@@ -25,7 +28,7 @@ class trading_signals_model extends CI_Model
 
 	public function trading_signals_view()
 	{
-		$result = $this->db->query("SELECT * FROM `trading_signals` ");
+		$result = $this->db->query("SELECT *,(SELECT package_name FROM package WHERE package.id = trading_signals.package)as package, (SELECT name FROM news_category WHERE news_category.id = trading_signals.category)as category, (SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category)as sub_category FROM `trading_signals`");
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -45,10 +48,12 @@ class trading_signals_model extends CI_Model
 	{
 		
 		$newdata = [
-			'entry_price' => $data['entry_price'],
+			'entry_point' => $data['entry_point'],
+			'exit_point' => $data['exit_point'],
 			'package' => $data['package'],
 			'date' => $data['date'],
-			'pair' => $data['pair'],
+			'category' => $data['category'],
+			'sub_category' => $data['sub_category'],
 			'action' => $data['action'],
             'status' => $data['status'],
 			'stop_loss' => $data['stop_loss'],

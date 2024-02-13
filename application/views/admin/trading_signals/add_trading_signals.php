@@ -19,16 +19,19 @@
                             <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="entry_price" class="form-label">Entry Price <span class="text-danger">*</span></label>
-                                    <input type="text" name="entry_price" class="form-control" id="entry_price" placeholder="Entry Price" required>
+                                    <label for="entry_point" class="form-label">Entry Point <span class="text-danger">*</span></label>
+                                    <input type="text" name="entry_point" class="form-control" id="entry_point" placeholder="Entry Point" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="package" class="form-label">Package <span class="text-danger">*</span></label>
+                                <label for="package" class="form-label"> package <span class="text-danger">*</span></label>
                                     <select id="package" class="form-control" name="package">
-                                        <option value="">Select Package</option>
-                                        <?php foreach ($package_fetch_data as $data) { ?>
-                                            <option value="<?= $data['id']; ?>"><?= $data['package_name']; ?></option>
+                                        <option value="">Select package</option>
+                                        <?php
+                                        $package_fetch_data = $this->trading_signals_model->package_fetch();
+                                        foreach ($package_fetch_data as $data) { ?>
+                                            <option value="<?php echo $data['id']; ?>"><?php echo $data['package_name']; ?></option>
                                         <?php } ?>
+
                                     </select>
                                 </div>
                             </div>

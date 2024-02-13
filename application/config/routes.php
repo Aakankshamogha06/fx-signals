@@ -363,3 +363,4 @@ $route['author_api/login_author'] = 'author_api/login_author_post';
 $route['author_api/role'] = 'author_api/role_get';
 $route['author_api/author_pricing'] = 'author_api/author_pricing_get';
 $route['author_api/author_pricing_by_id'] = 'author_api/author_pricing_by_id_get';
+$route['trading_signals_api/trading_signals'] = 'trading_signals_api/trading_signals_get';
