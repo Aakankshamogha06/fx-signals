@@ -304,6 +304,18 @@ $route['trading_signals/edit_trading_signals/(:any)'] = 'admin/trading_signals/t
 $route['trading_signals/trading_signals_update_data'] = 'admin/trading_signals/trading_signals_update_data';
 $route['trading_signals/trading_signals_delete/(:any)'] = 'admin/trading_signals/trading_signals_delete/$1';
 
+// payment ****************
+$route['payment/add_payment'] = 'admin/payment/add_payment';
+$route['payment/payment_submit_data'] = 'admin/payment/payment_submit_data';
+$route['payment/view_payment']        = 'admin/payment/payment_view';
+$route['payment/edit_payment/(:any)'] = 'admin/payment/payment_edit/$1';
+$route['payment/payment_update_data'] = 'admin/payment/payment_update_data';
+$route['payment/payment_delete/(:any)'] = 'admin/payment/payment_delete/$1';
+
+
+
+
+
 
 
 
