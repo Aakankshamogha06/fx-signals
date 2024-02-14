@@ -126,6 +126,9 @@
 					<li class="nav-item">
 						<a href="<?= base_url('admin/trading_signals/trading_signals_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-signal" style="color:white;"></i></span><span class="pcoded-mtext">TRADING SIGNAL</span></a>
 					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/live_rate/live_rate_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-percent" style="color:white;"></i></span><span class="pcoded-mtext">LIVE RATE</span></a>
+					</li>
 				<?php endif; ?>
 
 

@@ -312,7 +312,13 @@ $route['payment/edit_payment/(:any)'] = 'admin/payment/payment_edit/$1';
 $route['payment/payment_update_data'] = 'admin/payment/payment_update_data';
 $route['payment/payment_delete/(:any)'] = 'admin/payment/payment_delete/$1';
 
-
+// live_rate ****************
+$route['live_rate/add_live_rate'] = 'admin/live_rate/add_live_rate';
+$route['live_rate/live_rate_submit_data'] = 'admin/live_rate/live_rate_submit_data';
+$route['live_rate/view_live_rate']        = 'admin/live_rate/live_rate_view';
+$route['live_rate/edit_live_rate/(:any)'] = 'admin/live_rate/live_rate_edit/$1';
+$route['live_rate/live_rate_update_data'] = 'admin/live_rate/live_rate_update_data';
+$route['live_rate/live_rate_delete/(:any)'] = 'admin/live_rate/live_rate_delete/$1';
 
 
 
@@ -376,3 +382,5 @@ $route['author_api/role'] = 'author_api/role_get';
 $route['author_api/author_pricing'] = 'author_api/author_pricing_get';
 $route['author_api/author_pricing_by_id'] = 'author_api/author_pricing_by_id_get';
 $route['trading_signals_api/trading_signals'] = 'trading_signals_api/trading_signals_get';
+$route['payment_api/payment'] = 'payment_api/payment_post';
+$route['live_rate_api/live_rate_by_page'] = 'live_rate_api/live_rate_by_page_get';
