@@ -383,4 +383,5 @@ $route['author_api/author_pricing'] = 'author_api/author_pricing_get';
 $route['author_api/author_pricing_by_id'] = 'author_api/author_pricing_by_id_get';
 $route['trading_signals_api/trading_signals'] = 'trading_signals_api/trading_signals_get';
 $route['payment_api/payment'] = 'payment_api/payment_post';
+$route['payment_api/author_payment'] = 'payment_api/author_payment_post';
 $route['live_rate_api/live_rate_by_page'] = 'live_rate_api/live_rate_by_page_get';
