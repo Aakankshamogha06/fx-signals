@@ -6,10 +6,15 @@ class payment_model extends CI_Model
 	public function payment_data_submit($data)
 	{
 		$data = [
-			'razorpay_id' => $data['razorpay_id'],
+			'transaction_id' => $data['transaction_id'],
 			'user_id' => $data['user_id'],
+			'author_id' => $data['author_id'],
+			'pricing_id' => $data['pricing_id'],
+			'author_pricing_id' => $data['author_pricing_id'],
+			'name' => $data['name'],
             'email' => $data['email'],
-            'password' => $data['password'],
+            'phone_numebr' => $data['phone_numebr'],
+			'date' => $data['date'],
 		];
 		if ($this->db->insert('payment', $data)) {
 
