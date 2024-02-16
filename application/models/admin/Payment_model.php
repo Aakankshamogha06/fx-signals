@@ -2,19 +2,20 @@
 class payment_model extends CI_Model
 {
 
+	public function add_payment($data)
+	{
+	   
+		$this->db->insert('payment', $data);
+		return $this->db->insert_id();
+	}
 
 	public function payment_data_submit($data)
 	{
 		$data = [
-			'transaction_id' => $data['transaction_id'],
+			'razorpay_id' => $data['razorpay_id'],
 			'user_id' => $data['user_id'],
-			'author_id' => $data['author_id'],
-			'pricing_id' => $data['pricing_id'],
-			'author_pricing_id' => $data['author_pricing_id'],
-			'name' => $data['name'],
             'email' => $data['email'],
-            'phone_numebr' => $data['phone_numebr'],
-			'date' => $data['date'],
+            'phone_number' => $data['phone_number'],
 		];
 		if ($this->db->insert('payment', $data)) {
 

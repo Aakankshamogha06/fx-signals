@@ -51,6 +51,19 @@ class User_model extends CI_Model
 		}
 	}
 
+	// public function upgradeToPremium($userId) {
+    //     // Update user's premium status in the database
+    //     $this->db->set('is_premium', 1);
+    //     $this->db->where('id', $userId);
+    //     $this->db->update('users');
+    // }
+	public function setPremiumStatus($userId)
+{
+    $this->db->set('is_premium', 1); // Assuming 'is_premium' is a column in your users table indicating premium status
+    $this->db->where('id', $userId);
+    $this->db->update('users');
+}
+
 	public function fetch_state($country_id)
 	{
 		$this->db->where('country_id', $country_id);

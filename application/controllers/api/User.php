@@ -84,6 +84,7 @@ class User extends REST_Controller
 
                 $_SESSION['user_id'] = (int)$user->id;
                 $_SESSION['username'] = (string)$user->username;
+                $_SESSION['is_premium'] = (string)$user->is_premium;
                 $_SESSION['email'] = (string)$user->email;
                 $_SESSION['logged_in'] = (bool)true;
                 $_SESSION['is_admin'] = (bool)$user->is_admin;
@@ -96,6 +97,7 @@ class User extends REST_Controller
                 $response = array(
                     'user_id' => $user_id,
                     'username' => $user->username,
+                    'is_premium'=>$user->is_premium,
                     'access_token' => $tokenData,
                     'status' => true,
                     'message' => 'Login success!',
