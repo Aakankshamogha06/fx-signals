@@ -4,7 +4,7 @@ class trading_signals_model extends CI_Model
 
 
 	public function trading_signals_data_submit($data)
-	{echo("jii");
+	{
 		$data = [
 			'entry_point' => $data['entry_point'],
 			'exit_point' => $data['exit_point'],
@@ -17,7 +17,6 @@ class trading_signals_model extends CI_Model
 			'stop_loss' => $data['stop_loss'],
 			'take_profit' => $data['take_profit'],
 		];
-		print_r($data);
 		if ($this->db->insert('trading_signals', $data)) {
 
 			return $data;
