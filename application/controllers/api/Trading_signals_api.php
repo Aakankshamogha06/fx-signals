@@ -118,4 +118,10 @@ public function closed_signals_post()
             }
         }
     }
+    public function closed_signals_get()
+    {
+        $id = $this->uri->segment(4);
+        $data = $this->closed_signals_model->closed_signals_view($id);
+        $this->response($data, REST_Controller::HTTP_OK);
+    }
 }
