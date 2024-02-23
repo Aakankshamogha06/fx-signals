@@ -24,7 +24,7 @@ class blog_model extends CI_Model
 
 	public function blog_view()
 	{
-		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category FROM `blog`");
+		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category FROM `blog`ORDER BY `blog_date` DESC;");
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -117,6 +117,7 @@ class blog_model extends CI_Model
 	$this->db->from('blog');
 	$this->db->join('blog_category', 'blog_category.id = blog.blog_category');
 	$this->db->where('blog_category.category', $category_name);
+	$this->db->order_by('blog_date', 'DESC');
 
     $result = $this->db->get();
 
