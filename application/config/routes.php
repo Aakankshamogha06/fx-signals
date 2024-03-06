@@ -387,3 +387,4 @@ $route['payment_api/author_payment'] = 'payment_api/author_payment_post';
 $route['live_rate_api/live_rate_by_page'] = 'live_rate_api/live_rate_by_page_get';
 $route['trading_signals_api/closed_signals'] = 'trading_signals_api/closed_signals_post';
 $route['trading_signals_api/closed_signals_get'] = 'trading_signals_api/closed_signals_get';
+$route['enquiry_api/enquiry'] = 'enquiry_api/enquiry_post';

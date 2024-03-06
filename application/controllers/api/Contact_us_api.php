@@ -51,12 +51,6 @@ class Contact_us_api extends REST_Controller
                 // Send a confirmation response
                 $response = [
                     'message' => 'Thank you for contacting us!',
-                    // 'data' => [
-                    //     'id' => $insert_id,
-                    //     'name' => $name,
-                    //     'email' => $email,
-                    //     'message' => $message
-                    // ]
                 ];
                 $this->response($response, REST_Controller::HTTP_OK);
             } else {
