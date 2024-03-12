@@ -38,7 +38,7 @@ class Auth extends CI_Controller
 						'username' => $result['username'],
 						'name' => $result['firstname'] . '&nbsp;' . $result['lastname'],
 						'role' => $result['is_admin'],
-						// 'role_name' => $result['role_name'],
+						'role_name' => $result['role_name'],
 						'is_admin_login' => TRUE
 
 					);

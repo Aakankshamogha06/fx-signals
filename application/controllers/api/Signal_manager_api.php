@@ -5,29 +5,24 @@ require(APPPATH . '/libraries/REST_Controller.php');
 
 use Restserver\Libraries\REST_Controller;
 
-class Author_api extends REST_Controller
+class Signal_manager_api extends REST_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->library('Authorization_Token');
-        $this->load->model('admin/author_model', 'author_model');
-        $this->load->model('admin/author_pricing_model', 'author_pricing_model');
-        $this->load->model('admin/author_pricing_features_model', 'author_pricing_features_model');
-        $this->load->model('admin/author_role_model', 'author_role_model');
         $this->load->model('admin/signal_manager_model', 'signal_manager_model');
     }
 
-    public function register_author_post()
+    public function register_signal_manager_post()
     {
         $this->form_validation->set_rules('firstname', 'First Name', 'trim|required');
         $this->form_validation->set_rules('lastname', 'Last Name', 'trim|required');
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[author.email]');
-        $this->form_validation->set_rules('mobile_no', 'Mobile Number', 'trim|required|is_unique[author.mobile_no]');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[signal_manager.email]');
+        $this->form_validation->set_rules('mobile_no', 'Mobile Number', 'trim|required|is_unique[signal_manager.mobile_no]');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|matches[password]');
-        $this->form_validation->set_rules('role_name', 'Role', 'trim|required');
         $this->form_validation->set_rules('profile_image', 'Profile Image', 'callback_profile_image_check');
     
         if ($this->form_validation->run() === false) {
@@ -36,7 +31,7 @@ class Author_api extends REST_Controller
             $email = $this->input->post('email');
     
             // File upload configurations
-            $config_profile['upload_path'] = 'uploads/profile/';
+            $config_profile['upload_path'] = 'uploads/signal_manager_profile/';
             $config_profile['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
             $config_profile['encrypt_name'] = TRUE;
             $config_profile['max_size'] = 2048000; // 2MB
@@ -51,36 +46,34 @@ class Author_api extends REST_Controller
     
             $profile_image_data = $this->profile_upload->data();
     
-            $config_article['upload_path'] = 'uploads/articles/';
-            $config_article['allowed_types'] = 'pdf|docs|txt';
-            $config_article['encrypt_name'] = TRUE;
-            $config_article['max_size'] = 2048000; // 2MB
+            $config_chart['upload_path'] = 'uploads/signal_manager_chart/';
+            $config_chart['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+            $config_chart['encrypt_name'] = TRUE;
+            $config_chart['max_size'] = 2048000; // 2MB
             
-            $this->load->library('upload', $config_article, 'article_upload');
+            $this->load->library('upload', $config_chart, 'chart_upload');
     
-            if (!$this->article_upload->do_upload('sample_article')) {
-                $error = array('error' => $this->article_upload->display_errors());
+            if (!$this->chart_upload->do_upload('sample_chart')) {
+                $error = array('error' => $this->chart_upload->display_errors());
                 $this->response($error, REST_Controller::HTTP_BAD_REQUEST);
             }
     
-            $sample_article_data = $this->article_upload->data();
+            $sample_chart_data = $this->chart_upload->data();
     
             $data = array(
                 'username' => $this->input->post('firstname') . ' ' . $this->input->post('lastname'),
                 'firstname' => $this->input->post('firstname'),
                 'lastname' => $this->input->post('lastname'),
                 'mobile_no' => $this->input->post('mobile_no'),
-                'linkedin' => $this->input->post('linkedin'),
                 'email' => $email,
                 'password' => password_hash($this->input->post('password'), PASSWORD_BCRYPT),
                 'confirm_password' => password_hash($this->input->post('confirm_password'), PASSWORD_BCRYPT),
                 'profile_image' => $profile_image_data['file_name'],
-                'sample_article' => $sample_article_data['file_name'],
-                'role_name' => $this->input->post('role_name'),
-                'created_at' => date('Y-m-d H:i:s'),
+                'sample_chart' => $sample_chart_data['file_name'],
+                // 'created_at' => date('Y-m-d H:i:s'),
             );
     
-            $result = $this->author_model->add_author($data);
+            $result = $this->signal_manager_model->add_signal_manager($data);
     
             if ($result) {
                 $token_data['uid'] = $result;
@@ -91,7 +84,7 @@ class Author_api extends REST_Controller
                     // 'access_token' => $tokenData,
                     'status' => true,
                     'uid' => $result,
-                    'message' => 'Thank you for registering as an Author!',
+                    'message' => 'Thank you for registering as an Saignal Manager!',
                     'note' => 'You have successfully registered.'
                 );
     
@@ -115,7 +108,7 @@ public function profile_image_check($str)
 }
 
     
-    public function login_author_post()
+    public function login_signal_manager_post()
     {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'required');
@@ -126,23 +119,22 @@ public function profile_image_check($str)
             $email = $this->input->post('email');
             $password = $this->input->post('password');
 
-            if ($this->author_model->resolve_author_login($email, $password)) {
-                $author_id = $this->author_model->get_author_id_from_authorname($email);
-                $author = $this->author_model->get_author($author_id);
+            if ($this->signal_manager_model->resolve_signal_manager_login($email, $password)) {
+                $signal_manager_id = $this->signal_manager_model->get_signal_manager_id_from_signal_managername($email);
+                $signal_manager = $this->signal_manager_model->get_signal_manager($signal_manager_id);
 
-                $_SESSION['author_id'] = (int)$author->id;
-                $_SESSION['username'] = (string)$author->username;
-                $_SESSION['email'] = (string)$author->email;
+                $_SESSION['signal_manager_id'] = (int)$signal_manager->id;
+                $_SESSION['username'] = (string)$signal_manager->username;
+                $_SESSION['email'] = (string)$signal_manager->email;
                 $_SESSION['logged_in'] = (bool)true;
-                $_SESSION['role_name'] = (string)$author->role_name;
-                $_SESSION['profile_image'] = (string)$author->profile_image;
-                $token_data['uid'] = $author_id;
-                $token_data['username'] = $author->username;
-                $token_data['email'] = $author->email;
+                $_SESSION['profile_image'] = (string)$signal_manager->profile_image;
+                $token_data['uid'] = $signal_manager_id;
+                $token_data['username'] = $signal_manager->username;
+                $token_data['email'] = $signal_manager->email;
                 $tokenData = $this->authorization_token->generateToken($token_data);
 
                 $response = array(
- 'author_id' => $author_id,
+ 'signal_manager_id' => $signal_manager_id,
                     'access_token' => $tokenData,
                     'status' => true,
                     'message' => 'Login success!',
@@ -150,7 +142,7 @@ public function profile_image_check($str)
                 );
                 $this->response($response, REST_Controller::HTTP_OK);
             } else {
-                $this->response(['Wrong authorname or password.'], REST_Controller::HTTP_UNAUTHORIZED);
+                $this->response(['Wrong signal_manager name or password.'], REST_Controller::HTTP_UNAUTHORIZED);
             }
         }
     }
@@ -160,7 +152,7 @@ public function profile_image_check($str)
 
 	
 
-    public function logout_author_post()
+    public function logout_signal_manager_post()
     {
         if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
             foreach ($_SESSION as $key => $value) {
@@ -178,27 +170,27 @@ public function profile_image_check($str)
     public function role_get()
     {
         $id = $this->uri->segment(4);
-        $data = $this->author_role_model->author_role_view($id);
+        $data = $this->signal_manager_role_model->signal_manager_role_view($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
 
-    public function author_pricing_get()
+    public function signal_manager_pricing_get()
     {
         $id = $this->uri->segment(4);
-        $data = $this->author_pricing_model->author_pricing_view($id);
+        $data = $this->signal_manager_pricing_model->signal_manager_pricing_view($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
 
-    public function author_pricing_by_id_get()
+    public function signal_manager_pricing_by_id_get()
     {
         $id = $this->uri->segment(4);
-        $data = $this->author_pricing_features_model->pricing($id);
+        $data = $this->signal_manager_pricing_features_model->pricing($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
 
 
 
-    // public function check_author_status_get()
+    // public function check_signal_manager_status_get()
     // {
     //     $email = $this->get('email');
     //     $mobile = $this->get('mobile_no');
@@ -207,16 +199,16 @@ public function profile_image_check($str)
     //         $this->response(['error' => 'Please provide both email and mobile number.'], REST_Controller::HTTP_BAD_REQUEST);
     //     }
         
-    //     $author_status = $this->author_model->get_author_status($email, $mobile);
+    //     $signal_manager_status = $this->signal_manager_model->get_signal_manager_status($email, $mobile);
         
-    //     if (!$author_status) {
-    //         $this->response(['error' => 'Author not found.'], REST_Controller::HTTP_NOT_FOUND);
+    //     if (!$signal_manager_status) {
+    //         $this->response(['error' => 'signal_manager not found.'], REST_Controller::HTTP_NOT_FOUND);
     //     }
         
-    //     $this->response($author_status, REST_Controller::HTTP_OK);
+    //     $this->response($signal_manager_status, REST_Controller::HTTP_OK);
     // }
     
-    public function check_author_status_get()
+    public function check_signal_manager_status_get()
 {
     $email = $this->get('email');
     $mobile = $this->get('mobile_no');
@@ -225,11 +217,11 @@ public function profile_image_check($str)
         $this->response(['error' => 'Please provide both email and mobile number.'], REST_Controller::HTTP_BAD_REQUEST);
     }
     
-    $author_status = $this->author_model->get_author_status($email, $mobile);
-    if (!$author_status) {
-        $this->response(['error' => 'Author not found.'], REST_Controller::HTTP_NOT_FOUND);
+    $signal_manager_status = $this->signal_manager_model->get_signal_manager_status($email, $mobile);
+    if (!$signal_manager_status) {
+        $this->response(['error' => 'signal_manager not found.'], REST_Controller::HTTP_NOT_FOUND);
     }
-    $this->response($author_status, REST_Controller::HTTP_OK);
+    $this->response($signal_manager_status, REST_Controller::HTTP_OK);
 }
 
 

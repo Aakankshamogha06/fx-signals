@@ -85,7 +85,7 @@ class author_pricing_features_model extends CI_Model
 	public function pricing($id)
     {
 
-        $assign_data = $this->db->query("SELECT *,(SELECT name FROM author_pricing WHERE author_pricing.id= author_pricing_features.pricing_id)as pricing_id FROM `author_pricing_features` where author_pricing_features.pricing_id=$id ");
+        $assign_data = $this->db->query("SELECT a.*,b.* FROM `author_pricing` a ,author_pricing_features b WHERE a.id=b.pricing_id and a.id=$id");
 
         $fetch = $assign_data->num_rows();
         if ($fetch > 0) {

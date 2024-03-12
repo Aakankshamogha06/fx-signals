@@ -1,14 +1,14 @@
 <?php
-class author_model extends CI_Model
+class signal_manager_model extends CI_Model
 {
-    public function add_author($data)
+    public function add_signal_manager($data)
 	{
 	   
-		$this->db->insert('author', $data);
+		$this->db->insert('signal_manager', $data);
 		return $this->db->insert_id();
 	}
 
-	public function author_data_submit($data,$profile_image,$sample_article)
+	public function signal_manager_data_submit($data,$profile_image,$sample_article)
 	{
 		$data = [
 			'username' => $data['username'],
@@ -22,7 +22,7 @@ class author_model extends CI_Model
 			'profile_image' => $profile_image,
 			'sample_article' => $sample_article,
 		];
-		if ($this->db->insert('author', $data)) {
+		if ($this->db->insert('signal_manager', $data)) {
 
 			return $data;
 		} else {
@@ -30,9 +30,9 @@ class author_model extends CI_Model
 		}
 	}
 
-	public function author_view()
+	public function signal_manager_view()
 	{
-		$result = $this->db->query("SELECT * FROM `author`");
+		$result = $this->db->query("SELECT * FROM `signal_manager`");
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -41,14 +41,14 @@ class author_model extends CI_Model
 	}
 
 
-	public function author_delete($id)
+	public function signal_manager_delete($id)
 	{
 		$this->db->where('id', $id);
-		return $this->db->delete('author');
+		return $this->db->delete('signal_manager');
 	}
 
 
-	public function author_update_data($data,$profile_image)
+	public function signal_manager_update_data($data,$profile_image)
 	{
 		
 		$newdata = [
@@ -59,7 +59,7 @@ class author_model extends CI_Model
 			'profile_image' => $profile_image,
 		];
 		$this->db->where('id', $data['id']);
-		if ($this->db->update('author', $newdata)) {
+		if ($this->db->update('signal_manager', $newdata)) {
 
 			return $newdata;
 		} else {
@@ -69,9 +69,9 @@ class author_model extends CI_Model
 	}
 
 
-	public function author_edit($author_id)
+	public function signal_manager_edit($signal_manager_id)
 {
-    $result = $this->db->query("SELECT * FROM `author` WHERE id=$author_id");
+    $result = $this->db->query("SELECT * FROM `signal_manager` WHERE id=$signal_manager_id");
     if ($result->num_rows() > 0) {
         return $result->result();
     } else {
@@ -80,10 +80,10 @@ class author_model extends CI_Model
 }
 
 
-    public function resolve_author_login($email, $password) {
+    public function resolve_signal_manager_login($email, $password) {
 		
 		$this->db->select('password');
-		$this->db->from('author');
+		$this->db->from('signal_manager');
 		$this->db->where('email', $email);
 		$hash = $this->db->get()->row('password');
 		
@@ -101,38 +101,38 @@ class author_model extends CI_Model
             return password_verify($password, $hash);
             
         }
-        public function get_author_id_from_authorname($email) {
+        public function get_signal_manager_id_from_signal_managername($email) {
 		
             $this->db->select('id');
-            $this->db->from('author');
+            $this->db->from('signal_manager');
             $this->db->where('email', $email);
     
             return $this->db->get()->row('id');
             
         }
-        public function get_author($author_id) {
+        public function get_signal_manager($signal_manager_id) {
 		
-            $this->db->from('author');
-            $this->db->where('id', $author_id);
+            $this->db->from('signal_manager');
+            $this->db->where('id', $signal_manager_id);
             return $this->db->get()->row();
             
         }
 		
-		public function get_author_status($email, $mobile)
+		public function get_signal_manager_status($email, $mobile)
 {
-    $author = null;
+    $signal_manager = null;
     
     // Check if both email and mobile are provided
     if ($email && $mobile) {
-        $author = $this->db->get_where('author', ['email' => $email, 'mobile_no' => $mobile])->row();
+        $signal_manager = $this->db->get_where('signal_manager', ['email' => $email, 'mobile_no' => $mobile])->row();
     } elseif ($email) {
-        $author = $this->db->get_where('author', ['email' => $email])->row();
+        $signal_manager = $this->db->get_where('signal_manager', ['email' => $email])->row();
     } elseif ($mobile) {
-        $author = $this->db->get_where('author', ['mobile_no' => $mobile])->row();
+        $signal_manager = $this->db->get_where('signal_manager', ['mobile_no' => $mobile])->row();
     }
     
-    if ($author) {
-        return ['status' => $author->status];
+    if ($signal_manager) {
+        return ['status' => $signal_manager->status];
     } else {
         // Determine which field is not valid
         if ($email && $mobile) {

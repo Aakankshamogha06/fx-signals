@@ -33,59 +33,11 @@ class trading_signals_api extends REST_Controller
         $this->response($data, REST_Controller::HTTP_OK);
     }
 
-//     public function closed_signals_post()
-// {
-//     $headers = $this->input->request_headers();
-//     if (!empty($headers['Authorization'])) {
-//         $decodedToken = $this->authorization_token->validateToken(trim($headers['Authorization']));
-//         if ($decodedToken['status']) {
-//             // Authorization successful, proceed with closed_signals processing
-//             $this->form_validation->set_rules('pair', 'Pair', 'trim|required');
-//             $this->form_validation->set_rules('action', 'Action', 'trim|required');
-//             $this->form_validation->set_rules('time_open', 'Time Open', 'trim|required');
-//             $this->form_validation->set_rules('time_closed', 'Time Closed', 'trim|required');
-//             $this->form_validation->set_rules('sl_tp', 'SL TP', 'trim|required');
-
-//             if ($this->form_validation->run() === false) {
-//                 $this->response(['Validation errors' => $this->form_validation->error_array()], REST_Controller::HTTP_BAD_REQUEST);
-//             } else {
-//                 $data = array(
-//                     'pair' => $this->input->post('pair'),
-//                     'action' => $this->input->post('action'),
-//                     'time_open' => $this->input->post('time_open'),
-//                     'sl_tp' => $this->input->post('sl_tp'),
-//                     'time_closed' => $this->input->post('time_closed'),
-//                 );
-
-//                 $result = $this->closed_signals_model->add_closed_signals($data);
-
-//                 if ($result) {
-//                     $response = array(
-//                         'status' => true,
-//                         'message' => 'Thank you!',
-//                         'note' => 'You have successfully added a closed_signals.'
-//                     );
-
-//                     $this->response($response, REST_Controller::HTTP_OK);
-//                 } else {
-//                     $this->response(['There was a problem. Please try again.'], REST_Controller::HTTP_INTERNAL_SERVER_ERROR);
-//                 }
-//             }
-//         } else {
-//             // Authorization failed
-//             $this->response($decodedToken, REST_Controller::HTTP_UNAUTHORIZED);
-//         }
-//     } else {
-//         // Authorization header not provided
-//         $this->response(['Authentication failed'], REST_Controller::HTTP_UNAUTHORIZED);
-//     }
-// }
 public function closed_signals_post()
     {
-        $this->form_validation->set_rules('pair', 'Pair', 'trim|required');
-            $this->form_validation->set_rules('action', 'Action', 'trim|required');
-            $this->form_validation->set_rules('time_open', 'Time Open', 'trim|required');
-            $this->form_validation->set_rules('time_closed', 'Time Closed', 'trim|required');
+        $id = $this->uri->segment(4);
+        
+            $this->form_validation->set_rules('time_close', 'Time Close', 'trim|required');
             $this->form_validation->set_rules('sl_tp', 'SL TP', 'trim|required');
     
         if ($this->form_validation->run() === false) {
@@ -94,14 +46,12 @@ public function closed_signals_post()
     
            
             $data = array(
-               'pair' => $this->input->post('pair'),
-               'action' => $this->input->post('action'),
-               'time_open' => $this->input->post('time_open'),
+               
                'sl_tp' => $this->input->post('sl_tp'),
-               'time_closed' => $this->input->post('time_closed'),
+               'time_close' => $this->input->post('time_close'),
             );
     
-            $result = $this->closed_signals_model->add_closed_signals($data);
+            $result = $this->closed_signals_model->closed_signals_data_submit($data,$id);
     
             if ($result) {
                
@@ -124,4 +74,29 @@ public function closed_signals_post()
         $data = $this->closed_signals_model->closed_signals_view($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
+
+    public function trading_signals_between_dates_get()
+    {
+        // Get start and end dates from query parameters
+        $start_date = $this->get('start_date');
+        $end_date = $this->get('end_date');
+    
+        // Validate dates
+        if (!$start_date || !$end_date || strtotime($start_date) >= strtotime($end_date)) {
+            $this->response(['error' => 'Invalid dates. Please provide valid start and end dates in YYYY-MM-DD format, and ensure the end date is greater than the start date.'], REST_Controller::HTTP_BAD_REQUEST);
+        }
+    
+        // Fetch data between the specified dates
+        $data = $this->trading_signals_model->trading_signals_between_dates($start_date, $end_date);
+    
+        // Check if data is empty
+        if (empty($data)) {
+            $this->response(['error' => 'No data found between the specified dates.'], REST_Controller::HTTP_NOT_FOUND);
+        }
+    
+        // Respond with the data
+        $this->response($data, REST_Controller::HTTP_OK);
+    }
+    
+
 }

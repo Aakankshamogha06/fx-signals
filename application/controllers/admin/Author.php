@@ -23,6 +23,109 @@ class author extends MY_Controller
 
 
 
+	// public function update_article_status() {
+	// 	$author_id = $this->input->post('author_id');
+	// 	$status = $this->input->post('status');
+		
+	// 	// Debugging: Print POST data
+	// 	echo "Article ID: $author_id, Status: $status";
+		
+	
+	// 	// Ensure author_id and status are provided
+	// 	if (!$author_id || !$status) {
+	// 		// Handle missing data, such as showing an error message
+	// 		redirect('admin/author/author_view');
+	// 		return;
+	// 	}
+	
+	// 	// Update the status of the article in the database
+	// 	$this->db->where('id', $author_id);
+	// 	$this->db->update('author', ['status' => $status]); // Changed table name to 'author'
+	
+	// 	if ($status == 'approved') {
+	// 		$author_id = $this->input->post('author_id');
+	// 		print_r($author_id);
+	// 		echo('<br>');
+	// 		// Debugging: Print author ID
+	// 		echo "Author ID: $author_id";
+	
+	// 		// Check if author_id is not empty
+	// 		if ($author_id) {
+	// 			// Get author details
+	// 			$author_details = $this->author_model->author_edit($author_id);
+				
+	// 			// Debugging: Print author details
+	// 			print_r($author_details);
+				
+	// 			if ($author_details) {
+					
+	// 					$user_data = array(
+	// 						'username' => $author_details[0]->name,
+	// 						'email' => $author_details[0]->email,
+	// 						'password' => password_hash($author_details[0]->password, PASSWORD_BCRYPT), // Hash the plain text password
+	// 						'is_admin' => 4,
+						
+						
+	// 				);
+	
+	// 				// Debugging: Print user data to be inserted
+	// 				print_r($user_data);
+	
+	// 				// Insert author as a user
+	// 				if ($this->db->insert('users', $user_data)) {
+	// 					echo "User inserted successfully!";
+	// 				} else {
+	// 					echo "Failed to insert user!";
+	// 				}
+	// 			} else {
+	// 				echo "Author details not found!";
+	// 			}
+	// 		} else {
+	// 			echo "Author ID is empty!";
+	// 			die;
+	// 		}
+	// 	}
+	
+	// 	// Redirect back to the view page or do any other necessary action
+	// 	redirect('admin/author/author_view');
+	// }
+	public function update_article_status() {
+		$author_id = $this->input->post('author_id');
+		$status = $this->input->post('status');
+		if (!$author_id || !$status) {
+			redirect('admin/author/author_view');
+			return;
+		}
+		$this->db->where('id', $author_id);
+		$this->db->update('author', ['status' => $status]);
+		if ($status == 'approved') {
+			$author_details = $this->author_model->author_edit($author_id);
+			if ($author_details) {
+				$user_data = array(
+					'username' => $author_details[0]->username,
+					'firstname' => $author_details[0]->firstname,
+					'lastname' => $author_details[0]->lastname,
+					'mobile_no' => $author_details[0]->mobile_no,
+					'email' => $author_details[0]->email,
+					'password' => $author_details[0]->password,
+					'is_admin' => 4
+				);
+				if ($this->db->insert('users', $user_data)) {
+					echo "User inserted successfully!";
+				} else {
+					echo "Failed to insert user!";
+				}
+			} else {
+				echo "Author details not found!";
+			}
+		}
+		redirect('admin/author/author_view');
+	}
+	
+	
+	
+	
+	
 
 
 

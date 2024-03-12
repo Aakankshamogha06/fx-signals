@@ -17,6 +17,7 @@ class payment_api extends REST_Controller
             die();
         }
         parent::__construct();
+        $this->load->library('Authorization_Token');
         $this->load->library('authorization_Token');
         $this->load->model('admin/Auth_model', 'Auth_model');
         $this->load->model('admin/payment_model', 'payment_model');
@@ -133,7 +134,7 @@ public function payment_post()
         if ($decodedToken['status']) {
             // Authorization successful, proceed with payment processing
             $this->form_validation->set_rules('transaction_id', 'Name', 'trim|required');
-            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[payment.email]');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
             $this->form_validation->set_rules('phone_number', 'Phone Number', 'trim|required');
             $this->form_validation->set_rules('user_id', 'User Id', 'trim|required');
             $this->form_validation->set_rules('name', 'Name', 'trim|required');
@@ -239,4 +240,100 @@ public function author_payment_post()
         $this->response(['Authentication failed'], REST_Controller::HTTP_UNAUTHORIZED);
     }
 }
+
+    // public function current_plan_get()
+    // {
+    //     // Check for authorization token in headers
+    //     $headers = $this->input->request_headers();
+    //     if (!empty($headers['Authorization'])) {
+    //         $decodedToken = $this->authorization_token->validateToken(trim($headers['Authorization']));
+    //         if (!$decodedToken['status']) {
+    //             $this->response(['error' => 'Unauthorized'], REST_Controller::HTTP_UNAUTHORIZED);
+    //             return;
+    //         }
+    //     } else {
+    //         $this->response(['error' => 'Authorization header is missing'], REST_Controller::HTTP_UNAUTHORIZED);
+    //         return;
+    //     }
+
+    //     // Get user ID from the request URI or wherever it's provided
+    //     $user_id = $this->uri->segment(4);
+    //     if (!$user_id) {
+    //         $this->response(['error' => 'Invalid user id'], REST_Controller::HTTP_BAD_REQUEST);
+    //         return;
+    //     }
+
+    //     // Retrieve current plan of the user
+    //     $current_plan = $this->payment_model->get_current_plan($user_id);
+
+    //     if ($current_plan) {
+    //         $this->response($current_plan, REST_Controller::HTTP_OK);
+    //     } else {
+    //         $this->response(['error' => 'Current plan not found'], REST_Controller::HTTP_NOT_FOUND);
+    //     }
+    // }
+    public function current_plan_get()
+    {
+        // Check for authorization token in headers
+        $headers = $this->input->request_headers();
+        if (!empty($headers['Authorization'])) {
+            $decodedToken = $this->authorization_token->validateToken(trim($headers['Authorization']));
+            if (!$decodedToken['status']) {
+                $this->response(['error' => 'Unauthorized'], REST_Controller::HTTP_UNAUTHORIZED);
+                return;
+            }
+        } else {
+            $this->response(['error' => 'Authorization header is missing'], REST_Controller::HTTP_UNAUTHORIZED);
+            return;
+        }
+    
+        // Get user ID from the request URI or wherever it's provided
+        $user_id = $this->uri->segment(4);
+        if (!$user_id) {
+            $this->response(['error' => 'Invalid user id'], REST_Controller::HTTP_BAD_REQUEST);
+            return;
+        }
+    
+        // Retrieve current plan of the user including expiry date
+        $current_plan = $this->payment_model->get_current_plan_with_expiry($user_id);
+    
+        if ($current_plan) {
+            $this->response($current_plan, REST_Controller::HTTP_OK);
+        } else {
+            $this->response(['error' => 'Current plan not found'], REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
+    
+public function author_current_plan_get()
+{
+    // Check for authorization token in headers
+    $headers = $this->input->request_headers();
+    if (!empty($headers['Authorization'])) {
+        $decodedToken = $this->authorization_token->validateToken(trim($headers['Authorization']));
+        if (!$decodedToken['status']) {
+            $this->response(['error' => 'Unauthorized'], REST_Controller::HTTP_UNAUTHORIZED);
+            return;
+        }
+    } else {
+        $this->response(['error' => 'Authorization header is missing'], REST_Controller::HTTP_UNAUTHORIZED);
+        return;
+    }
+
+    // Get author ID from the request URI or wherever it's provided
+    $author_id = $this->uri->segment(4);
+    if (!$author_id) {
+        $this->response(['error' => 'Invalid author id'], REST_Controller::HTTP_BAD_REQUEST);
+        return;
+    }
+
+    // Retrieve current plan of the author
+    $current_plan = $this->payment_model->get_author_current_plan($author_id);
+
+    if ($current_plan) {
+        $this->response($current_plan, REST_Controller::HTTP_OK);
+    } else {
+        $this->response(['error' => 'Current plan not found'], REST_Controller::HTTP_NOT_FOUND);
+    }
+}
+
 }

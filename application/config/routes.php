@@ -272,6 +272,8 @@ $route['author_role/edit_author_role/(:any)'] = 'admin/author_role/author_role_e
 $route['author_role/author_role_update_data'] = 'admin/author_role/author_role_update_data';
 $route['author_role/author_role_delete/(:any)'] = 'admin/author_role/author_role_delete/$1';
 
+$route['admin/update_article_status'] = 'admin/author/update_article_status';
+
 // author_pricing ****************
 $route['author_pricing/add_author_pricing'] = 'admin/author_pricing/add_author_pricing';
 $route['author_pricing/author_pricing_submit_data'] = 'admin/author_pricing/author_pricing_submit_data';
@@ -320,10 +322,23 @@ $route['live_rate/edit_live_rate/(:any)'] = 'admin/live_rate/live_rate_edit/$1';
 $route['live_rate/live_rate_update_data'] = 'admin/live_rate/live_rate_update_data';
 $route['live_rate/live_rate_delete/(:any)'] = 'admin/live_rate/live_rate_delete/$1';
 
+// equiry ****************
+$route['equiry/add_equiry'] = 'admin/equiry/add_equiry';
+$route['equiry/equiry_submit_data'] = 'admin/equiry/equiry_submit_data';
+$route['equiry/view_equiry']        = 'admin/equiry/equiry_view';
+$route['equiry/edit_equiry/(:any)'] = 'admin/equiry/equiry_edit/$1';
+$route['equiry/equiry_update_data'] = 'admin/equiry/equiry_update_data';
+$route['equiry/equiry_delete/(:any)'] = 'admin/equiry/equiry_delete/$1';
 
+// signal_manager ****************
+$route['signal_manager/add_signal_manager'] = 'admin/signal_manager/add_signal_manager';
+$route['signal_manager/signal_manager_submit_data'] = 'admin/signal_manager/signal_manager_submit_data';
+$route['signal_manager/view_signal_manager']        = 'admin/signal_manager/signal_manager_view';
+$route['signal_manager/edit_signal_manager/(:any)'] = 'admin/signal_manager/signal_manager_edit/$1';
+$route['signal_manager/signal_manager_update_data'] = 'admin/signal_manager/signal_manager_update_data';
+$route['signal_manager/signal_manager_delete/(:any)'] = 'admin/signal_manager/signal_manager_delete/$1';
 
-
-
+$route['admin/update_chart_status'] = 'admin/signal_manager/update_chart_status';
 
 
 /* API */
@@ -370,7 +385,7 @@ $route['learn_api/learn'] = 'learn_api/learn_get';
 $route['learn_api/learn_by_id/(:num)'] = 'learn_api/learn_by_id_get/$1';
 $route['learn_api/learn_by_type'] = 'learn_api/learn_by_type_get';
 $route['learn_api/learn_by_title'] = 'learn_api/learn_by_title_get';
-$route['analysis_api/analysis'] = 'analysis_api/analysis_get'; 
+$route['analysis_api/analysis'] = 'analysis_api/analysis_get';
 $route['analysis_api/analysis_by_id/(:num)'] = 'analysis_api/analysis_by_id_get/$1';
 $route['analysis_api/analysis_by_date'] = 'analysis_api/analysis_by_date_get';
 $route['analysis_api/analysis_by_type'] = 'analysis_api/analysis_by_type_get';
@@ -384,7 +399,15 @@ $route['author_api/author_pricing_by_id'] = 'author_api/author_pricing_by_id_get
 $route['trading_signals_api/trading_signals'] = 'trading_signals_api/trading_signals_get';
 $route['payment_api/payment'] = 'payment_api/payment_post';
 $route['payment_api/author_payment'] = 'payment_api/author_payment_post';
+$route['payment_api/current_plan/(:/num)'] = 'payment_api/current_plan_get';
+$route['payment_api/author_current_plan/(:/num)'] = 'payment_api/author_current_plan_get';
 $route['live_rate_api/live_rate_by_page'] = 'live_rate_api/live_rate_by_page_get';
 $route['trading_signals_api/closed_signals'] = 'trading_signals_api/closed_signals_post';
-$route['trading_signals_api/closed_signals_get'] = 'trading_signals_api/closed_signals_get';
+$route['trading_signals_api/closed_signals'] = 'trading_signals_api/closed_signals_get';
 $route['enquiry_api/enquiry'] = 'enquiry_api/enquiry_post';
+$route['enquiry_api/enquiry_by_user/(:num)'] = 'enquiry_api/get_enquiry_by_user_get';
+$route['trading_signals_api/trading_signals_between_dates'] = 'trading_signals_api/trading_signals_between_dates_get';
+$route['signal_manager_api/register_signal_manager'] = 'signal_manager_api/register_signal_manager_post';
+$route['signal_manager_api/login_signal_manager'] = 'signal_manager_api/login_signal_manager_post';
+$route['author_api/check_author_status'] = 'author_api/check_author_status_get';
+$route['signal_manager_api/check_signal_manager_status'] = 'signal_manager_api/check_signal_manager_status_get';    

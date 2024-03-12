@@ -22,6 +22,7 @@ class signal_api extends REST_Controller
         $this->load->model('admin/News_model', 'News_model');
         $this->load->model('admin/User_model', 'User_model');
         $this->load->model('admin/Signal_model', 'Signal_model');
+        $this->load->model('admin/closed_signals_model', 'closed_signals_model');
     }
 
 
@@ -81,5 +82,6 @@ class signal_api extends REST_Controller
             $this->response(['error' => 'No signal found for the specified title'], REST_Controller::HTTP_NOT_FOUND);
         }
     }
+
 }
 ?>

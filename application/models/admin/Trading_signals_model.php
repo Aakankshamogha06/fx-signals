@@ -7,7 +7,6 @@ class trading_signals_model extends CI_Model
 	{
 		$data = [
 			'entry_point' => $data['entry_point'],
-			'exit_point' => $data['exit_point'],
 			'package' => $data['package'],
 			'date' => $data['date'],
 			'category' => $data['category'],
@@ -57,6 +56,8 @@ class trading_signals_model extends CI_Model
             'status' => $data['status'],
 			'stop_loss' => $data['stop_loss'],
 			'take_profit' => $data['take_profit'],
+			'time_close' => $data['time_close'],
+			'sl_tp' => $data['sl_tp'],
 		];
 		$this->db->where('id', $data['id']);
 		if ($this->db->update('trading_signals', $newdata)) {
@@ -114,4 +115,23 @@ class trading_signals_model extends CI_Model
 		}
 	}
 	
+	public function trading_signals_between_dates($start_date, $end_date)
+	{
+		$sql = "SELECT * FROM trading_signals WHERE date >= ? AND date <= ?";
+		$query = $this->db->query($sql, array($start_date, $end_date));
+	
+		// Check if query was successful
+		if ($query) {
+			// Check if there are rows returned
+			if ($query->num_rows() > 0) {
+				return $query->result_array();
+			} else {
+				return []; // No data found
+			}
+		} else {
+			return false; // Query execution failed
+		}
+	}
+	
+
 }

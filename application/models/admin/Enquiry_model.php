@@ -3,18 +3,11 @@ class enquiry_model extends CI_Model
 {
 
 
-	public function enquiry_data_submit($data,$enquiry_image)
+	public function enquiry_data_submit($data)
 	{
 		$data = [
-			'title' => $data['title'],
-			'publish_date' => $data['publish_date'],
-			'enquiry_desc' => $data['enquiry_desc'],
-			'category' => $data['category'],
-			'sub_category' => $data['sub_category'],
-			'enquiry_image' => $enquiry_image,
-            'author' => $data['author'],
-			'enquiry_type' => $data['enquiry_type'],
-			'enquiry_package' => $data['enquiry_package'],
+			'user_id' => $data['user_id'],
+			'message' => $data['message'],
 		];
 		if ($this->db->insert('enquiry', $data)) {
 

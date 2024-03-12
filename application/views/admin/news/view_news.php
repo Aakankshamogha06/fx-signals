@@ -43,7 +43,7 @@
 
                     </td>
                     <td><?= $row->publish_date ?></td>
-                    <td><?= $row->news_desc ?></td>
+                    <td><?= substr($row->news_desc,0,100) . '...' ?></td>
                     <td><?= $row->category ?></td>
                     <td><?= $row->sub_category ?></td>
                     <td><?= $row->author ?></td>

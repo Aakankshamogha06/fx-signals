@@ -3,17 +3,17 @@ class closed_signals_model extends CI_Model
 {
 
 
-	public function closed_signals_data_submit($data)
+	public function closed_signals_data_submit($data,$id)
 	{
 		$data = [
-			'pair' => $data['pair'],
-			'action' => $data['action'],
-			'time_open' => $data['time_open'],
-			'time_closed' => $data['time_closed'],
+		
+			'time_close' => $data['time_close'],
             'sl_tp' => $data['sl_tp'],
+			'status'=>'inactive',
 		];
-		if ($this->db->insert('closed_signals', $data)) {
-
+		$this->db->where('id', $id);
+		
+		if ($this->db->update('trading_signals', $data)) {
 			return $data;
 		} else {
 			return false;

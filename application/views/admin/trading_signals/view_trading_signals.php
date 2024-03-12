@@ -13,20 +13,19 @@
             </a>
           </div>
           <div class="card-body">
-            <table id="table_id" class="table table-striped">
+            <table id="table_id" class="table">
               <thead>
                 <tr>
                 <th>SR NO</th>
-                <th>entry point</th>
-                <th>exit point</th>
-                <th>package</th>
-                <th>date</th>
                 <th>category</th>
                 <th>sub category</th>
-                <th>action</th>
-                <th>status</th>
+                <th>package</th>
+                <th>date</th>
+                <th>entry price</th>
                 <th>stop loss</th>
                 <th>take profit</th>
+                <th>action</th>
+                <th>status</th>
                 <th style="width: 150px;" class="text-right">OPTION</th>
               </tr>
             </thead>
@@ -36,19 +35,20 @@
               foreach ($trading_signals_view as $row) : ?>
                 <tr>
                   <td><?= $c++; ?></td>
-                  <td><?= $row->entry_point ?></td>
-                  <td><?= $row->exit_point ?></td>
-                  <td><?= $row->package ?></td>
-                  <td><?= $row->date ?></td>
                   <td><?= $row->category ?></td>
                   <td><?= $row->sub_category ?></td>
-                  <td><?= $row->action ?></td>
-                  <td><?= $row->status ?></td>
+                  <td><?= $row->package ?></td>
+                  <td><?= $row->date ?></td>
+                  <td><?= $row->entry_point ?></td>
                   <td><?= $row->stop_loss ?></td>
                   <td><?= $row->take_profit ?></td>
-
-                  <td class="text-right"><a href="<?= base_url('admin/trading_signals/trading_signals_edit/' . $row->id); ?>"><i class="btn btn-info btn-flat" >
-                                            Edit </i></a><a href="<?= base_url('admin/trading_signals/trading_signals_delete/' . $row->id); ?>" class="btn btn-danger btn-flat"  onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
+                  <td><?= $row->action ?></td>
+                  <td><?= $row->status ?></td>
+                  
+                  <td class="text-right">
+                    <!-- <a href="<?= base_url('admin/trading_signals/trading_signals_edit/' . $row->id); ?>"><i class="btn btn-info btn-flat" >
+                                            Edit </i></a> -->
+                                            <a href="<?= base_url('admin/trading_signals/trading_signals_delete/' . $row->id); ?>" class="btn btn-danger btn-flat"  onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                                             </tr>
                 <?php endforeach; ?>
               </tbody>

@@ -26,7 +26,7 @@ class enquiry_api extends REST_Controller
 
 
     
-    public function get_enquiry_by_user_get()
+    public function enquiry_by_user_get()
     {
         $headers = $this->input->request_headers();
         if (!empty($headers['Authorization'])) {
@@ -53,7 +53,6 @@ class enquiry_api extends REST_Controller
     
     public function enquiry_post()
 {
-    // Check for authorization token in headers
     $headers = $this->input->request_headers();
     if (!empty($headers['Authorization'])) {
         $decodedToken = $this->authorization_token->validateToken(trim($headers['Authorization']));
@@ -65,32 +64,20 @@ class enquiry_api extends REST_Controller
         $this->response(['error' => 'Authorization header is missing'], REST_Controller::HTTP_UNAUTHORIZED);
         return;
     }
-
-    // Form validation
     $this->form_validation->set_rules('user_id', 'user_id', 'trim|required');
     $this->form_validation->set_rules('message', 'message', 'trim|required');
-
-    // Check if validation passes
     if ($this->form_validation->run() === false) {
         $this->response(['error' => $this->form_validation->error_array()], REST_Controller::HTTP_BAD_REQUEST);
         return;
     }
-
-    // If validation is successful, get the form data
     $user_id = $this->input->post('user_id');
     $message = $this->input->post('message');
-
-    // Prepare data for insertion
     $data = [
         'user_id' => $user_id,
         'message' => $message
     ];
-
-    // Insert into the database using your model
     $insert_id = $this->enquiry_model->enquiry_data_submit($data);
-
     if ($insert_id) {
-        // Send a confirmation response
         $response = [
             'message' => 'Thank you for contacting us!',
         ];

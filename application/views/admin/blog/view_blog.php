@@ -43,8 +43,8 @@
                     <td><?= $row->blog_category ?></td>
                     <td><?= $row->blog_author ?></td>
                     <td><?= $row->blog_date ?></td>
-                    <td><?= $row->blog_desc ?></td>
-                    <td><?= $row->long_desc ?></td>
+                    <td><?= substr($row->blog_desc,0,100). '...' ?></td>
+                    <td><?= substr($row->long_desc,0,100). '...' ?></td>
 
                     <td class="text-right"><a href="<?= base_url('admin/blog/blog_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/blog/blog_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                   </tr>
