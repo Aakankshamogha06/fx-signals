@@ -5,6 +5,7 @@ class blog_model extends CI_Model
 
 	public function blog_data_submit($data,$blog_image)
 	{
+		$aid= $this->session->userdata('admin_id');
 		$data = [
 			'blog_name' => $data['blog_name'],
 			'blog_image' => $blog_image,
@@ -13,6 +14,7 @@ class blog_model extends CI_Model
             'blog_date' => $data['blog_date'],
             'blog_desc' => $data['blog_desc'],
             'long_desc' => $data['long_desc'],
+			'created_by'=>$aid,
 		];
 		if ($this->db->insert('blog', $data)) {
 
@@ -24,7 +26,12 @@ class blog_model extends CI_Model
 
 	public function blog_view()
 	{
+		if (($this->session->userdata('role') === '1')) {  
 		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category FROM `blog`ORDER BY `blog_date` DESC;");
+		}else{
+			$id= $this->session->userdata('admin_id');
+			$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category FROM `blog` where created_by=$id ORDER BY `blog_date` DESC;");
+		}
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -42,8 +49,8 @@ class blog_model extends CI_Model
 
 	public function blog_update_data($data,$blog_image)
 	{
+		$aid= $this->session->userdata('admin_id');
 		$newdata = [
-
 			'blog_name' => $data['blog_name'],
 			'blog_image' => $blog_image,
             'blog_category' => $data['blog_category'],
@@ -51,6 +58,7 @@ class blog_model extends CI_Model
             'blog_date' => $data['blog_date'],
             'blog_desc' => $data['blog_desc'],
             'long_desc' => $data['long_desc'],
+			'created_by'=>$aid,
 		];
 		$this->db->where('id', $data['id']);
 		if ($this->db->update('blog', $newdata)) {

@@ -5,6 +5,7 @@ class news_model extends CI_Model
 
 	public function news_data_submit($data,$news_image)
 	{
+		$aid= $this->session->userdata('admin_id');
 		$data = [
 			'title' => $data['title'],
 			'publish_date' => $data['publish_date'],
@@ -15,6 +16,7 @@ class news_model extends CI_Model
             'author' => $data['author'],
 			'news_type' => $data['news_type'],
 			'news_package' => $data['news_package'],
+			'created_by'=>$aid,
 		];
 		if ($this->db->insert('news', $data)) {
 
@@ -26,11 +28,22 @@ class news_model extends CI_Model
 
 	public function news_view()
 	{
+		if (($this->session->userdata('role') === '1')) {  
 		$result = $this->db->query("SELECT * ,(SELECT name from news_category WHERE news_category.id = news.category) as category,
 		(SELECT pair_name from currency_pair WHERE currency_pair.id = news.sub_category)as sub_category ,
 		(SELECT news_type_name from news_type WHERE news_type.id = news.news_type) as news_type,
 		(SELECT package_name from package WHERE package.id = news.news_package) as news_package
 		 FROM `news` ORDER BY `publish_date` DESC; ");
+		 }
+		 else{
+			$id= $this->session->userdata('admin_id');
+			 
+			 $result = $this->db->query("SELECT * ,(SELECT name from news_category WHERE news_category.id = news.category) as category,
+			 (SELECT pair_name from currency_pair WHERE currency_pair.id = news.sub_category)as sub_category ,
+			 (SELECT news_type_name from news_type WHERE news_type.id = news.news_type) as news_type,
+			 (SELECT package_name from package WHERE package.id = news.news_package) as news_package
+			  FROM `news`where created_by=$id ORDER BY `publish_date` DESC; ");
+		 }
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -48,7 +61,7 @@ class news_model extends CI_Model
 
 	public function news_update_data($data,$news_image)
 	{
-		
+		$aid= $this->session->userdata('admin_id');
 		$newdata = [
 			'title' => $data['title'],
 			'publish_date' => $data['publish_date'],
@@ -59,6 +72,7 @@ class news_model extends CI_Model
             'author' => $data['author'],
             'news_type' => $data['news_type'],
 			'news_package' => $data['news_package'],
+			'created_by'=>$aid,
 		];
 		$this->db->where('id', $data['id']);
 		if ($this->db->update('news', $newdata)) {
