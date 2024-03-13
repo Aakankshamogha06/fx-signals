@@ -340,6 +340,19 @@ $route['signal_manager/signal_manager_delete/(:any)'] = 'admin/signal_manager/si
 
 $route['admin/update_chart_status'] = 'admin/signal_manager/update_chart_status';
 
+// author_profile ****************
+$route['author_profile/add_author_profile'] = 'admin/author_profile/add_author_profile';
+$route['author_profile/author_profile_submit_data'] = 'admin/author_profile/author_profile_submit_data';
+$route['author_profile/view_author_profile']        = 'admin/author_profile/author_profile_view';
+$route['author_profile/edit_author_profile/(:any)'] = 'admin/author_profile/author_profile_edit/$1';
+$route['author_profile/author_profile_update_data'] = 'admin/author_profile/author_profile_update_data';
+$route['author_profile/author_profile_delete/(:any)'] = 'admin/author_profile/author_profile_delete/$1';
+
+
+
+
+
+
 
 /* API */
 $route['api/register'] = 'api/User/register';

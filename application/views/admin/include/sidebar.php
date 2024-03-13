@@ -118,6 +118,9 @@
 						<a href="<?= base_url('admin/author/author_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR</span></a>
 					</li>
 					<li class="nav-item">
+						<a href="<?= base_url('admin/author_profile/author_profile_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR PROFILE</span></a>
+					</li>
+					<li class="nav-item">
 						<a href="<?= base_url('admin/author_pricing/author_pricing_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-tags" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR PRICING</span></a>
 					</li>
 					<li class="nav-item">
@@ -170,6 +173,9 @@
 				<!-- AUTHOR PANEL -->
 
 				<?php if ($this->session->userdata('role') === '4') : ?>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/author_profile/author_profile_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR PROFILE</span></a>
+					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/news/news_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">NEWS</span></a>
 					</li>
