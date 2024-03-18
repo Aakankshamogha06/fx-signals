@@ -348,7 +348,13 @@ $route['author_profile/edit_author_profile/(:any)'] = 'admin/author_profile/auth
 $route['author_profile/author_profile_update_data'] = 'admin/author_profile/author_profile_update_data';
 $route['author_profile/author_profile_delete/(:any)'] = 'admin/author_profile/author_profile_delete/$1';
 
-
+// broker ****************
+$route['broker/add_broker'] = 'admin/broker/add_broker';
+$route['broker/broker_submit_data'] = 'admin/broker/broker_submit_data';
+$route['broker/view_broker']        = 'admin/broker/broker_view';
+$route['broker/edit_broker/(:any)'] = 'admin/broker/broker_edit/$1';
+$route['broker/broker_update_data'] = 'admin/broker/broker_update_data';
+$route['broker/broker_delete/(:any)'] = 'admin/broker/broker_delete/$1';
 
 
 
@@ -424,3 +430,4 @@ $route['signal_manager_api/register_signal_manager'] = 'signal_manager_api/regis
 $route['signal_manager_api/login_signal_manager'] = 'signal_manager_api/login_signal_manager_post';
 $route['author_api/check_author_status'] = 'author_api/check_author_status_get';
 $route['signal_manager_api/check_signal_manager_status'] = 'signal_manager_api/check_signal_manager_status_get';    
+$route['broker_api/broker_by_type'] = 'broker_api/broker_by_page_get';

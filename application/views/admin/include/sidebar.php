@@ -167,6 +167,9 @@
 					<li class="nav-item">
 						<a href="<?= base_url('admin/author/author_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR</span></a>
 					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/broker/broker_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">BROKER</span></a>
+					</li>
 					
 				<?php endif; ?>
 
