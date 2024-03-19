@@ -356,7 +356,13 @@ $route['broker/edit_broker/(:any)'] = 'admin/broker/broker_edit/$1';
 $route['broker/broker_update_data'] = 'admin/broker/broker_update_data';
 $route['broker/broker_delete/(:any)'] = 'admin/broker/broker_delete/$1';
 
-
+// forecast ****************
+$route['forecast/add_forecast'] = 'admin/forecast/add_forecast';
+$route['forecast/forecast_submit_data'] = 'admin/forecast/forecast_submit_data';
+$route['forecast/view_forecast']        = 'admin/forecast/forecast_view';
+$route['forecast/edit_forecast/(:any)'] = 'admin/forecast/forecast_edit/$1';
+$route['forecast/forecast_update_data'] = 'admin/forecast/forecast_update_data';
+$route['forecast/forecast_delete/(:any)'] = 'admin/forecast/forecast_delete/$1';
 
 
 
@@ -431,3 +437,4 @@ $route['signal_manager_api/login_signal_manager'] = 'signal_manager_api/login_si
 $route['author_api/check_author_status'] = 'author_api/check_author_status_get';
 $route['signal_manager_api/check_signal_manager_status'] = 'signal_manager_api/check_signal_manager_status_get';    
 $route['broker_api/broker_by_type'] = 'broker_api/broker_by_page_get';
+$route['forcast_api/forcast_by_type'] = 'forcast_api/forcast_by_page_get';
