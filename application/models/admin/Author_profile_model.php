@@ -96,4 +96,16 @@ if ($this->db->insert('author_profile', $data)) {
 			return 0;
 		}
 	}	
+	public function author_profile($id)
+    {
+
+        $assign_data = $this->db->query("SELECT * FROM `author_profile` where author_profile.author_id=$id ");
+
+        $fetch = $assign_data->num_rows();
+        if ($fetch > 0) {
+            return $fetch = $assign_data->result_array();
+        } else {
+            return false;
+        }
+    }
 }

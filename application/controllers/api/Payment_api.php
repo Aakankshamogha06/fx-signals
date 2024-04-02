@@ -135,7 +135,7 @@ public function payment_post()
             // Authorization successful, proceed with payment processing
             $this->form_validation->set_rules('transaction_id', 'Name', 'trim|required');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
-            $this->form_validation->set_rules('phone_number', 'Phone Number', 'trim|required');
+            // $this->form_validation->set_rules('phone_number', 'Phone Number', 'trim|required');
             $this->form_validation->set_rules('user_id', 'User Id', 'trim|required');
             $this->form_validation->set_rules('name', 'Name', 'trim|required');
             $this->form_validation->set_rules('date', 'Date', 'trim|required');
@@ -149,7 +149,7 @@ public function payment_post()
                 $data = array(
                     'user_id' => $this->input->post('user_id'),
                     'email' => $email,
-                    'phone_number' => $this->input->post('phone_number'),
+                    // 'phone_number' => $this->input->post('phone_number'),
                     'name' => $this->input->post('name'),
                     'date' => $date,
                     'pricing_id' => $this->input->post('pricing_id'),

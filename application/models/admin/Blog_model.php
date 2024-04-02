@@ -10,7 +10,7 @@ class blog_model extends CI_Model
 			'blog_name' => $data['blog_name'],
 			'blog_image' => $blog_image,
             'blog_category' => $data['blog_category'],
-            'blog_author' => $data['blog_author'],
+            // 'blog_author' => $data['blog_author'],
             'blog_date' => $data['blog_date'],
             'blog_desc' => $data['blog_desc'],
             'long_desc' => $data['long_desc'],
@@ -27,10 +27,13 @@ class blog_model extends CI_Model
 	public function blog_view()
 	{
 		if (($this->session->userdata('role') === '1')) {  
-		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category FROM `blog`ORDER BY `blog_date` DESC;");
+		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category
+												(SELECT username from users WHERE users.id = blog.created_by) as blog_author 
+												 FROM `blog`ORDER BY `blog_date` DESC;");
 		}else{
 			$id= $this->session->userdata('admin_id');
-			$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category FROM `blog` where created_by=$id ORDER BY `blog_date` DESC;");
+			$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category
+			,(SELECT username from users WHERE users.id = blog.created_by) as blog_author  FROM `blog` where created_by=$id ORDER BY `blog_date` DESC;");
 		}
 		if ($result->num_rows() > 0) {
 			return $result->result();
@@ -39,7 +42,19 @@ class blog_model extends CI_Model
 		}
 	}
 
-
+	public function blog_get()
+	{
+		 
+		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category ,
+		(SELECT username from users WHERE users.id = blog.created_by) as blog_author 
+		FROM `blog`ORDER BY `blog_date` DESC;");
+		
+		if ($result->num_rows() > 0) {
+			return $result->result();
+		} else {
+			return 0;
+		}
+	}
 	public function blog_delete($id)
 	{
 		$this->db->where('id', $id);
@@ -54,7 +69,7 @@ class blog_model extends CI_Model
 			'blog_name' => $data['blog_name'],
 			'blog_image' => $blog_image,
             'blog_category' => $data['blog_category'],
-            'blog_author' => $data['blog_author'],
+            // 'blog_author' => $data['blog_author'],
             'blog_date' => $data['blog_date'],
             'blog_desc' => $data['blog_desc'],
             'long_desc' => $data['long_desc'],

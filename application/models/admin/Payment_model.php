@@ -91,6 +91,8 @@ class payment_model extends CI_Model
     $this->db->select('*');
     $this->db->from('payment');
     $this->db->where('user_id', $user_id);
+    $this->db->order_by('created_at', 'desc'); // Order by date in descending order
+    $this->db->limit(1); // Limit the result to 1 row
     $query = $this->db->get();
 
     if ($query->num_rows() > 0) {
@@ -101,11 +103,11 @@ class payment_model extends CI_Model
 
         $current_plan = array(
             'user_id' => $payment['user_id'],
-			'transaction_id' => $payment['transaction_id'],
-			'pricing_id' => $payment['pricing_id'],
-			'email' => $payment['email'],
-			'phone_number' => $payment['phone_number'],
-			'name' => $payment['name'],
+            'transaction_id' => $payment['transaction_id'],
+            'pricing_id' => $payment['pricing_id'],
+            'email' => $payment['email'],
+            'phone_number' => $payment['phone_number'],
+            'name' => $payment['name'],
             'date' => $payment['date'],
             'expiry_date' => $expiry_date, 
         );
@@ -116,20 +118,35 @@ class payment_model extends CI_Model
     }
 }
 
-	public function get_author_current_plan($author_id) {
-        // Assuming you have a 'plans' table in your database with a 'user_id' column
-        // You need to adjust this query according to your database schema
-        $this->db->select('id,author_id,transaction_id,author_pricing_id,email,phone_number,name,date,created_at');
-        $this->db->from('payment');
-        $this->db->where('author_id', $author_id);
-        // $this->db->order_by('created_at', 'desc'); // Assuming you want to get the latest plan
-        // $this->db->limit(1);
-        $query = $this->db->get();
 
-        if ($query->num_rows() > 0) {
-            return $query->row(); // Return the current plan as an object
-        } else {
-            return false; // Return false if no plan is found
-        }
+	public function get_author_current_plan($author_id) {
+
+        $this->db->select('id,author_id,transaction_id,author_pricing_id,email,phone_number,name,date,created_at');
+		$this->db->from('payment');
+		$this->db->where('author_id', $author_id);
+		$this->db->order_by('created_at', 'desc'); // Order by date in descending order
+		$this->db->limit(1); // Limit the result to 1 row
+		$query = $this->db->get();
+	
+		if ($query->num_rows() > 0) {
+			$payment = $query->row_array();
+			$plan_duration_days = 30; 
+			$purchase_date = strtotime($payment['date']);
+			$expiry_date = date('Y-m-d', strtotime("+$plan_duration_days days", $purchase_date));
+	
+			$current_plan = array(
+				'author_id' => $payment['author_id'],
+				'transaction_id' => $payment['transaction_id'],
+				'author_pricing_id' => $payment['author_pricing_id'],
+				'email' => $payment['email'],
+				'name' => $payment['name'],
+				'date' => $payment['date'],
+				'expiry_date' => $expiry_date, 
+			);
+	
+			return $current_plan;
+		} else {
+			return false;
+		}
     }
 }

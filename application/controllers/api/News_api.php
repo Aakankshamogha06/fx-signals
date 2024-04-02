@@ -28,7 +28,7 @@ class News_api extends REST_Controller
     public function news_get()
     {
         $id = $this->uri->segment(4);
-        $data = $this->News_model->news_view($id);
+        $data = $this->News_model->news_get($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
     public function news_by_id_get()
@@ -50,7 +50,26 @@ class News_api extends REST_Controller
     } else {
         $this->response(['error' => 'No news found for the specified category'], REST_Controller::HTTP_NOT_FOUND);
     }
+} 
+
+public function news_by_category_and_subcategory_get()
+{
+    $category_name = $this->uri->segment(4);
+    $subcategory_name = $this->uri->segment(5);
+
+    if (empty($category_name) || empty($subcategory_name)) {
+        $this->response(['error' => 'Category and subcategory names are required'], REST_Controller::HTTP_BAD_REQUEST);
+        return;
+    }
+
+    $newsData = $this->News_model->news_by_category_and_subcategory_name($category_name, $subcategory_name);
+    if ($newsData) {
+        $this->response($newsData, REST_Controller::HTTP_OK);
+    } else {
+        $this->response(['error' => 'No news found for the specified category and subcategory'], REST_Controller::HTTP_NOT_FOUND);
+    }
 }
+
 
 public function news_by_type_get()
 {
@@ -60,6 +79,21 @@ public function news_by_type_get()
         return;
     }
     $newsData = $this->News_model->news_by_type_name($type_name);
+    if ($newsData) {
+        $this->response($newsData, REST_Controller::HTTP_OK);
+    } else {
+        $this->response(['error' => 'No news found for the specified type'], REST_Controller::HTTP_NOT_FOUND);
+    }
+}
+
+public function news_by_sub_type_get()
+{
+    $sub_type_name = $this->uri->segment(4);
+    if (empty($sub_type_name)) {
+        $this->response(['error' => 'sub_type name is required'], REST_Controller::HTTP_BAD_REQUEST);
+        return;
+    }
+    $newsData = $this->News_model->news_by_sub_type_name($sub_type_name);
     if ($newsData) {
         $this->response($newsData, REST_Controller::HTTP_OK);
     } else {
