@@ -364,6 +364,13 @@ $route['forecast/edit_forecast/(:any)'] = 'admin/forecast/forecast_edit/$1';
 $route['forecast/forecast_update_data'] = 'admin/forecast/forecast_update_data';
 $route['forecast/forecast_delete/(:any)'] = 'admin/forecast/forecast_delete/$1';
 
+// market_primer ****************
+$route['market_primer/add_market_primer'] = 'admin/market_primer/add_market_primer';
+$route['market_primer/market_primer_submit_data'] = 'admin/market_primer/market_primer_submit_data';
+$route['market_primer/view_market_primer']        = 'admin/market_primer/market_primer_view';
+$route['market_primer/edit_market_primer/(:any)'] = 'admin/market_primer/market_primer_edit/$1';
+$route['market_primer/market_primer_update_data'] = 'admin/market_primer/market_primer_update_data';
+$route['market_primer/market_primer_delete/(:any)'] = 'admin/market_primer/market_primer_delete/$1';
 
 
 /* API */

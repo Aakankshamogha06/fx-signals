@@ -142,16 +142,22 @@
 						<a href="<?= base_url('admin/signal_manager/signal_manager_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">SIGNAL MANAGER</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= base_url('admin/broker/broker_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">BROKER</span></a>
+						<a href="<?= base_url('admin/broker/broker_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">BROKER</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= base_url('admin/forecast/forecast_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">FORECAST</span></a>
+						<a href="<?= base_url('admin/forecast/forecast_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">FORECAST</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/market_primer/market_primer_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">MARKET PRIMER</span></a>
 					</li>
 				<?php endif; ?>
 
 
 				<!-- editor panel -->
 				<?php if ($this->session->userdata('role') === '3') : ?>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/author_profile/author_profile_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR PROFILE</span></a>
+					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/news/news_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">NEWS</span></a>
 					</li>
@@ -215,7 +221,50 @@
 					<li class="nav-item">
 						<a href="<?= base_url('admin/trading_signals/trading_signals_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-signal" style="color:white;"></i></span><span class="pcoded-mtext">TRADING SIGNAL</span></a>
 					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/market_primer/market_primer_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">MARKET PRIMER</span></a>
+					</li>
 					
+				<?php endif; ?>
+
+				<!-- MANAGER -->
+				<?php if ($this->session->userdata('role') === '7') : ?>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/signal_manager/signal_manager_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">SIGNAL MANAGER</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/currency_pair/currency_pair_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">CURRENCY PAIR</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/signal/signal_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-signal" style="color:white;"></i></span><span class="pcoded-mtext">SIGNAL</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/trading_signals/trading_signals_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-signal" style="color:white;"></i></span><span class="pcoded-mtext">TRADING SIGNAL</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/author_profile/author_profile_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR PROFILE</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/news/news_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">NEWS</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/news_category/news_category_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-th-list" style="color:white;"></i></span><span class="pcoded-mtext">NEWS CATEGORY</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/news_sub_category/news_sub_category_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-folder-open" style="color:white;"></i></span><span class="pcoded-mtext">NEWS SUB CATEGORY</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/blog_category/blog_category_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-pencil-alt" style="color:white;"></i></span><span class="pcoded-mtext">BLOG CATEGORY</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/blog/blog_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-blog" style="color:white;"></i></span><span class="pcoded-mtext">BLOGS</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/seo/seo_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">SEO</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/market_primer/market_primer_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">MARKET PRIMER</span></a>
+					</li>
 				<?php endif; ?>
 			</ul>
 		</div>
