@@ -356,6 +356,14 @@ $route['broker/edit_broker/(:any)'] = 'admin/broker/broker_edit/$1';
 $route['broker/broker_update_data'] = 'admin/broker/broker_update_data';
 $route['broker/broker_delete/(:any)'] = 'admin/broker/broker_delete/$1';
 
+// broker_detail ****************
+$route['broker_detail/add_broker_detail'] = 'admin/broker_detail/add_broker_detail';
+$route['broker_detail/broker_detail_submit_data'] = 'admin/broker_detail/broker_detail_submit_data';
+$route['broker_detail/view_broker_detail']        = 'admin/broker_detail/broker_detail_view';
+$route['broker_detail/edit_broker_detail/(:any)'] = 'admin/broker_detail/broker_detail_edit/$1';
+$route['broker_detail/broker_detail_update_data'] = 'admin/broker_detail/broker_detail_update_data';
+$route['broker_detail/broker_detail_delete/(:any)'] = 'admin/broker_detail/broker_detail_delete/$1';
+
 // forecast ****************
 $route['forecast/add_forecast'] = 'admin/forecast/add_forecast';
 $route['forecast/forecast_submit_data'] = 'admin/forecast/forecast_submit_data';

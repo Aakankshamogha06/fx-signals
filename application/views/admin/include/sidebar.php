@@ -145,6 +145,9 @@
 						<a href="<?= base_url('admin/broker/broker_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">BROKER</span></a>
 					</li>
 					<li class="nav-item">
+						<a href="<?= base_url('admin/broker_detail/broker_detail_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">BROKER DETAIL</span></a>
+					</li>
+					<li class="nav-item">
 						<a href="<?= base_url('admin/forecast/forecast_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">FORECAST</span></a>
 					</li>
 					<li class="nav-item">

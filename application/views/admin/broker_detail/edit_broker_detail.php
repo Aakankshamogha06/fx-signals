@@ -6,7 +6,7 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <h5>Add broker</h5>
+                        <h5>Add broker_detail</h5>
                         <?php if (isset($msg) || validation_errors() !== '') : ?>
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <?= validation_errors(); ?>
@@ -16,7 +16,7 @@
                         <?php endif; ?>
                     </div>
                     <div class="card-body">
-                        <form class="form-horizontal" method="post" action="<?= base_url('broker/broker_submit_data'); ?>"enctype="multipart/form-data">
+                        <form class="form-horizontal" method="post" action="<?= base_url('broker_detail/broker_detail_submit_data'); ?>"enctype="multipart/form-data">
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <div class="row">
                             <div class="form-group col-md-12">
@@ -41,7 +41,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Website Logo <span class="text-danger">*</span> </label>
-                                    <input type="file" name="broker_image" parsley-trigger="change" class="form-control" id="broker_image" value="<?=$row->broker_image?>" placeholder="Website Logo " required>
+                                    <input type="file" name="broker_detail_image" parsley-trigger="change" class="form-control" id="broker_detail_image" value="<?=$row->broker_detail_image?>" placeholder="Website Logo " required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Rating <span class="text-danger">*</span> </label>
@@ -51,17 +51,17 @@
                                     <label for="type" class="form-label">Type <span class="text-danger">*</span></label>
                                     <select name="type" parsley-trigger="change" class="form-control" id="type" required>
                                         <option value="">Select a type</option>
-                                        <option value="forex-brokers">Forex Broker</option>
-                                        <option value="crypto-brokers">Crypto Broker</option>
-                                        <option value="indices-brokers">Indices Broker</option>
-                                        <option value="commodities-brokers">Commodities Broker</option>
+                                        <option value="forex-broker_details">Forex broker_detail</option>
+                                        <option value="crypto-broker_details">Crypto broker_detail</option>
+                                        <option value="indices-broker_details">Indices broker_detail</option>
+                                        <option value="commodities-broker_details">Commodities broker_detail</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                     <div class="widget-footer text-left">
 
-                        <button type="submit" name="submit" value="Add broker" class="btn btn-primary " style="margin: 10px;">Add</button>
+                        <button type="submit" name="submit" value="Add broker_detail" class="btn btn-primary " style="margin: 10px;">Add</button>
                         <button type="reset" class="btn btn-outline-primary" style="margin-left: 0px;">Reset</button>
                     </div>
                     </form>

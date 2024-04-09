@@ -1,20 +1,20 @@
 <?php
-class broker_model extends CI_Model
+class broker_detail_model extends CI_Model
 {
 
 
-	public function broker_data_submit($data,$broker_image)
+	public function broker_detail_data_submit($data,$broker_detail_image)
 	{
 		$data = [
 			'website_url' => $data['website_url'],
-			'broker_image' => $broker_image,
+			'broker_detail_image' => $broker_detail_image,
             'rating' => $data['rating'],
 			'ranking' => $data['ranking'],
 			'company_name' => $data['company_name'],
             'order_id' => $data['order_id'],
             'type' => $data['type'],
 		];
-		if ($this->db->insert('broker', $data)) {
+		if ($this->db->insert('broker_detail', $data)) {
 
 			return $data;
 		} else {
@@ -22,9 +22,9 @@ class broker_model extends CI_Model
 		}
 	}
 
-	public function broker_view()
+	public function broker_detail_view()
 	{
-		$result = $this->db->query("SELECT * FROM broker");
+		$result = $this->db->query("SELECT * FROM broker_detail");
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -33,18 +33,18 @@ class broker_model extends CI_Model
 	}
 
 
-	public function broker_delete($id)
+	public function broker_detail_delete($id)
 	{
 		$this->db->where('id', $id);
-		return $this->db->delete('broker');
+		return $this->db->delete('broker_detail');
 	}
 
 
-	public function broker_update_data($data,$broker_image)
+	public function broker_detail_update_data($data,$broker_detail_image)
 	{
 		$newdata = [
 			'website_url' => $data['website_url'],
-			'broker_image' => $broker_image,
+			'broker_detail_image' => $broker_detail_image,
             'rating' => $data['rating'],
 			'ranking' => $data['ranking'],
 			'company_name' => $data['company_name'],
@@ -52,7 +52,7 @@ class broker_model extends CI_Model
             'type' => $data['type'],
 		];
 		$this->db->where('id', $data['id']);
-		if ($this->db->update('broker', $newdata)) {
+		if ($this->db->update('broker_detail', $newdata)) {
 
 			return $newdata;
 		} else {
@@ -61,10 +61,10 @@ class broker_model extends CI_Model
 	}
 
 
-	public function broker_edit($id)
+	public function broker_detail_edit($id)
 	{
 
-		$result = $this->db->query("SELECT * FROM `broker` where id=$id");
+		$result = $this->db->query("SELECT * FROM `broker_detail` where id=$id");
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -99,10 +99,10 @@ class broker_model extends CI_Model
 		}
 	}
 
-    public function broker($id)
+    public function broker_detail($id)
     {
 
-        $assign_data = $this->db->query("SELECT * FROM `broker` where broker.id=$id ");
+        $assign_data = $this->db->query("SELECT * FROM `broker_detail` where broker_detail.id=$id ");
 
         $fetch = $assign_data->num_rows();
         if ($fetch > 0) {
@@ -111,11 +111,11 @@ class broker_model extends CI_Model
             return false;
         }
     }
-    public function broker_by_type_name($category_name)
+    public function broker_detail_by_type_name($category_name)
 {
-    $this->db->select('broker.*');
-    $this->db->from('broker');
-    $this->db->where('broker.type', $category_name);
+    $this->db->select('broker_detail.*');
+    $this->db->from('broker_detail');
+    $this->db->where('broker_detail.type', $category_name);
 
     $result = $this->db->get();
 

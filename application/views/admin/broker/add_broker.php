@@ -20,6 +20,16 @@
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <div class="row">
                             <div class="form-group col-md-6">
+                                    <label for="inputEmail4" class="form-label">Website Name  <span class="text-danger">*</span> </label>
+                                    <input type="text" name="website_name" parsley-trigger="change" class="form-control" id="website_name" placeholder="Website Name  " required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4" class="form-label">Ranking  <span class="text-danger">*</span> </label>
+                                    <input type="text" name="ranking" parsley-trigger="change" class="form-control" id="ranking" placeholder="Ranking " required>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Website URL  <span class="text-danger">*</span> </label>
                                     <input type="text" name="website_url" parsley-trigger="change" class="form-control" id="website_url" placeholder="Website URL  " required>
                                 </div>
@@ -28,7 +38,6 @@
                                     <input type="text" name="order_id" parsley-trigger="change" class="form-control" id="order_id" placeholder="Website URL  " required>
                                 </div>
                             </div>
-                           
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Website Logo <span class="text-danger">*</span> </label>
