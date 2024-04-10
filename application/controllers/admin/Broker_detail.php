@@ -47,23 +47,8 @@ class broker_detail extends MY_Controller
 			$data = [];
 			if ($this->input->post()) {
 				$data = $this->input->post();
-				$config['upload_path'] = 'uploads/broker_detail/';
-				$config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
-				$config['encrypt_name'] = TRUE;
-				$this->load->library('upload',$config);
-				$this->upload->initialize($config);
-				if($this->upload->do_upload('broker_detail_image'))
-				{
-					$uploadData = $this->upload->data();
-					$broker_detail_image = $uploadData['file_name'];
-				}
-                
-				else
-				{
-					$error = array('error' => $this->upload->display_errors());
-					print_r($error);
-				}
-				if ($this->broker_detail_model->broker_detail_data_submit($data,$broker_detail_image) == true) {
+				
+				if ($this->broker_detail_model->broker_detail_data_submit($data) == true) {
 
 					redirect("admin/broker_detail/broker_detail_view");
 				}
@@ -113,26 +98,7 @@ class broker_detail extends MY_Controller
 					$data = [];
 					if ($this->input->post()) {
 						$data = $this->input->post();
-
-						$data = $this->input->post();
-						$config['upload_path'] = 'uploads/broker_detail/';
-						$config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
-						$config['encrypt_name'] = TRUE;
-						$this->load->library('upload',$config);
-						$this->upload->initialize($config);
-						if($this->upload->do_upload('broker_detail_image'))
-						{
-							$uploadData = $this->upload->data();
-							$broker_detail_image = $uploadData['file_name'];
-						}
-						
-						else
-						{
-							$error = array('error' => $this->upload->display_errors());
-							print_r($error);
-						}
-						if ($this->broker_detail_model->broker_detail_update_data($data,$broker_detail_image) == true) {
-
+						if ($this->broker_detail_model->broker_detail_update_data($data) == true) {
 							redirect("broker_detail/view_broker_detail");
 						} ?><?php
 						} else {

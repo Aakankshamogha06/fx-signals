@@ -3,16 +3,13 @@ class broker_detail_model extends CI_Model
 {
 
 
-	public function broker_detail_data_submit($data,$broker_detail_image)
+	public function broker_detail_data_submit($data)
 	{
 		$data = [
-			'website_url' => $data['website_url'],
-			'broker_detail_image' => $broker_detail_image,
-            'rating' => $data['rating'],
-			'ranking' => $data['ranking'],
-			'company_name' => $data['company_name'],
-            'order_id' => $data['order_id'],
-            'type' => $data['type'],
+			'broker_id' => $data['broker_id'],
+            'broker_email' => $data['broker_email'],
+			'broker_contact' => $data['broker_contact'],
+			'about' => $data['about'],
 		];
 		if ($this->db->insert('broker_detail', $data)) {
 
@@ -40,16 +37,13 @@ class broker_detail_model extends CI_Model
 	}
 
 
-	public function broker_detail_update_data($data,$broker_detail_image)
+	public function broker_detail_update_data($data)
 	{
 		$newdata = [
-			'website_url' => $data['website_url'],
-			'broker_detail_image' => $broker_detail_image,
-            'rating' => $data['rating'],
-			'ranking' => $data['ranking'],
-			'company_name' => $data['company_name'],
-            'order_id' => $data['order_id'],
-            'type' => $data['type'],
+			'broker_id' => $data['broker_id'],
+            'broker_email' => $data['broker_email'],
+			'broker_contact' => $data['broker_contact'],
+			'about' => $data['about'],
 		];
 		$this->db->where('id', $data['id']);
 		if ($this->db->update('broker_detail', $newdata)) {
@@ -73,27 +67,15 @@ class broker_detail_model extends CI_Model
 	}
 
 
-	public function role_fetch()
+
+	public function broker_fetch()
 	{
 
-		$role_data = $this->db->query("SELECT * FROM `blog`");
+		$broker_data = $this->db->query("SELECT * FROM `broker`");
 
-		$fetch = $role_data->num_rows();
+		$fetch = $broker_data->num_rows();
 		if ($fetch > 0) {
-			return $fetch = $role_data->result_array();
-		} else {
-			return false;
-		}
-	}
-
-    public function blog_fetch()
-	{
-
-		$blog_data = $this->db->query("SELECT * FROM `blog_category`");
-
-		$fetch = $blog_data->num_rows();
-		if ($fetch > 0) {
-			return $fetch = $blog_data->result_array();
+			return $fetch = $broker_data->result_array();
 		} else {
 			return false;
 		}
@@ -102,7 +84,17 @@ class broker_detail_model extends CI_Model
     public function broker_detail($id)
     {
 
-        $assign_data = $this->db->query("SELECT * FROM `broker_detail` where broker_detail.id=$id ");
+        $assign_data = $this->db->query("SELECT broker_detail.*, 
+		broker.company_name,
+		broker.broker_image,
+		broker.website_url,
+		broker.rating,
+		broker.order_id,
+		broker.type,
+		broker.company_name,
+		broker.ranking
+ FROM broker_detail 
+ JOIN broker ON broker.id = broker_detail.broker_id where id = $id;");
 
         $fetch = $assign_data->num_rows();
         if ($fetch > 0) {

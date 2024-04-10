@@ -17,13 +17,10 @@
               <thead>
                 <tr>
                   <th>Sr No</th>
-                  <th>website name</th>
-                  <th>Website Url</th>
-                  <th>broker_detail Image</th>
-                  <th>rating</th>
-                  <th>ranking</th>
-                  <th>order number</th>
-                  <th>type</th>
+                  <th>broker name</th>
+                  <th>broker email</th>
+                  <th>broker contact</th>
+                  <th>about</th>
                   <th style="width: 150px;" class="text-right">Option</th>
                 </tr>
               </thead>
@@ -33,17 +30,10 @@
                 foreach ($broker_detail_view as $row) : ?>
                   <tr>
                     <td><?= $c++; ?></td>
-                    <td><?= $row->website_name ?></td>
-                    <td><?= $row->website_url ?></td>
-                    <td>
-                      <?php if ($row->broker_detail_image) { ?>
-                        <img src="<?php echo base_url('uploads/broker_detail/') . $row->broker_detail_image; ?>" style="width:50px;height:80px">
-                      <?php } ?>
-                    </td>
-                    <td><?= $row->rating ?></td>
-                    <td><?= $row->ranking ?></td>
-                    <td><?= $row->order_id ?></td>
-                    <td><?= $row->type ?></td>
+                    <td><?= $row->broker_id ?></td>
+                    <td><?= $row->broker_email ?></td>
+                    <td><?= $row->broker_contact ?></td>
+                    <td><?= $row->about ?></td>
                     <td class="text-right"><a href="<?= base_url('admin/broker_detail/broker_detail_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/broker_detail/broker_detail_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                   </tr>
                 <?php endforeach; ?>

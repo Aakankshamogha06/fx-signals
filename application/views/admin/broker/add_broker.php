@@ -21,7 +21,7 @@
                             <div class="row">
                             <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Website Name  <span class="text-danger">*</span> </label>
-                                    <input type="text" name="website_name" parsley-trigger="change" class="form-control" id="website_name" placeholder="Website Name  " required>
+                                    <input type="text" name="company_name" parsley-trigger="change" class="form-control" id="company_name" placeholder="Website Name  " required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Ranking  <span class="text-danger">*</span> </label>

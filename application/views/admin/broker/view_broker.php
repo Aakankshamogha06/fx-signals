@@ -13,7 +13,7 @@
             </a>
           </div>
           <div class="card-body">
-            <table id="table_id" class="table table-striped">
+            <table id="table_id" class="table">
               <thead>
                 <tr>
                   <th>Sr No</th>
@@ -33,7 +33,7 @@
                 foreach ($broker_view as $row) : ?>
                   <tr>
                     <td><?= $c++; ?></td>
-                    <td><?= $row->website_name ?></td>
+                    <td><?= $row->company_name ?></td>
                     <td><?= $row->website_url ?></td>
                     <td>
                       <?php if ($row->broker_image) { ?>

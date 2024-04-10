@@ -20,43 +20,30 @@
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <div class="row">
                             <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">Website Name  <span class="text-danger">*</span> </label>
-                                    <input type="text" name="website_name" parsley-trigger="change" class="form-control" id="website_name" placeholder="Website Name  " required>
-                                </div>
+                            <label for="broker_id" class="form-label"> Broker Name <span class="text-danger">*</span></label>
+                                    <select id="broker_id" class="form-control" name="broker_id">
+                                        <option value="">Select Broker Name</option>
+                                        <?php
+                                        $broker_fetch_data = $this->broker_detail_model->broker_fetch();
+                                        foreach ($broker_fetch_data as $data) { ?>
+                                            <option value="<?php echo $data['id']; ?>"><?php echo $data['company_name']; ?></option>
+                                        <?php } ?>
+
+                                    </select>
+                            </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">Ranking  <span class="text-danger">*</span> </label>
-                                    <input type="text" name="ranking" parsley-trigger="change" class="form-control" id="ranking" placeholder="Ranking " required>
+                                    <label for="inputEmail4" class="form-label">Broker Contact Number  <span class="text-danger">*</span> </label>
+                                    <input type="text" name="broker_contact" parsley-trigger="change" class="form-control" id="broker_contact" placeholder="Broker Contact Number " required>
                                 </div>
                             </div>
                             <div class="row">
                             <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">Website URL  <span class="text-danger">*</span> </label>
-                                    <input type="text" name="website_url" parsley-trigger="change" class="form-control" id="website_url" placeholder="Website URL  " required>
+                                    <label for="inputEmail4" class="form-label">Broker Email Id  <span class="text-danger">*</span> </label>
+                                    <input type="text" name="broker_email" parsley-trigger="change" class="form-control" id="broker_email" placeholder="Broker Email Id  " required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">Order no  <span class="text-danger">*</span> </label>
-                                    <input type="text" name="order_id" parsley-trigger="change" class="form-control" id="order_id" placeholder="Website URL  " required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">Website Logo <span class="text-danger">*</span> </label>
-                                    <input type="file" name="broker_detail_image" parsley-trigger="change" class="form-control" id="broker_detail_image" placeholder="Website Logo " required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">Rating <span class="text-danger">*</span> </label>
-                                    <input type="text" name="rating" parsley-trigger="change" class="form-control" id="rating" placeholder="Rating " required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="type" class="form-label">Type <span class="text-danger">*</span></label>
-                                    <select name="type" parsley-trigger="change" class="form-control" id="type" required>
-                                        <option value="">Select a type</option>
-                                        <option value="forex-broker_details">Forex broker_detail</option>
-                                        <option value="crypto-broker_details">Crypto broker_detail</option>
-                                        <option value="indices-broker_details">Indices broker_detail</option>
-                                        <option value="commodities-broker_details">Commodities broker_detail</option>
-                                        <!-- Add more options as needed -->
-                                    </select>
+                                    <label for="inputEmail4" class="form-label">About Broker <span class="text-danger">*</span> </label>
+                                    <textarea type="text" name="about" parsley-trigger="change" class="form-control" id="about" placeholder="About Broker " required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +65,7 @@
 
 <script>
 
-           CKEDITOR.replace('long_desc', {
+           CKEDITOR.replace('about', {
 
                format_tags: 'p;h1;h2;h3;h4;h5;h6'
 

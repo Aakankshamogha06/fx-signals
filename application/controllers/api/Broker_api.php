@@ -51,5 +51,11 @@ class broker_api extends REST_Controller
             $this->response(['error' => 'No broker found for the specified category'], REST_Controller::HTTP_NOT_FOUND);
         }
     }
+    public function broker_detail_get()
+    {
+        // $id = $this->uri->segment(4);
+        $data = $this->broker_detail_model->broker_detail();
+        $this->response($data, REST_Controller::HTTP_OK);
+    }
 }
 ?>
