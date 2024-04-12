@@ -11,6 +11,7 @@ class broker_model extends CI_Model
             'rating' => $data['rating'],
 			'ranking' => $data['ranking'],
 			'company_name' => $data['company_name'],
+			'min_deposit' => $data['min_deposit'],
             'order_id' => $data['order_id'],
             'type' => $data['type'],
 		];
@@ -48,6 +49,7 @@ class broker_model extends CI_Model
             'rating' => $data['rating'],
 			'ranking' => $data['ranking'],
 			'company_name' => $data['company_name'],
+			'min_deposit' => $data['min_deposit'],
             'order_id' => $data['order_id'],
             'type' => $data['type'],
 		];

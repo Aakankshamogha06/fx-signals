@@ -22,6 +22,7 @@
                   <th>broker Image</th>
                   <th>rating</th>
                   <th>ranking</th>
+                  <th>minimum deposit</th>
                   <th>order number</th>
                   <th>type</th>
                   <th style="width: 150px;" class="text-right">Option</th>
@@ -33,7 +34,7 @@
                 foreach ($broker_view as $row) : ?>
                   <tr>
                     <td><?= $c++; ?></td>
-                    <td><?= $row->company_name ?></td>
+                    <td><?= $row->company_name ?></td>  
                     <td><?= $row->website_url ?></td>
                     <td>
                       <?php if ($row->broker_image) { ?>
@@ -42,11 +43,12 @@
                     </td>
                     <td><?= $row->rating ?></td>
                     <td><?= $row->ranking ?></td>
+                    <td>$<?= $row->min_deposit ?></td>
                     <td><?= $row->order_id ?></td>
                     <td><?= $row->type ?></td>
                     <td class="text-right"><a href="<?= base_url('admin/broker/broker_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/broker/broker_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                   </tr>
-                <?php endforeach; ?>
+                <?php endforeach; ?>  
               </tbody>
 
             </table>

@@ -44,6 +44,10 @@
                                     <input type="file" name="broker_image" parsley-trigger="change" class="form-control" id="broker_image" value="<?=$row->broker_image?>" placeholder="Website Logo " required>
                                 </div>
                                 <div class="form-group col-md-6">
+                                    <label for="inputEmail4" class="form-label">Minimum Deposit<span class="text-danger">*</span> </label>
+                                    <input type="text" name="min_deposit" parsley-trigger="change" class="form-control" id="min_deposit" value="<?=$row->min_deposit?>" placeholder="Minimum Deposit" required>
+                                </div>
+                                <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Rating <span class="text-danger">*</span> </label>
                                     <input type="text" name="rating" parsley-trigger="change" class="form-control" id="rating" value="<?=$row->rating?>" placeholder="Rating " required>
                                 </div>
