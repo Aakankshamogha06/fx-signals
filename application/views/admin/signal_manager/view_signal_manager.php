@@ -12,7 +12,7 @@
             </a>
           </div>
           <div class="card-body">
-            <table id="table_id" class="table table-striped">
+            <table id="table_id" class="table">
               <thead>
                 <tr>
                   <th>Sr No</th>
@@ -64,7 +64,9 @@
                         <?php } ?>
                     </td>
 
-                    <td class="text-right"><a href="<?= base_url('admin/signal_manager/signal_manager_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/signal_manager/signal_manager_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
+                    <td class="text-right">
+                      <!-- <a href="<?= base_url('admin/signal_manager/signal_manager_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a> -->
+                      <a href="<?= base_url('admin/signal_manager/signal_manager_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

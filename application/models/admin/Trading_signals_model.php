@@ -5,6 +5,7 @@ class trading_signals_model extends CI_Model
 
 	public function trading_signals_data_submit($data)
 	{
+		$aid= $this->session->userdata('admin_id');
 		$data = [
 			'entry_point' => $data['entry_point'],
 			'package' => $data['package'],
@@ -15,6 +16,7 @@ class trading_signals_model extends CI_Model
             'status' => $data['status'],
 			'stop_loss' => $data['stop_loss'],
 			'take_profit' => $data['take_profit'],
+			'created_by'=>$aid,
 		];
 		if ($this->db->insert('trading_signals', $data)) {
 
@@ -26,7 +28,18 @@ class trading_signals_model extends CI_Model
 
 	public function trading_signals_view()
 	{
-		$result = $this->db->query("SELECT *,(SELECT package_name FROM package WHERE package.id = trading_signals.package)as package, (SELECT name FROM news_category WHERE news_category.id = trading_signals.category)as category, (SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category)as sub_category FROM `trading_signals`");
+		if (($this->session->userdata('role') === '1')) {  
+			$result = $this->db->query("SELECT *,(SELECT package_name FROM package WHERE package.id = trading_signals.package)as package, 
+			(SELECT name FROM news_category WHERE news_category.id = trading_signals.category)as category, 
+			(SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category)as sub_category 
+			FROM `trading_signals`");
+			}else{
+				$id= $this->session->userdata('admin_id');
+				$result = $this->db->query("SELECT *,(SELECT package_name FROM package WHERE package.id = trading_signals.package)as package, 
+				(SELECT name FROM news_category WHERE news_category.id = trading_signals.category)as category, 
+				(SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category)as sub_category 
+				FROM `trading_signals` where created_by=$id ORDER BY `blog_date` DESC, `id` DESC;");
+			}
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {

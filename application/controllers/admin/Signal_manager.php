@@ -23,6 +23,72 @@ class signal_manager extends MY_Controller
 
 
 
+	// public function update_chart_status() {
+	// 	$signal_manager_id = $this->input->post('signal_manager_id');
+	// 	$status = $this->input->post('status');
+		
+	// 	// Debugging: Print POST data
+	// 	echo "chart ID: $signal_manager_id, Status: $status";
+		
+	
+	// 	// Ensure signal_manager_id and status are provided
+	// 	if (!$signal_manager_id || !$status) {
+	// 		// Handle missing data, such as showing an error message
+	// 		redirect('admin/signal_manager/signal_manager_view');
+	// 		return;
+	// 	}
+	
+	// 	// Update the status of the chart in the database
+	// 	$this->db->where('id', $signal_manager_id);
+	// 	$this->db->update('signal_manager', ['status' => $status]); // Changed table name to 'signal_manager'
+	
+	// 	if ($status == 'approved') {
+	// 		$signal_manager_id = $this->input->post('signal_manager_id');
+	// 		print_r($signal_manager_id);
+	// 		echo('<br>');
+	// 		// Debugging: Print signal_manager ID
+	// 		echo "signal_manager ID: $signal_manager_id";
+	
+	// 		// Check if signal_manager_id is not empty
+	// 		if ($signal_manager_id) {
+	// 			// Get signal_manager details
+	// 			$signal_manager_details = $this->signal_manager_model->signal_manager_edit($signal_manager_id);
+				
+	// 			// Debugging: Print signal_manager details
+	// 			print_r($signal_manager_details);
+				
+	// 			if ($signal_manager_details) {
+					
+	// 					$user_data = array(
+	// 						'username' => $signal_manager_details[0]->name,
+	// 						'email' => $signal_manager_details[0]->email,
+	// 						'password' => password_hash($signal_manager_details[0]->password, PASSWORD_BCRYPT), // Hash the plain text password
+	// 						'is_admin' => 4,
+						
+						
+	// 				);
+	
+	// 				// Debugging: Print user data to be inserted
+	// 				print_r($user_data);
+	
+	// 				// Insert signal_manager as a user
+	// 				if ($this->db->insert('users', $user_data)) {
+	// 					echo "User inserted successfully!";
+	// 				} else {
+	// 					echo "Failed to insert user!";
+	// 				}
+	// 			} else {
+	// 				echo "signal_manager details not found!";
+	// 			}
+	// 		} else {
+	// 			echo "signal_manager ID is empty!";
+	// 			die;
+	// 		}
+	// 	}
+	
+	// 	// Redirect back to the view page or do any other necessary action
+	// 	redirect('admin/signal_manager/signal_manager_view');
+	// }
 	public function update_chart_status() {
 		$signal_manager_id = $this->input->post('signal_manager_id');
 		$status = $this->input->post('status');
@@ -42,7 +108,7 @@ class signal_manager extends MY_Controller
 					'mobile_no' => $signal_manager_details[0]->mobile_no,
 					'email' => $signal_manager_details[0]->email,
 					'password' => $signal_manager_details[0]->password,
-					'is_admin' => 5
+					'is_admin' => 4
 				);
 				if ($this->db->insert('users', $user_data)) {
 					echo "User inserted successfully!";
@@ -56,14 +122,6 @@ class signal_manager extends MY_Controller
 		redirect('admin/signal_manager/signal_manager_view');
 	}
 	
-	
-	
-	
-	
-	
-
-
-
 	public function add_signal_manager()
 	{
 		if ($this->session->has_userdata('is_admin_login')) {
@@ -85,7 +143,7 @@ class signal_manager extends MY_Controller
 			$data = [];
 			if ($this->input->post()) {
 				$data = $this->input->post();
-				$config['upload_path'] = 'uploads/profile';
+				$config['upload_path'] = 'uploads/signal_manager_profile';
 				$config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
 				$config['encrypt_name'] = TRUE;
 				$this->load->library('upload',$config);
@@ -100,7 +158,23 @@ class signal_manager extends MY_Controller
 					$error = array('error' => $this->upload->display_errors());
 					print_r($error);
 				}
-				if ($this->signal_manager_model->signal_manager_data_submit($data,$profile_image) == true) {
+
+				$chart_config['upload_path'] = 'uploads/signal_manager_chart';
+				$chart_config['allowed_types'] = 'pdf|docx|jpg|jpeg|png';
+				$chart_config['encrypt_name'] = TRUE;
+				$this->load->library('upload',$chart_config);
+				$this->upload->initialize($chart_config);
+				if($this->upload->do_upload('sample_chart'))
+				{
+					$uploadData = $this->upload->data();
+					$sample_chart = $uploadData['file_name'];
+				}
+				else
+				{
+					$error = array('articlle_error' => $this->upload->display_errors());
+					print_r($error);
+				}
+				if ($this->signal_manager_model->signal_manager_data_submit($data,$profile_image,$sample_chart) == true) {
 
 					redirect("admin/signal_manager/signal_manager_view");
 				} ?> <?php

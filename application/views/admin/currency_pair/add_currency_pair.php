@@ -20,7 +20,7 @@
                             <form class="form-horizontal" method="post" action="<?= base_url('currency_pair/currency_pair_submit_data'); ?>">
                                 <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                <div class="form-group col-md-6">
                                     <label for="pair_category" class="form-label"> Pair Category <span class="text-danger">*</span></label>
                                     <select id="pair_category" class="form-control" name="pair_category">
                                         <option value="">Select pair Category</option>

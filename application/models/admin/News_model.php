@@ -34,7 +34,7 @@ class news_model extends CI_Model
 		(SELECT news_type_name from news_type WHERE news_type.id = news.news_type) as news_type,
 		(SELECT package_name from package WHERE package.id = news.news_package) as news_package,
 		(SELECT username from users WHERE users.id = news.created_by) as author 
-		 FROM `news` ORDER BY `publish_date` DESC; ");
+		 FROM `news` ORDER BY `publish_date` DESC, `id` DESC; ");
 		 }
 		 else{
 			$id= $this->session->userdata('admin_id');
@@ -43,7 +43,7 @@ class news_model extends CI_Model
 			 (SELECT news_type_name from news_type WHERE news_type.id = news.news_type) as news_type,
 			 (SELECT package_name from package WHERE package.id = news.news_package) as news_package,
 			 (SELECT username from users WHERE users.id = news.created_by) as author 
-			  FROM `news`where created_by=$id ORDER BY `publish_date` DESC; ");
+			  FROM `news`where created_by=$id ORDER BY `publish_date` DESC, `id` DESC; ");
 		 }
 		if ($result->num_rows() > 0) {
 			return $result->result();
@@ -60,7 +60,7 @@ class news_model extends CI_Model
 					(SELECT news_type_name from news_type WHERE news_type.id = news.news_type) as news_type, 
 					(SELECT package_name from package WHERE package.id = news.news_package) as news_package, 
 					(SELECT username from users WHERE users.id = news.created_by) as author 
-					FROM `news` ORDER BY `publish_date` DESC; ");
+					FROM `news` ORDER BY `publish_date` DESC, `id` DESC; ");
 	
 		
 		if ($result->num_rows() > 0) {

@@ -8,7 +8,7 @@ class signal_manager_model extends CI_Model
 		return $this->db->insert_id();
 	}
 
-	public function signal_manager_data_submit($data,$profile_image,$sample_article)
+	public function signal_manager_data_submit($data,$profile_image,$sample_chart)
 	{
 		$data = [
 			'username' => $data['username'],
@@ -20,7 +20,7 @@ class signal_manager_model extends CI_Model
 			'email' => $data['email'],
 			'linkedin' => $data['linkedin'],
 			'profile_image' => $profile_image,
-			'sample_article' => $sample_article,
+			'sample_chart' => $sample_chart,
 		];
 		if ($this->db->insert('signal_manager', $data)) {
 

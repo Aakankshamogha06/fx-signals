@@ -18,10 +18,22 @@
                     <div class="card-body">
                         <form class="form-horizontal" method="post" action="<?= base_url('author/author_submit_data'); ?>" enctype="multipart/form-data">
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-
+                            <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4" class="form-label">Name<span class="text-danger">*</span> </label>
-                                <input type="text" name="name" parsley-trigger="change" class="form-control" id="name" placeholder="Name " required>
+                                <label for="inputEmail4" class="form-label">User Name<span class="text-danger">*</span> </label>
+                                <input type="text" name="username" parsley-trigger="change" class="form-control" id="username" placeholder="User Name " required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4" class="form-label">First Name<span class="text-danger">*</span> </label>
+                                <input type="text" name="firstname" parsley-trigger="change" class="form-control" id="firstname" placeholder="First Name " required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4" class="form-label">Last Name <span class="text-danger">*</span> </label>
+                                <input type="text" name="lastname" parsley-trigger="change" class="form-control" id="lastname" placeholder="Last Name " required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4" class="form-label">mobile no <span class="text-danger">*</span> </label>
+                                <input type="text" name="mobile_no" parsley-trigger="change" class="form-control" id="mobile_no" placeholder="mobile no " required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputEmail4" class="form-label">Email<span class="text-danger">*</span> </label>
@@ -43,6 +55,11 @@
                                 <label for="inputEmail4" class="form-label">Role<span class="text-danger">*</span> </label>
                                 <input type="text" name="role_name" parsley-trigger="change" class="form-control" id="role_name" placeholder="Role " required>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4" class="form-label">Linked in<span class="text-danger">*</span> </label>
+                                <input type="text" name="linkedin" parsley-trigger="change" class="form-control" id="linkedin" placeholder="Linked in" required>
+                            </div>
+                        </div>
                             <div class="widget-footer text-left">
 
                                 <button type="submit" name="submit" value="Add " class="btn btn-primary " style="margin: 10px;">Add</button>

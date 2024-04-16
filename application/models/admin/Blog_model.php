@@ -27,13 +27,16 @@ class blog_model extends CI_Model
 	public function blog_view()
 	{
 		if (($this->session->userdata('role') === '1')) {  
-		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category
-												(SELECT username from users WHERE users.id = blog.created_by) as blog_author 
-												 FROM `blog`ORDER BY `blog_date` DESC;");
+		$result = $this->db->query("SELECT *, 
+		(SELECT category FROM blog_category WHERE blog_category.id = blog.blog_category) AS blog_category,
+		(SELECT username FROM users WHERE users.id = blog.created_by) AS blog_author 
+	FROM `blog`
+	ORDER BY `blog_date` DESC, `id` DESC;
+	");
 		}else{
 			$id= $this->session->userdata('admin_id');
 			$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category
-			,(SELECT username from users WHERE users.id = blog.created_by) as blog_author  FROM `blog` where created_by=$id ORDER BY `blog_date` DESC;");
+			,(SELECT username from users WHERE users.id = blog.created_by) as blog_author  FROM `blog` where created_by=$id ORDER BY `blog_date` DESC, `id` DESC;");
 		}
 		if ($result->num_rows() > 0) {
 			return $result->result();
@@ -47,7 +50,7 @@ class blog_model extends CI_Model
 		 
 		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category ,
 		(SELECT username from users WHERE users.id = blog.created_by) as blog_author 
-		FROM `blog`ORDER BY `blog_date` DESC;");
+		FROM `blog`ORDER BY `blog_date` DESC, `id` DESC;");
 		
 		if ($result->num_rows() > 0) {
 			return $result->result();

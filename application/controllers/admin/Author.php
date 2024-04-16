@@ -165,7 +165,23 @@ class author extends MY_Controller
 					$error = array('error' => $this->upload->display_errors());
 					print_r($error);
 				}
-				if ($this->author_model->author_data_submit($data,$profile_image) == true) {
+
+				$article_config['upload_path'] = 'uploads/articles';
+				$article_config['allowed_types'] = 'pdf|docx';
+				$article_config['encrypt_name'] = TRUE;
+				$this->load->library('upload',$article_config);
+				$this->upload->initialize($article_config);
+				if($this->upload->do_upload('sample_article'))
+				{
+					$uploadData = $this->upload->data();
+					$sample_article = $uploadData['file_name'];
+				}
+				else
+				{
+					$error = array('articlle_error' => $this->upload->display_errors());
+					print_r($error);
+				}
+				if ($this->author_model->author_data_submit($data,$profile_image,$sample_article) == true) {
 
 					redirect("admin/author/author_view");
 				} ?> <?php

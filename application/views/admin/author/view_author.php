@@ -1,5 +1,3 @@
-
-
 <div class="pcoded-main-container">
   <div class="pcoded-content">
     <!-- [ Main Content ] start -->
@@ -14,7 +12,7 @@
             </a>
           </div>
           <div class="card-body">
-            <table id="table_id" class="table table-striped">
+            <table id="table_id" class="table">
               <thead>
                 <tr>
                   <th>Sr No</th>
@@ -46,32 +44,36 @@
                     <td><a href="<?= $row->linkedin ?>" target="_blank"><?= $row->linkedin ?></a></td>
                     <td><?php if ($row->profile_image) { ?>
                         <img src="<?php echo base_url('uploads/profile/') . $row->profile_image; ?>" style="width:50px;height:80px">
-                      <?php } ?></td>
-                    <td><?= $row->role_name ?></td>
-                    <td>                      
-    <?php if ($row->sample_article) { ?>                        
-        <a href="<?= base_url('uploads/articles/') . $row->sample_article; ?>" target="_blank">
-            <i class="fas fa-file-pdf" style="height:20px; width:20px;"></i> <br>View Article
-        </a>                      
-    <?php } ?>                    
-</td>
-
-                      <td><?= $row->status ?></td>
-                      <td>
-                        <?php if ($row->sample_article) { ?>
-                            <form method="post" action="<?= base_url('admin/update_article_status'); ?>">
-                                <input type="hidden" name="author_id" value="<?= $row->id ?>">
-                                <select name="status" class="form-control action-dropdown">
-                                <option value="">--Choose--</option>
-                                    <option value="on_hold">On Hold</option>
-                                    <option value="approved">Approved</option>
-                                    <option value="rejected">Rejected</option>
-                                </select>
-                                <button type="submit" class="btn btn-primary">Update Status</button>
-                            </form>
-                        <?php } ?>
+                      <?php } ?>
                     </td>
-                    <td class="text-right"><a href="<?= base_url('admin/author/author_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/author/author_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
+                    <td><?= $row->role_name ?></td>
+                    <td>
+                      <?php if ($row->sample_article) { ?>
+                        <a href="<?= base_url('uploads/articles/') . $row->sample_article; ?>" target="_blank">
+                          <i class="fas fa-file-pdf" style="height:20px; width:20px;"></i> <br>View Article
+                        </a>
+                      <?php } ?>
+                    </td>
+
+                    <td><?= $row->status ?></td>
+                    <td>
+                      <?php if ($row->sample_article) { ?>
+                        <form method="post" action="<?= base_url('admin/update_article_status'); ?>">
+                          <input type="hidden" name="author_id" value="<?= $row->id ?>">
+                          <select name="status" class="form-control action-dropdown">
+                            <option value="">--Choose--</option>
+                            <option value="on_hold">On Hold</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                          </select>
+                          <button type="submit" class="btn btn-primary">Update Status</button>
+                        </form>
+                      <?php } ?>
+                    </td>
+                    <td class="text-right">
+                      <!-- <a href="<?= base_url('admin/author/author_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a> -->
+                      <a href="<?= base_url('admin/author/author_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

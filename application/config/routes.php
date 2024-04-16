@@ -380,7 +380,6 @@ $route['market_primer/edit_market_primer/(:any)'] = 'admin/market_primer/market_
 $route['market_primer/market_primer_update_data'] = 'admin/market_primer/market_primer_update_data';
 $route['market_primer/market_primer_delete/(:any)'] = 'admin/market_primer/market_primer_delete/$1';
 
-
 /* API */
 $route['api/register'] = 'api/User/register';
 $route['api/login'] = 'api/User/login';
@@ -458,3 +457,8 @@ $route['broker_api/broker_by_type'] = 'broker_api/broker_by_type_get';
 $route['forecast_api/forecast_by_type'] = 'forecast_api/forecast_by_type_get';
 $route['forecast_api/forecast'] = 'forecast_api/forecast_get';
 $route['forecast_api/forecast_by_id/(:num)'] = 'forecast_api/forecast_by_id_get/$1';
+$route['market_primer_api/market_primer'] = 'market_primer_api/market_primer_get';
+$route['broker_api/broker_detail'] = 'broker_api/broker_detail_get';
+$route['trading_signals_api/trading_signals_by_provider'] = 'trading_signals_api/trading_signals_by_provider_get';
+$route['blog_api/blog_by_author'] = 'blog_api/blog_by_author_get';
+$route['news_api/news_by_author'] = 'news_api/news_by_author_get';
