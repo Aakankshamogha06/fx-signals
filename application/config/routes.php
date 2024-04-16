@@ -380,6 +380,15 @@ $route['market_primer/edit_market_primer/(:any)'] = 'admin/market_primer/market_
 $route['market_primer/market_primer_update_data'] = 'admin/market_primer/market_primer_update_data';
 $route['market_primer/market_primer_delete/(:any)'] = 'admin/market_primer/market_primer_delete/$1';
 
+// signal_manager_profile ****************
+$route['signal_manager_profile/add_signal_manager_profile'] = 'admin/signal_manager_profile/add_signal_manager_profile';
+$route['signal_manager_profile/signal_manager_profile_submit_data'] = 'admin/signal_manager_profile/signal_manager_profile_submit_data';
+$route['signal_manager_profile/view_signal_manager_profile']        = 'admin/signal_manager_profile/signal_manager_profile_view';
+$route['signal_manager_profile/edit_signal_manager_profile/(:any)'] = 'admin/signal_manager_profile/signal_manager_profile_edit/$1';
+$route['signal_manager_profile/signal_manager_profile_update_data'] = 'admin/signal_manager_profile/signal_manager_profile_update_data';
+$route['signal_manager_profile/signal_manager_profile_delete/(:any)'] = 'admin/signal_manager_profile/signal_manager_profile_delete/$1';
+
+
 /* API */
 $route['api/register'] = 'api/User/register';
 $route['api/login'] = 'api/User/login';

@@ -42,13 +42,6 @@
 							<li><a href="<?= base_url('admin/users'); ?>">View User</a></li>
 						</ul>
 					</li>
-					<li class="nav-item pcoded-hasmenu">
-						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-money" style="color:white;"></i></span><span class="pcoded-mtext">Payment form</span></a>
-						<ul class="pcoded-submenu">
-							<!-- <li><a href="<?= base_url('admin/users/add'); ?>">Add User</a></li> -->
-							<li><a href="<?= base_url('admin/PaymentContr'); ?>">payment form</a></li>
-						</ul>
-					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/news/news_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">NEWS</span></a>
 					</li>
@@ -122,10 +115,7 @@
 						<a href="<?= base_url('admin/author_role/author_role_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR ROLE</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= base_url('admin/author/author_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR</span></a>
-					</li>
-					<li class="nav-item">
-						<a href="<?= base_url('admin/signal_manager_profile/signal_manager_profile_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">SIGNAL MANAGER PROFILE</span></a>
+						<a href="<?= base_url('admin/author/author_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR MANAGER</span></a>
 					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/author_profile/author_profile_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR PROFILE</span></a>
@@ -155,7 +145,7 @@
 						<a href="<?= base_url('admin/broker/broker_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">BROKER</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= base_url('admin/broker_detail/broker_detail_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">BROKER DETAIL</span></a>
+						<a href="<?= base_url('admin/broker_detail/broker_detail_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">BROKER DETAILS</span></a>
 					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/forecast/forecast_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">FORECAST</span></a>
@@ -190,7 +180,7 @@
 						<a href="<?= base_url('admin/seo/seo_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">SEO</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= base_url('admin/author/author_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR</span></a>
+						<a href="<?= base_url('admin/author/author_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR MANAGER</span></a>
 					</li>
 					
 				<?php endif; ?>
@@ -255,7 +245,7 @@
 						<a href="<?= base_url('admin/trading_signals/trading_signals_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-signal" style="color:white;"></i></span><span class="pcoded-mtext">TRADING SIGNAL</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="<?= base_url('admin/signal_manager_profile/signal_manager_profile_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">SIGNAL MANAGER PROFILE</span></a>
+						<a href="<?= base_url('admin/author_profile/author_profile_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-user" style="color:white;"></i></span><span class="pcoded-mtext">AUTHOR PROFILE</span></a>
 					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/news/news_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">NEWS</span></a>
