@@ -116,23 +116,23 @@ class author_profile extends MY_Controller
 				if ($this->session->has_userdata('is_admin_login')) {
 
 					$data = [];
-					if ($this->input->post()) {
-						$data = $this->input->post();
-						$config['upload_path'] = 'uploads';
-						$config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
-						$config['encrypt_name'] = TRUE;
-						$this->load->library('upload',$config);
-						$this->upload->initialize($config);
-						if($this->upload->do_upload('author_profile_image'))
-						{
-							$uploadData = $this->upload->data();
-							$author_profile_image = $uploadData['file_name'];
-						}
-						else
-						{
-							$error = array('error' => $this->upload->display_errors());
-							print_r($error);
-						}
+			if ($this->input->post()) {
+				$data = $this->input->post();
+				$config['upload_path'] = 'uploads/author_profile';
+				$config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+				$config['encrypt_name'] = TRUE;
+				$this->load->library('upload',$config);
+				$this->upload->initialize($config);
+				if($this->upload->do_upload('author_profile_image'))
+				{
+					$uploadData = $this->upload->data();
+					$author_profile_image = $uploadData['file_name'];
+				}
+				else
+				{
+					$error = array('error' => $this->upload->display_errors());
+					print_r($error);
+				}
 						if ($this->author_profile_model->author_profile_update_data($data,$author_profile_image) == true) {
 		
 							redirect("admin/author_profile/author_profile_view");

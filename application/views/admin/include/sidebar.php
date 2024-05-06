@@ -42,12 +42,8 @@
 							<li><a href="<?= base_url('admin/users'); ?>">View User</a></li>
 						</ul>
 					</li>
-					<li class="nav-item pcoded-hasmenu">
-						<a href="#" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-money" style="color:white;"></i></span><span class="pcoded-mtext">Payment form</span></a>
-						<ul class="pcoded-submenu">
-							<!-- <li><a href="<?= base_url('admin/users/add'); ?>">Add User</a></li> -->
-							<li><a href="<?= base_url('admin/PaymentContr'); ?>">payment form</a></li>
-						</ul>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/imagebank/imagebank_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">IMAGE BANK</span></a>
 					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/news/news_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">NEWS</span></a>

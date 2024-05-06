@@ -388,6 +388,14 @@ $route['signal_manager_profile/edit_signal_manager_profile/(:any)'] = 'admin/sig
 $route['signal_manager_profile/signal_manager_profile_update_data'] = 'admin/signal_manager_profile/signal_manager_profile_update_data';
 $route['signal_manager_profile/signal_manager_profile_delete/(:any)'] = 'admin/signal_manager_profile/signal_manager_profile_delete/$1';
 
+// imagebank ****************
+$route['imagebank/add_imagebank'] = 'admin/imagebank/add_imagebank';
+$route['imagebank/imagebank_submit_data'] = 'admin/imagebank/imagebank_submit_data';
+$route['imagebank/view_imagebank']        = 'admin/imagebank/imagebank_view';
+$route['imagebank/edit_imagebank/(:any)'] = 'admin/imagebank/imagebank_edit/$1';
+$route['imagebank/imagebank_update_data'] = 'admin/imagebank/imagebank_update_data';
+$route['imagebank/imagebank_delete/(:any)'] = 'admin/imagebank/imagebank_delete/$1';
+
 
 /* API */
 $route['api/register'] = 'api/User/register';
