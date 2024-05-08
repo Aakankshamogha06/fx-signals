@@ -3,6 +3,7 @@
 require APPPATH . '/libraries/REST_Controller.php';
 use Restserver\Libraries\REST_Controller;
 
+require 'vendor/autoload.php';
 class payment_api extends REST_Controller
 {
 
@@ -133,11 +134,11 @@ public function payment_post()
         $decodedToken = $this->authorization_token->validateToken(trim($headers['Authorization']));
         if ($decodedToken['status']) {
             // Authorization successful, proceed with payment processing
-            $this->form_validation->set_rules('transaction_id', 'Name', 'trim|required');
-            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+            $this->form_validation->set_rules('transaction_id', 'Name');
+            // $this->form_validation->set_rules('email', 'Email', 'valid_email');
             // $this->form_validation->set_rules('phone_number', 'Phone Number', 'trim|required');
             $this->form_validation->set_rules('user_id', 'User Id', 'trim|required');
-            $this->form_validation->set_rules('name', 'Name', 'trim|required');
+            // $this->form_validation->set_rules('name', 'Name', 'trim|required');
             $this->form_validation->set_rules('date', 'Date', 'trim|required');
             $this->form_validation->set_rules('pricing_id', 'Pricing Id', 'trim|required');
 
@@ -148,9 +149,9 @@ public function payment_post()
                 $date = $this->input->post('date');
                 $data = array(
                     'user_id' => $this->input->post('user_id'),
-                    'email' => $email,
+                    // 'email' => $email,
                     // 'phone_number' => $this->input->post('phone_number'),
-                    'name' => $this->input->post('name'),
+                    // 'name' => $this->input->post('name'),
                     'date' => $date,
                     'pricing_id' => $this->input->post('pricing_id'),
                     'transaction_id' => $this->input->post('transaction_id'),
@@ -194,7 +195,7 @@ public function author_payment_post()
             // Authorization successful, proceed with payment processing
             $this->form_validation->set_rules('transaction_id', 'Name', 'trim|required');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[payment.email]');
-            $this->form_validation->set_rules('phone_number', 'Phone Number', 'trim|required');
+            // $this->form_validation->set_rules('phone_number', 'Phone Number', 'trim|required');
             $this->form_validation->set_rules('author_id', 'User Id', 'trim|required');
             $this->form_validation->set_rules('name', 'Name', 'trim|required');
             $this->form_validation->set_rules('date', 'Date', 'trim|required');
@@ -208,7 +209,7 @@ public function author_payment_post()
                 $data = array(
                     'author_id' => $this->input->post('author_id'),
                     'email' => $email,
-                    'phone_number' => $this->input->post('phone_number'),
+                    // 'phone_number' => $this->input->post('phone_number'),
                     'name' => $this->input->post('name'),
                     'date' => $date,
                     'author_pricing_id' => $this->input->post('author_pricing_id'),
@@ -334,6 +335,39 @@ public function author_current_plan_get()
     } else {
         $this->response(['error' => 'Current plan not found'], REST_Controller::HTTP_NOT_FOUND);
     }
+}
+
+public function config_get() {
+    $this->response(['publishableKey' => 'pk_test_51PCHCcBVVwx1HWRGenwyPo244A9nrxjbGIJdQY4HLcvK7SUwUW2sTq5RyrkS8IS48Y3MATAwbTNIwJtybcTzlZ9H00ccxtNpC0'],REST_Controller::HTTP_OK);
+}
+
+public function payment_intent_post(){
+        try {
+            $stripe = new \Stripe\StripeClient('sk_test_51PCHCcBVVwx1HWRGY75S0z6tSLqDx60YnG8MSDXIiV4OGYPknD1xJkEvaCc18wWuCvhNtU7a3HJiCN9GtGiS4D9H00GfwRYqsw');
+
+            $jsonStr = file_get_contents('php://input');
+            $jsonObj = json_decode($jsonStr);
+    
+            $paymentIntent = $stripe->paymentIntents->create([
+                'amount' =>  $this->input->post('amount'),
+                'currency' => 'AED',
+          
+                'automatic_payment_methods' => [
+                    'enabled' => true,
+                ],
+            ]);
+    
+            $output = [
+                'clientSecret' => $paymentIntent->client_secret,
+            ];
+    
+            echo json_encode($output);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode(['error' => $e->getMessage()]);
+        }
+    
+        exit;
 }
 
 }

@@ -388,13 +388,18 @@ $route['signal_manager_profile/edit_signal_manager_profile/(:any)'] = 'admin/sig
 $route['signal_manager_profile/signal_manager_profile_update_data'] = 'admin/signal_manager_profile/signal_manager_profile_update_data';
 $route['signal_manager_profile/signal_manager_profile_delete/(:any)'] = 'admin/signal_manager_profile/signal_manager_profile_delete/$1';
 
-// imagebank ****************
-$route['imagebank/add_imagebank'] = 'admin/imagebank/add_imagebank';
-$route['imagebank/imagebank_submit_data'] = 'admin/imagebank/imagebank_submit_data';
-$route['imagebank/view_imagebank']        = 'admin/imagebank/imagebank_view';
-$route['imagebank/edit_imagebank/(:any)'] = 'admin/imagebank/imagebank_edit/$1';
-$route['imagebank/imagebank_update_data'] = 'admin/imagebank/imagebank_update_data';
-$route['imagebank/imagebank_delete/(:any)'] = 'admin/imagebank/imagebank_delete/$1';
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* API */
@@ -402,6 +407,9 @@ $route['api/register'] = 'api/User/register';
 $route['api/login'] = 'api/User/login';
 $route['api/logout'] = 'api/User/logout';
 $route['reGenToken'] = 'api/Token/reGenToken';
+$route['api/update_profile'] = 'api/User/update_profile';
+
+// NEWS API
 $route['news_api/news'] = 'news_api/news_get';
 $route['news_api/news_by_id'] = 'news_api/news_by_id_get';
 $route['news_api/add_to_wishlist'] = 'news_api/add_to_wishlist';
@@ -410,72 +418,118 @@ $route['news_api/get_wishlist_by_user/(:num)'] = 'news_api/get_wishlist_by_user/
 $route['news_api/news_by_category'] = 'news_api/news_by_category_get';
 $route['news_api/news_by_type'] = 'news_api/news_by_type_get';
 $route['news_api/news_by_category_and_subcategory'] = 'news_api/news_by_category_and_subcategory_get';
-$route['api/update_profile'] = 'api/User/update_profile';
 $route['news_api/current_user/(:num)'] = 'news_api/current_user_get/$1';
+$route['news_api/news_by_author'] = 'news_api/news_by_author_get';
+
+//EVENT API
 $route['event_api/event'] = 'event_api/event_get';
 $route['event_api/event_by_id/(:num)'] = 'event_api/event_by_id_get/$1';
+
+// MENU API
 $route['menu_api/menu'] = 'menu_api/menu_get';
 $route['menu_api/menu_by_id/(:num)'] = 'menu_api/menu_by_id_get/$1';
 $route['menu_api/submenu/(:num)'] = 'menu_api/submenu_get/$1';
 $route['menu_api/sub_submenu/(:num)/(:num)'] = 'menu_api/sub_submenu_get/$1/$2';
 $route['menus_api/all_menu'] = 'menus_api/menu_by_all_get';
+
+// CHART API
 $route['chart_api/chart'] = 'chart_api/chart_get';
 $route['chart_api/chart_by_id/(:num)'] = 'chart_api/chart_by_id_get/$1';
+
+// ADVERTISEMENT API
 $route['advertisement_api/advertisement'] = 'advertisement_api/advertisement_get';
 $route['advertisement_api/advertisement_by_id/(:num)'] = 'advertisement_api/advertisement_by_id_get/$1';
 $route['advertisement_api/advertisement_by_page'] = 'advertisement_api/advertisement_by_page_get';
+
+// CONTACT US API
 $route['contact_us_api/contact_us'] = 'contact_us_api/contact_us_post';
+
+// BLOG API
 $route['blog_api/blog'] = 'blog_api/blog_get';
 $route['blog_api/blog_by_id'] = 'blog_api/blog_by_id_get';
+$route['blog_api/blog_by_author'] = 'blog_api/blog_by_author_get';
 $route['blog_api/blog_by_category'] = 'blog_api/blog_by_category_get';
+$route['blog_api/blog_by_slug'] = 'blog_api/blog_by_slug_get';
+
+//PRICING API
 $route['pricing_api/pricing'] = 'pricing_api/pricing_get';
 $route['pricing_api/pricing_by_id'] = 'pricing_api/pricing_by_id_get';
+
+//SEO API
 $route['seo_api/seo'] = 'seo_api/seo_get';
 $route['seo_api/seo_by_id/(:num)'] = 'seo_api/seo_by_id_get/$1';
 $route['seo_api/seo_by_page'] = 'seo_api/seo_by_page_get';
+
+//TRADE API
 $route['trade_api/trade'] = 'trade_api/trade_get';
 $route['trade_api/trade_by_id/(:num)'] = 'trade_api/trade_by_id_get/$1';
 $route['trade_api/trade_by_type'] = 'trade_api/trade_by_type_get';
+$route['trade_api/trade_by_title'] = 'trade_api/trade_by_title_get';
+
+//SIGNAL API
 $route['signal_api/signal'] = 'signal_api/signal_get';
 $route['signal_api/signal_by_id/(:num)'] = 'signal_api/signal_by_id_get/$1';
 $route['signal_api/signal_by_type'] = 'signal_api/signal_by_type_get';
+$route['signal_api/signal_by_title'] = 'signal_api/signal_by_title_get';
+
+//LEARN API
 $route['learn_api/learn'] = 'learn_api/learn_get';
 $route['learn_api/learn_by_id/(:num)'] = 'learn_api/learn_by_id_get/$1';
 $route['learn_api/learn_by_type'] = 'learn_api/learn_by_type_get';
 $route['learn_api/learn_by_title'] = 'learn_api/learn_by_title_get';
+
+//ANALYSIS API
 $route['analysis_api/analysis'] = 'analysis_api/analysis_get';
 $route['analysis_api/analysis_by_id/(:num)'] = 'analysis_api/analysis_by_id_get/$1';
-$route['analysis_api/analysis_by_date'] = 'analysis_api/analysis_by_date_get';
 $route['analysis_api/analysis_by_type'] = 'analysis_api/analysis_by_type_get';
-$route['trade_api/trade_by_title'] = 'trade_api/trade_by_title_get';
-$route['signal_api/signal_by_title'] = 'signal_api/signal_by_title_get';
+
+//AUTHOR API
 $route['author_api/register_author'] = 'author_api/register_author_post';
 $route['author_api/login_author'] = 'author_api/login_author_post';
 $route['author_api/role'] = 'author_api/role_get';
 $route['author_api/author_pricing'] = 'author_api/author_pricing_get';
 $route['author_api/author_pricing_by_id'] = 'author_api/author_pricing_by_id_get';
+$route['author_api/check_author_status'] = 'author_api/check_author_status_get';
+
+//AUTHOR PROFILE API
+$route['author_profile_api/author_profile'] = 'author_profile_api/author_profile_get';
+
+//TRADING SIGNALS API
 $route['trading_signals_api/trading_signals'] = 'trading_signals_api/trading_signals_get';
+$route['trading_signals_api/closed_signals'] = 'trading_signals_api/closed_signals_post';
+$route['trading_signals_api/closed_signals'] = 'trading_signals_api/closed_signals_get';
+$route['trading_signals_api/trading_signals_between_dates'] = 'trading_signals_api/trading_signals_between_dates_get';
+$route['trading_signals_api/trading_signals_by_provider'] = 'trading_signals_api/trading_signals_by_provider_get';
+
+//PAYMENT API
 $route['payment_api/payment'] = 'payment_api/payment_post';
 $route['payment_api/author_payment'] = 'payment_api/author_payment_post';
 $route['payment_api/current_plan/(:/num)'] = 'payment_api/current_plan_get';
 $route['payment_api/author_current_plan/(:/num)'] = 'payment_api/author_current_plan_get';
 $route['live_rate_api/live_rate_by_page'] = 'live_rate_api/live_rate_by_page_get';
-$route['trading_signals_api/closed_signals'] = 'trading_signals_api/closed_signals_post';
-$route['trading_signals_api/closed_signals'] = 'trading_signals_api/closed_signals_get';
+$route['payment_api/config'] = 'payment_api/config_get';
+$route['payment_api/payment_intent'] = 'payment_api/payment_intent_post';
+
+//ENQUIRY API
 $route['enquiry_api/enquiry'] = 'enquiry_api/enquiry_post';
 $route['enquiry_api/enquiry_by_user/(:num)'] = 'enquiry_api/get_enquiry_by_user_get';
-$route['trading_signals_api/trading_signals_between_dates'] = 'trading_signals_api/trading_signals_between_dates_get';
+
+//SIGNAL MANAGER
 $route['signal_manager_api/register_signal_manager'] = 'signal_manager_api/register_signal_manager_post';
 $route['signal_manager_api/login_signal_manager'] = 'signal_manager_api/login_signal_manager_post';
-$route['author_api/check_author_status'] = 'author_api/check_author_status_get';
 $route['signal_manager_api/check_signal_manager_status'] = 'signal_manager_api/check_signal_manager_status_get';    
-$route['author_profile_api/author_profile'] = 'author_profile_api/author_profile_get';
+
+//BROKER API
 $route['broker_api/broker_by_type'] = 'broker_api/broker_by_type_get';
+$route['broker_api/broker_detail'] = 'broker_api/broker_detail_get';
+$route['broker_api/register_broker'] = 'broker_api/register_broker_post';
+
+//FORECAST API
 $route['forecast_api/forecast_by_type'] = 'forecast_api/forecast_by_type_get';
 $route['forecast_api/forecast'] = 'forecast_api/forecast_get';
 $route['forecast_api/forecast_by_id/(:num)'] = 'forecast_api/forecast_by_id_get/$1';
+
+//MARKET PRIMER API
 $route['market_primer_api/market_primer'] = 'market_primer_api/market_primer_get';
-$route['broker_api/broker_detail'] = 'broker_api/broker_detail_get';
-$route['trading_signals_api/trading_signals_by_provider'] = 'trading_signals_api/trading_signals_by_provider_get';
-$route['blog_api/blog_by_author'] = 'blog_api/blog_by_author_get';
-$route['news_api/news_by_author'] = 'news_api/news_by_author_get';
+
+

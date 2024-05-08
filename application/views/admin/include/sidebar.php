@@ -43,6 +43,9 @@
 						</ul>
 					</li>
 					<li class="nav-item">
+						<a href="<?= base_url('admin/stripe-form'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-chart-pie" style="color:white;"></i></span><span class="pcoded-mtext">STRIPE</span></a>
+					</li>
+					<li class="nav-item">
 						<a href="<?= base_url('admin/imagebank/imagebank_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">IMAGE BANK</span></a>
 					</li>
 					<li class="nav-item">
