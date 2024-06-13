@@ -45,8 +45,11 @@
 					<li class="nav-item">
 						<a href="<?= base_url('admin/stripe-form'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-chart-pie" style="color:white;"></i></span><span class="pcoded-mtext">STRIPE</span></a>
 					</li>
+					<!-- <li class="nav-item">
+						<a href="<?= base_url('admin/imagebank/imagebank_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">UPLOAD IMAGE</span></a>
+					</li> -->
 					<li class="nav-item">
-						<a href="<?= base_url('admin/imagebank/imagebank_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">IMAGE BANK</span></a>
+						<a href="<?= base_url('admin/upload_image/upload_image_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">UPLOAD IMAGE</span></a>
 					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/news/news_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">NEWS</span></a>
@@ -276,6 +279,13 @@
 					</li>
 					<li class="nav-item">
 						<a href="<?= base_url('admin/market_primer/market_primer_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-search-plus" style="color:white;"></i></span><span class="pcoded-mtext">MARKET PRIMER</span></a>
+					</li>
+				<?php endif; ?>
+
+				<!-- Image Manager -->
+				<?php if ($this->session->userdata('role') === '8') : ?>
+					<li class="nav-item">
+						<a href="<?= base_url('admin/upload_image/upload_image_view'); ?>" class="nav-link "><span class="pcoded-micon"><i class="fa-solid fa fa-newspaper" style="color:white;"></i></span><span class="pcoded-mtext">UPLOAD IMAGE</span></a>
 					</li>
 				<?php endif; ?>
 			</ul>

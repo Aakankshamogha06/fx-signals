@@ -388,6 +388,21 @@ $route['signal_manager_profile/edit_signal_manager_profile/(:any)'] = 'admin/sig
 $route['signal_manager_profile/signal_manager_profile_update_data'] = 'admin/signal_manager_profile/signal_manager_profile_update_data';
 $route['signal_manager_profile/signal_manager_profile_delete/(:any)'] = 'admin/signal_manager_profile/signal_manager_profile_delete/$1';
 
+// upload_image ****************
+$route['upload_image/add_upload_image'] = 'admin/upload_image/add_upload_image';
+$route['upload_image/upload_image_submit_data'] = 'admin/upload_image/upload_image_submit_data';
+$route['upload_image/view_upload_image']        = 'admin/upload_image/upload_image_view';
+$route['upload_image/edit_upload_image/(:any)'] = 'admin/upload_image/upload_image_edit/$1';
+$route['upload_image/upload_image_update_data'] = 'admin/upload_image/upload_image_update_data';
+$route['upload_image/upload_image_delete/(:any)'] = 'admin/upload_image/upload_image_delete/$1';
+
+// imagebank ****************
+$route['imagebank/add_imagebank'] = 'admin/imagebank/add_imagebank';
+$route['imagebank/imagebank_submit_data'] = 'admin/imagebank/imagebank_submit_data';
+$route['imagebank/view_imagebank']        = 'admin/imagebank/imagebank_view';
+$route['imagebank/edit_imagebank/(:any)'] = 'admin/imagebank/imagebank_edit/$1';
+$route['imagebank/imagebank_update_data'] = 'admin/imagebank/imagebank_update_data';
+$route['imagebank/imagebank_delete/(:any)'] = 'admin/imagebank/imagebank_delete/$1';
 
 
 
