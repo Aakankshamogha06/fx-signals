@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
+    <title>PHOTO BANK</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Font Awesome CSS -->
@@ -31,9 +31,12 @@
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s ease;
+            display: flex;
+            justify-content: center;
         }
 
-        .hover-buttons button {
+        .hover-buttons button,
+        .hover-buttons a {
             margin-right: 5px;
         }
 
@@ -52,7 +55,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-header">
-                            <h5>View upload_image</h5>
+                            <h5>VIEW UPLOAD IMAGEk</h5>
                             <a href="<?= base_url('admin/upload_image/add_upload_image'); ?>">
                                 <button type="button" class="btn btn-primary toggle-btn mb-4 mr-2" style="margin-left: 80.5%;">Add</button>
                             </a>
@@ -66,12 +69,16 @@
                                         foreach ($image_arr as $image) { ?>
                                             <!-- Image Markup with Modal Trigger -->
                                             <div class="image-container">
-                                            <img src="<?= base_url('uploads/upload_image/') . $folder_name . '/' . $image; ?>" class="styling">
-                                                <div class="hover-buttons">
-                                                    <a href="<?= base_url('admin/upload_image/upload_image_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');"><i class="fas fa-trash"></i></a>
-                                                    <button class="btn btn-primary copy-link-btn" onclick="copyImageLink('<?= base_url('uploads/upload_image/') . $image; ?>')"><i class="fas fa-copy"></i></button>
-                                                    <!-- Modal Trigger Button -->
-                                                    <button class="btn btn-primary view-image-btn" data-toggle="modal" data-target="#imageModal" data-image="<?= base_url('uploads/upload_image/') . $image; ?>"><i class="fas fa-eye"></i></button>
+                                                <img src="<?= base_url('Img/') . $image; ?>" class="styling">
+                                                <div class="row">
+                                                    <div class="hover-buttons">
+                                                        <a href="<?= base_url('admin/upload_image/upload_image_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');"><i class="fas fa-trash"></i></a>
+                                                        <button class="btn btn-primary copy-link-btn" onclick="copyImageLink('<?= base_url('Img/') . $image; ?>')"><i class="fas fa-copy"></i></button>
+                                                        <!-- Modal Trigger Button -->
+                                                        <button class="btn btn-primary view-image-btn" data-toggle="modal" data-target="#imageModal" data-image="<?= base_url('Img/') . $image; ?>"><i class="fas fa-eye"></i></button>
+                                                        <!-- Download Button -->
+                                                        <a href="<?= base_url('Img/') . $image; ?>" class="btn btn-success" download><i class="fas fa-download"></i></a>
+                                                    </div>
                                                 </div>
                                             </div>
                                 <?php }

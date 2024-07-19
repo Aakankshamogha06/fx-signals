@@ -3,19 +3,27 @@ class upload_image_model extends CI_Model
 {
 
 
-	public function upload_image_data_submit($insert_data, $images,$folder_name)
+	public function upload_image_data_submit($data, $images)
 {
     $insert_data = [];
     foreach ($images as $image) {
         $insert_data[] = [
-            'images' => $image,
-			'folder_name' => $folder_name,
+            'images' => $image
         ];
     }
     
     return $this->db->insert_batch('upload_image', $insert_data);
 }
 	public function upload_image_view()
+	{
+		$result = $this->db->query("SELECT * FROM upload_image ORDER BY id DESC");
+		if ($result->num_rows() > 0) {
+			return $result->result();
+		} else {
+			return 0;
+		}
+	}
+	public function photobank_view()
 	{
 		$result = $this->db->query("SELECT * FROM upload_image");
 		if ($result->num_rows() > 0) {
@@ -24,27 +32,6 @@ class upload_image_model extends CI_Model
 			return 0;
 		}
 	}
-// In your upload_image_model.php
-
-
-    // Other methods...
-
-	public function get_folder_name()
-	{
-		$query = $this->db->select('folder_name')->from('upload_image')->get();
-		if ($query->num_rows() > 0) {
-			// Debugging: Print the retrieved folder name
-			$folder_name = $query->row()->folder_name;
-			echo "Folder Name: " . $folder_name; // Debugging code
-			return $folder_name;
-		} else {
-			echo "No folder name found"; // Debugging code
-			return ''; // Default folder name if none found
-		}
-	}
-	
-
-
 
 	public function upload_image_delete($id)
 	{

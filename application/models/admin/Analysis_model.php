@@ -5,13 +5,16 @@ class analysis_model extends CI_Model
 
 	public function analysis_data_submit($data,$analysis_image)
 	{
+		$aid = $this->session->userdata('admin_id');
 		$data = [
 			
 			'analysis_image' => $analysis_image,
             'date' => $data['date'],
-            'author' => $data['author'],
+            // 'author' => $data['author'],
             'heading' => $data['heading'],
+			'type' => $data['type'],
             'description' => $data['description'],
+			'created_by' =>$aid,
 		];
 		if ($this->db->insert('analysis', $data)) {
 
@@ -23,7 +26,26 @@ class analysis_model extends CI_Model
 
 	public function analysis_view()
 	{
-		$result = $this->db->query("SELECT * FROM `analysis` ORDER BY `date` DESC;");
+		if (($this->session->userdata('role') === '1')) {  
+		$result = $this->db->query("SELECT *,(SELECT name from news_category WHERE news_category.id = analysis.type) AS type
+		,(SELECT username from users WHERE users.id = analysis.created_by) AS author FROM analysis ORDER BY `date` DESC; ");
+		}else{
+			$id= $this->session->userdata('admin_id');
+			$result = $this->db->query("SELECT *,(SELECT name from news_category WHERE news_category.id = analysis.type) AS type
+			,(SELECT username from users WHERE users.id = analysis.created_by) AS author FROM analysis where created_by=$id ORDER BY `date` DESC ;");
+		}
+		if ($result->num_rows() > 0) {
+			return $result->result();
+		} else {
+			return 0;
+		}
+	}
+
+	public function analysis_get()
+	{
+		$result = $this->db->query("SELECT *,(SELECT name from news_category WHERE news_category.id = analysis.type) AS type
+									,(SELECT username from users WHERE users.id = analysis.created_by) AS author FROM analysis ORDER BY `date` DESC;
+		");
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -41,16 +63,18 @@ class analysis_model extends CI_Model
 
 	public function analysis_update_data($data,$analysis_image)
 	{
-		echo ("hi");
+		// echo ("hi");
+		$aid = $this->session->userdata('admin_id');
 		$newdata = [
             
 			'analysis_image' => $analysis_image,
             'date' => $data['date'],
-            'author' => $data['author'],
+            // 'author' => $data['author'],
             'heading' => $data['heading'],
             'description' => $data['description'],
+			'created_by' => $aid,
 		];
-		print_r($newdata);
+		// print_r($newdata);
 		$this->db->where('id', $data['id']);
 		if ($this->db->update('analysis', $newdata)) {
 
@@ -64,7 +88,7 @@ class analysis_model extends CI_Model
 	public function analysis_edit($id)
 	{
 
-		$result = $this->db->query("SELECT * FROM `analysis` where id=$id");
+		$result = $this->db->query("SELECT * ,(SELECT username from users WHERE users.id = analysis.created_by) AS author FROM analysis where id=$id");
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
@@ -75,7 +99,7 @@ class analysis_model extends CI_Model
 	public function category_fetch()
 	{
 
-		$category_data = $this->db->query("SELECT * FROM `analysis_category`");
+		$category_data = $this->db->query("SELECT * FROM `news_category`");
 
 		$fetch = $category_data->num_rows();
 		if ($fetch > 0) {
@@ -88,7 +112,7 @@ class analysis_model extends CI_Model
 	public function analysis($id)
     {
 
-        $assign_data = $this->db->query("SELECT * FROM `analysis` where analysis.id=$id ");
+        $assign_data = $this->db->query("SELECT * ,(SELECT username from users WHERE users.id = analysis.created_by) AS author FROM analysis where analysis.id=$id ");
 
         $fetch = $assign_data->num_rows();
         if ($fetch > 0) {

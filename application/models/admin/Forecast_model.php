@@ -29,7 +29,6 @@ class forecast_model extends CI_Model
             'forecast_image' => $image,
             'forecast_type' => $data['forecast_type'],
             'description' => $data['description'],
-            'long_description' => $data['long_description']
         );
     }
     
@@ -67,7 +66,6 @@ class forecast_model extends CI_Model
             'forecast_image' => $forecast_image,
             'forecast_type' => $data['forecast_type'],
             'description' => $data['description'],
-            'long_description' => $data['long_description'],
 		];
 		$this->db->where('id', $data['id']);
 		if ($this->db->update('forecast', $newdata)) {

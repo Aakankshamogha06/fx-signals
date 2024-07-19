@@ -48,7 +48,7 @@ class type extends MY_Controller
 			if ($this->input->post()) {
 				$data = $this->input->post();
 				
-				if ($this->type_model->type_data_submit($data) == true) {
+				if ($this->type_model->type_data_submit($data,$type_image) == true) {
 
 					redirect("admin/type/type_view");
 				} ?> <?php

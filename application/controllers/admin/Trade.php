@@ -47,8 +47,23 @@ class Trade extends MY_Controller
 			$data = [];
 			if ($this->input->post()) {
 				$data = $this->input->post();
+					$config['upload_path'] = 'uploads/trade';
+					$config['allowed_types'] = 'jpg|jpeg|png|gif|webp';
+					$config['encrypt_name'] = TRUE;
+					$this->load->library('upload',$config);
+					$this->upload->initialize($config);
+					if($this->upload->do_upload('trade_image'))
+					{
+						$uploadData = $this->upload->data();
+						$trade_image = $uploadData['file_name'];
+					}
+					else
+					{
+						$error = array('error' => $this->upload->display_errors());
+						print_r($error);
+					}
 				
-				if ($this->trade_model->trade_data_submit($data) == true) {
+				if ($this->trade_model->trade_data_submit($data, $trade_image) == true) {
 
 					redirect("admin/trade/trade_view");
 				} ?> <?php
@@ -111,7 +126,7 @@ class Trade extends MY_Controller
 							$error = array('error' => $this->upload->display_errors());
 							print_r($error);
 						}
-						if ($this->trade_model->trade_update_data($data) == true) {
+						if ($this->trade_model->trade_update_data($data,$trade_image) == true) {
 		
 							redirect("admin/trade/trade_view");
 						} ?><?php

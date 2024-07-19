@@ -121,21 +121,5 @@ class payment extends MY_Controller
 				redirect('admin/auth/login');
 		}
 	}
-
-	// //stripe
-	// public function processPayment() {
-    //     // Retrieve payment data from the request
-    //     $paymentData = json_decode(file_get_contents('php://input'), true);
-
-    //     // Perform necessary actions with payment data (e.g., interact with Stripe API)
-
-    //     // Return a response
-    //     $response = array(
-    //         'success' => true,
-    //         'message' => 'Payment processed successfully'
-    //     );
-    //     $this->output->set_content_type('application/json')->set_output(json_encode($response));
-    // }
-
 }
 ?>

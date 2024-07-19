@@ -30,7 +30,7 @@ class trade_api extends REST_Controller
     public function trade_get()
     {
         $id = $this->uri->segment(4);
-        $data = $this->Trade_model->trade_view($id);
+        $data = $this->Trade_model->trade_get($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
     public function trade_by_id_get()

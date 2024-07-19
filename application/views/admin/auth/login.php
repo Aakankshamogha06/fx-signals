@@ -12,7 +12,7 @@
 	<meta name="author" content="Phoenixcoded" />
 	<!-- vendor css -->
 	<link rel="stylesheet" href="<?= base_url() ?>public/assets/css/style.css">
-	<link rel="icon" href="<?= base_url() ?>public/web/img/favicon.png" value="FXSignals" type="image/">
+	<link rel="icon" href="<?= base_url() ?>public/signal_imgs/logo.png" value="FXSignals" type="image/">
 	<style>
 		body {
 

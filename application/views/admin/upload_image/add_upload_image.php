@@ -17,12 +17,7 @@
                     <div class="card-body">
                         <form class="form-horizontal" method="post" action="<?= base_url('upload_image/upload_image_submit_data'); ?>" enctype="multipart/form-data">
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
-                            <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="folder_name" class="form-label">Folder Name <span class="text-danger">*</span></label>
-            <input type="text" name="folder_name" class="form-control" id="folder_name" required>
-        </div>
-    </div>
+                            
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Images <span class="text-danger">*</span> </label>

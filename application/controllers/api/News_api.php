@@ -37,6 +37,14 @@ class News_api extends REST_Controller
         $data = $this->News_model->news($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
+
+    public function news_by_author_get()
+    {
+        $id = $this->uri->segment(4);
+        $data = $this->News_model->news_by_author_get($id);
+        $this->response($data, REST_Controller::HTTP_OK);
+    }
+
     public function news_by_category_get()
 {
     $category_name = $this->uri->segment(4);

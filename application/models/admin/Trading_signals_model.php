@@ -40,13 +40,13 @@ class trading_signals_model extends CI_Model
 			$result = $this->db->query("SELECT *,(SELECT package_name FROM package WHERE package.id = trading_signals.package)as package, 
 			(SELECT name FROM news_category WHERE news_category.id = trading_signals.category)as category, 
 			(SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category)as sub_category ,(SELECT username from users WHERE users.id = trading_signals.created_by) AS signals_provider
-			FROM `trading_signals`");
+			FROM `trading_signals` ORDER BY date DESC");
 			}else{
 				$id= $this->session->userdata('admin_id');
 				$result = $this->db->query("SELECT *,(SELECT package_name FROM package WHERE package.id = trading_signals.package)as package, 
 				(SELECT name FROM news_category WHERE news_category.id = trading_signals.category)as category, 
 				(SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category)as sub_category 
-				FROM `trading_signals` where created_by=$id");
+				FROM `trading_signals` where created_by=$id ORDER BY date DESC;");
 			}
 		if ($result->num_rows() > 0) {
 			return $result->result();
@@ -66,10 +66,17 @@ class trading_signals_model extends CI_Model
 	public function trading_signal_get($id)
 	{
 		 
-		$result = $this->db->query("SELECT *,(SELECT package_name FROM package WHERE package.id = trading_signals.package)as package, 
-		(SELECT name FROM news_category WHERE news_category.id = trading_signals.category)as category, 
-		(SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category)as sub_category 
-		FROM `trading_signals`where trading_signals.created_by=$id");
+		$result = $this->db->query("SELECT 
+		*,
+		(SELECT package_name FROM package WHERE package.id = trading_signals.package) AS package,
+		(SELECT name FROM news_category WHERE news_category.id = trading_signals.category) AS category,
+		(SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category) AS sub_category,
+		(SELECT username FROM users WHERE users.id = trading_signals.created_by) AS signals_provider
+	FROM 
+		trading_signals
+	WHERE 
+		trading_signals.created_by = $id
+	ORDER BY date DESC;");
 		
 		if ($result->num_rows() > 0) {
 			return $result->result();
@@ -158,7 +165,12 @@ class trading_signals_model extends CI_Model
 	
 	public function trading_signals_between_dates($start_date, $end_date)
 	{
-		$sql = "SELECT * FROM trading_signals WHERE date >= ? AND date <= ?";
+		$sql = "SELECT 
+		*,
+		(SELECT package_name FROM package WHERE package.id = trading_signals.package) AS package,
+		(SELECT name FROM news_category WHERE news_category.id = trading_signals.category) AS category,
+		(SELECT pair_name FROM currency_pair WHERE currency_pair.id = trading_signals.sub_category) AS sub_category,
+		(SELECT username FROM users WHERE users.id = trading_signals.created_by) AS signals_provider FROM trading_signals WHERE date >= ? AND date <= ?";
 		$query = $this->db->query($sql, array($start_date, $end_date));
 	
 		// Check if query was successful

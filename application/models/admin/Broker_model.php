@@ -2,7 +2,12 @@
 class broker_model extends CI_Model
 {
 
-
+	public function add_broker_register($data)
+	{
+	   
+		$this->db->insert('broker_register', $data);
+		return $this->db->insert_id();
+	}
 	public function broker_data_submit($data,$broker_image)
 	{
 		$data = [

@@ -6,7 +6,7 @@
                 <div class="card">
 
                     <div class="card-header">
-                        <h5>Add trade</h5>
+                        <h5>Add Trade</h5>
                         <?php if (isset($msg) || validation_errors() !== '') : ?>
                             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <?= validation_errors(); ?>
@@ -21,14 +21,14 @@
 
 
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="trade_type" class="form-label"> Type <span class="text-danger">*</span></label>
+                            <div class="form-group col-md-6">
+                                <label for="trade_type" class="form-label"> Category <span class="text-danger">*</span></label>
                                     <select id="trade_type" class="form-control" name="trade_type">
-                                        <option value="">Select Type</option>
+                                        <option value="">Select Category</option>
                                         <?php
-                                        $type_fetch_data = $this->trade_model->type_fetch();
-                                        foreach ($type_fetch_data as $data) { ?>
-                                            <option value="<?php echo $data['id']; ?>"><?php echo $data['type_name']; ?></option>
+                                        $category_fetch_data = $this->trade_model->category_fetch();
+                                        foreach ($category_fetch_data as $data) { ?>
+                                            <option value="<?php echo $data['id']; ?>"><?php echo $data['name']; ?></option>
                                         <?php } ?>
 
                                     </select>
@@ -39,8 +39,12 @@
                                     <input type="text" name="title" parsley-trigger="change" class="form-control" id="title" placeholder="trade title  " required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">transliterator_get_error_code page name <span class="text-danger">*</span> </label>
-                                    <input type="text" name="page_name" parsley-trigger="change" class="form-control" id="page_name" placeholder="transliterator_get_error_code page name  " required>
+                                    <label for="inputEmail4" class="form-label">trade date <span class="text-danger">*</span> </label>
+                                    <input type="date" name="date" parsley-trigger="change" class="form-control" id="date" placeholder="trade date  " required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4" class="form-label"> Trade iamge <span class="text-danger">*</span> </label>
+                                    <input type="file" name="trade_image" parsley-trigger="change" class="form-control" id="trade_image" placeholder=" Trade iamge  " required>
                                 </div>
                             </div>
                             <div class="row">

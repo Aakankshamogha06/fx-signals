@@ -29,7 +29,7 @@ class analysis_api extends REST_Controller
     public function analysis_get()
     {
         $id = $this->uri->segment(4);
-        $data = $this->analysis_model->analysis_view($id);
+        $data = $this->analysis_model->analysis_get($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
     public function analysis_by_id_get()

@@ -26,6 +26,7 @@
                 <th>take profit</th>
                 <th>action</th>
                 <th>status</th>
+                <th>signal provider</th>
                 <th style="width: 150px;" class="text-right">OPTION</th>
               </tr>
             </thead>
@@ -44,6 +45,7 @@
                   <td><?= $row->take_profit ?></td>
                   <td><?= $row->action ?></td>
                   <td><?= $row->status ?></td>
+                  <td><?=$row->signals_provider?></td>
                   
                   <td class="text-right">
                     <!-- <a href="<?= base_url('admin/trading_signals/trading_signals_edit/' . $row->id); ?>"><i class="btn btn-info btn-flat" >

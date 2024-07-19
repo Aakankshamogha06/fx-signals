@@ -19,35 +19,36 @@
                         <form class="form-horizontal" method="post" action="<?= base_url('forecast/forecast_submit_data'); ?>"enctype="multipart/form-data">
                             <input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>">
                             <div class="row">
-                            <div class="form-group col-md-12">
-                                    <label for="inputEmail4" class="form-label">Website URL  <span class="text-danger">*</span> </label>
-                                    <input type="text" name="website_url" parsley-trigger="change" class="form-control" id="website_url" value="<?=$row->website_url?>" placeholder="Website URL  " required>
+                            <div class="form-group col-md-6">
+                                    <label for="inputEmail4" class="form-label">Forecast Title  <span class="text-danger">*</span> </label>
+                                    <input type="text" name="forecast_name" parsley-trigger="change" class="form-control" id="forecast_name" placeholder="Forecast Title  " required>
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <label for="inputEmail4" class="form-label">Order no <span class="text-danger">*</span> </label>
-                                    <input type="text" name="order_id" parsley-trigger="change" class="form-control" id="order_id" value="<?=$row->order_id?>" placeholder="order no " required>
-                                </div>
+                                <!-- <div class="form-group col-md-6">
+                                    <label for="inputEmail4" class="form-label">Forecast Images <span class="text-danger">*</span> </label>
+                                    <input type="file" name="forecast_image" parsley-trigger="change" class="form-control" id="forecast_image" placeholder="Forecast Images " required >
+                                </div> -->
+                                <div class="form-group col-md-6">
+            <label for="inputEmail4" class="form-label">Forecast Images <span class="text-danger">*</span></label>
+            <input type="file" name="forecast_image[]" parsley-trigger="change" class="form-control" id="forecast_image" placeholder="Forecast Images" required multiple>
+        </div>
                             </div>
                            
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">Website Logo <span class="text-danger">*</span> </label>
-                                    <input type="file" name="forecast_image" parsley-trigger="change" class="form-control" id="forecast_image" value="<?=$row->forecast_image?>" placeholder="Website Logo " required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">Rating <span class="text-danger">*</span> </label>
-                                    <input type="text" name="rating" parsley-trigger="change" class="form-control" id="rating" value="<?=$row->rating?>" placeholder="Rating " required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="type" class="form-label">Type <span class="text-danger">*</span></label>
-                                    <select name="type" parsley-trigger="change" class="form-control" id="type" required>
+                                    <label for="forecast_type" class="form-label">Type <span class="text-danger">*</span></label>
+                                    <select name="forecast_type" parsley-trigger="change" class="form-control" id="forecast_type" required>
                                         <option value="">Select a type</option>
                                         <option value="forex-forecasts">Forex forecast</option>
                                         <option value="crypto-forecasts">Crypto forecast</option>
                                         <option value="indices-forecasts">Indices forecast</option>
                                         <option value="commodities-forecasts">Commodities forecast</option>
+                                        <!-- Add more options as needed -->
                                     </select>
                                 </div>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4" class="form-label">Description <span class="text-danger">*</span> </label>
+                                <textarea type="text" name="description" parsley-trigger="change" class="form-control" id="description" placeholder="Description " required></textarea>
                             </div>
                         </div>
                     <div class="widget-footer text-left">
@@ -68,10 +69,11 @@
 
 <script>
 
-           CKEDITOR.replace('long_desc', {
-
-               format_tags: 'p;h1;h2;h3;h4;h5;h6'
-
+           CKEDITOR.replace('description', { 
+            format_tags: 'p;h1;h2;h3;h4;h5;h6'
+           });
+           CKEDITOR.replace('long_description', { 
+            format_tags: 'p;h1;h2;h3;h4;h5;h6'
            });
 
 </script>

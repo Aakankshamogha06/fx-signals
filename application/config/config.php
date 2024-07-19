@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 // $config['base_url'] = 'https://fxsignals.ae/admin/';
- $config['base_url'] = 'http://localhost/fxsignals/';
+// $config['base_url'] = 'http://localhost/fxsignals';
 
 /*
 |--------------------------------------------------------------------------
@@ -138,7 +138,8 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FCPATH . 'vendor/autoload.php';
+$config['composer_autoload'] = FALSE;
+
 /*
 |--------------------------------------------------------------------------
 | Allowed URL Characters

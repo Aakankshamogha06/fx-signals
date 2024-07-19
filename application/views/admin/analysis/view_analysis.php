@@ -21,6 +21,7 @@
                   <th>analysis image</th>
                   <th>analysis author</th>
                   <th>analysis date</th>
+                  <th>analysis type</th>
                   <th>analysis description</th>
                   <th style="width: 150px;" class="text-right">Option</th>
                 </tr>
@@ -40,7 +41,9 @@
                     </td>
                     <td><?= $row->author ?></td>
                     <td><?= $row->date ?></td>
-                    <td><?= $row->description ?></td>
+                    <td><?= $row->type ?></td>
+                    <td><?= substr(strip_tags($row->description),0,100)?>...</td>
+                    
 
                     <td class="text-right"><a href="<?= base_url('admin/analysis/analysis_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/analysis/analysis_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                   </tr>

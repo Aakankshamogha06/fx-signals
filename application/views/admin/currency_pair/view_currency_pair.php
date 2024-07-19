@@ -8,8 +8,8 @@
         <div class="card">
           <div class="card-header">
             <h5>View</h5>
-            <a href="<?= base_url('admin/blog/add_blog'); ?>">
-              <button type="button" c class="btn btn-primary toggle-btn mb-4 mr-2" style="margin-left: 80.5%;">Add Blog</button>
+            <a href="<?= base_url('admin/currency_pair/add_currency_pair'); ?>">
+              <button type="button" c class="btn btn-primary toggle-btn mb-4 mr-2" style="margin-left: 80.5%;">Add Currency Pair</button>
             </a>
           </div>
           <div class="card-body">

@@ -28,9 +28,18 @@ class Market_primer_api extends REST_Controller
 
 
     public function market_primer_get()
-    {
-        $data = $this->market_primer_model->market_primer();
+{
+    $data = $this->market_primer_model->market_primer();
+    
+    if (empty($data)) {
+        // If no data found, create a response with a message
+        $message = "No data found of the Current date...";
+        $this->response(['message' => $message], REST_Controller::HTTP_NOT_FOUND);
+    } else {
+        // If data is found, send the data as response
         $this->response($data, REST_Controller::HTTP_OK);
     }
+}
+
 }
 ?>

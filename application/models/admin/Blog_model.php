@@ -1,5 +1,5 @@
 <?php
-class blog_model extends CI_Model
+clASs blog_model extends CI_Model
 {
 
 
@@ -14,6 +14,9 @@ class blog_model extends CI_Model
             'blog_date' => $data['blog_date'],
             'blog_desc' => $data['blog_desc'],
             'long_desc' => $data['long_desc'],
+			'slug' => $data['slug'],
+			'meta_description' => $data['meta_description'],
+			'seo_keywords' => $data['seo_keywords'],
 			'created_by'=>$aid,
 		];
 		if ($this->db->insert('blog', $data)) {
@@ -28,15 +31,15 @@ class blog_model extends CI_Model
 	{
 		if (($this->session->userdata('role') === '1')) {  
 		$result = $this->db->query("SELECT *, 
-		(SELECT category FROM blog_category WHERE blog_category.id = blog.blog_category) AS blog_category,
+		(SELECT name FROM news_category WHERE news_category.id = blog.blog_category) AS blog_category,
 		(SELECT username FROM users WHERE users.id = blog.created_by) AS blog_author 
 	FROM `blog`
 	ORDER BY `blog_date` DESC, `id` DESC;
 	");
 		}else{
 			$id= $this->session->userdata('admin_id');
-			$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category
-			,(SELECT username from users WHERE users.id = blog.created_by) as blog_author  FROM `blog` where created_by=$id ORDER BY `blog_date` DESC, `id` DESC;");
+			$result = $this->db->query("SELECT * ,(SELECT name from news_category WHERE news_category.id = blog.blog_category) AS blog_category
+			,(SELECT username from users WHERE users.id = blog.created_by) AS blog_author  FROM `blog` where created_by=$id ORDER BY `blog_date` DESC;");
 		}
 		if ($result->num_rows() > 0) {
 			return $result->result();
@@ -45,12 +48,25 @@ class blog_model extends CI_Model
 		}
 	}
 
+	public function blog_by_author_get($id)
+	{
+		 
+		$result = $this->db->query("SELECT * ,(SELECT name from news_category WHERE news_category.id = blog.blog_category) AS blog_category
+		,(SELECT username from users WHERE users.id = blog.created_by) AS blog_author  FROM `blog` where blog.created_by=$id");
+		
+		if ($result->num_rows() > 0) {
+			return $result->result();
+		} else {
+			return 0;
+		}
+	} 
+
 	public function blog_get()
 	{
 		 
-		$result = $this->db->query("SELECT * ,(SELECT category from blog_category WHERE blog_category.id = blog.blog_category) as blog_category ,
-		(SELECT username from users WHERE users.id = blog.created_by) as blog_author 
-		FROM `blog`ORDER BY `blog_date` DESC, `id` DESC;");
+		$result = $this->db->query("SELECT * ,(SELECT name from news_category WHERE news_category.id = blog.blog_category) AS blog_category ,
+		(SELECT username from users WHERE users.id = blog.created_by) AS blog_author 
+		FROM `blog`ORDER BY `blog_date` DESC;");
 		
 		if ($result->num_rows() > 0) {
 			return $result->result();
@@ -76,6 +92,9 @@ class blog_model extends CI_Model
             'blog_date' => $data['blog_date'],
             'blog_desc' => $data['blog_desc'],
             'long_desc' => $data['long_desc'],
+			'slug' => $data['slug'],
+			'meta_description' => $data['meta_description'],
+			'seo_keywords' => $data['seo_keywords'],
 			'created_by'=>$aid,
 		];
 		$this->db->where('id', $data['id']);
@@ -116,7 +135,7 @@ class blog_model extends CI_Model
     public function blog_fetch()
 	{
 
-		$blog_data = $this->db->query("SELECT * FROM `blog_category`");
+		$blog_data = $this->db->query("SELECT * FROM `news_category`");
 
 		$fetch = $blog_data->num_rows();
 		if ($fetch > 0) {
@@ -128,18 +147,39 @@ class blog_model extends CI_Model
 	public function blog($id)
     {
 
-        $assign_data = $this->db->query("SELECT * FROM `blog` where blog.id=$id ");
+        $ASsign_data = $this->db->query("SELECT * ,(SELECT name from news_category WHERE news_category.id = blog.blog_category) AS blog_category ,
+		(SELECT username from users WHERE users.id = blog.created_by) AS blog_author  FROM `blog` where blog.id=$id ");
 
-        $fetch = $assign_data->num_rows();
+        $fetch = $ASsign_data->num_rows();
         if ($fetch > 0) {
-            return $fetch = $assign_data->result_array();
+            return $fetch = $ASsign_data->result_array();
         } else {
             return false;
         }
     }
+
+	public function blog_by_slug($slug)
+	{
+		$query = $this->db->select('blog.*, 
+					(SELECT name FROM news_category WHERE news_category.id = blog.blog_category) AS blog_category,
+					(SELECT username FROM users WHERE users.id = blog.created_by) AS blog_author')
+				->from('blog')
+				->where('slug', $slug)
+				->get();
+	
+		$fetch = $query->num_rows();
+		if ($fetch > 0) {
+			return $query->result_array();
+		} else {
+			return false;
+		}
+	}
+	
+
+
 	public function blog_by_category_name($category_name)
 {
-	$this->db->select('blog.*, (SELECT category FROM blog_category WHERE blog_category.id = blog.blog_category) AS category_name');
+	$this->db->select('blog.*, (SELECT name FROM news_category WHERE news_category.id = blog.blog_category) AS category_name');
 	$this->db->from('blog');
 	$this->db->join('blog_category', 'blog_category.id = blog.blog_category');
 	$this->db->where('blog_category.category', $category_name);

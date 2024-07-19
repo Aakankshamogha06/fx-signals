@@ -21,7 +21,6 @@
                   <th>forecast Image</th>
                   <th>type</th>
                   <th>description</th>
-                  <th>long description</th>
                   <th style="width: 150px;" class="text-right">Option</th>
                 </tr>
               </thead>
@@ -39,7 +38,6 @@
                     </td>
                     <td><?= $row->forecast_type ?></td>
                     <td><?= substr($row->description,0,30) . '....' ?></td>
-                    <td><?= substr($row->long_description,0,30). '....' ?></td>
                     <td class="text-right"><a href="<?= base_url('admin/forecast/forecast_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/forecast/forecast_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                   </tr>
                 <?php endforeach; ?>

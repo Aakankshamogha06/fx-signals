@@ -28,7 +28,7 @@ class blog_api extends REST_Controller
     public function blog_get()
     {
         $id = $this->uri->segment(4);
-        $data = $this->blog_model->blog_view($id);
+        $data = $this->blog_model->blog_get($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
     public function blog_by_id_get()
@@ -37,6 +37,19 @@ class blog_api extends REST_Controller
         $data = $this->blog_model->blog($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
+
+    public function blog_by_slug_get()
+    {
+        $slug = urldecode($this->uri->segment(4));       
+         $data = $this->blog_model->blog_by_slug($slug);
+        if ($data !== false) {
+            $this->response($data, REST_Controller::HTTP_OK);
+        } else {
+            $this->response(['error' => 'Blog not found'], REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
+
+
     public function blog_by_category_get()
 {
     $category_name = $this->uri->segment(4);
@@ -54,4 +67,13 @@ class blog_api extends REST_Controller
         $this->response(['error' => 'No blog found for the specified category'], REST_Controller::HTTP_NOT_FOUND);
     }
 }
+
+public function blog_by_author_get()
+    {
+        $id = $this->uri->segment(4);
+        $data = $this->blog_model->blog_by_author_get($id);
+        $this->response($data, REST_Controller::HTTP_OK);
+    }
+
 }
+?>

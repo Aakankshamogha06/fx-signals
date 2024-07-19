@@ -396,16 +396,8 @@ $route['upload_image/edit_upload_image/(:any)'] = 'admin/upload_image/upload_ima
 $route['upload_image/upload_image_update_data'] = 'admin/upload_image/upload_image_update_data';
 $route['upload_image/upload_image_delete/(:any)'] = 'admin/upload_image/upload_image_delete/$1';
 
-// imagebank ****************
-$route['imagebank/add_imagebank'] = 'admin/imagebank/add_imagebank';
-$route['imagebank/imagebank_submit_data'] = 'admin/imagebank/imagebank_submit_data';
-$route['imagebank/view_imagebank']        = 'admin/imagebank/imagebank_view';
-$route['imagebank/edit_imagebank/(:any)'] = 'admin/imagebank/imagebank_edit/$1';
-$route['imagebank/imagebank_update_data'] = 'admin/imagebank/imagebank_update_data';
-$route['imagebank/imagebank_delete/(:any)'] = 'admin/imagebank/imagebank_delete/$1';
 
-
-
+$route['upload_image/view_photobank']        = 'admin/upload_image/photobank_view';
 
 
 
@@ -432,7 +424,7 @@ $route['news_api/remove_from_wishlist/(:num)/(:num)'] = 'news_api/remove_from_wi
 $route['news_api/get_wishlist_by_user/(:num)'] = 'news_api/get_wishlist_by_user/$1';
 $route['news_api/news_by_category'] = 'news_api/news_by_category_get';
 $route['news_api/news_by_type'] = 'news_api/news_by_type_get';
-$route['news_api/news_by_category_and_subcategory'] = 'news_api/news_by_category_and_subcategory_get';
+$route['news_api/news_by_category_and_subcategory/(:any)/(:any)'] = 'news_api/news_by_category_and_subcategory_get/$1/$2';
 $route['news_api/current_user/(:num)'] = 'news_api/current_user_get/$1';
 $route['news_api/news_by_author'] = 'news_api/news_by_author_get';
 

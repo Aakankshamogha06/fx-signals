@@ -36,7 +36,7 @@ class trading_signals_api extends REST_Controller
     public function trading_signals_by_provider_get()
     {
         $id = $this->uri->segment(4);
-        $data = $this->trading_signals_model->trading_signal_view($id);
+        $data = $this->trading_signals_model->trading_signal_get($id);
         $this->response($data, REST_Controller::HTTP_OK);
     }
 

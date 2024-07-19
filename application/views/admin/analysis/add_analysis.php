@@ -81,7 +81,7 @@
 
 <script>
 
-           CKEDITOR.replace('long_desc', {
+           CKEDITOR.replace('description', {
 
                format_tags: 'p;h1;h2;h3;h4;h5;h6'
 

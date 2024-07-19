@@ -23,7 +23,6 @@
                   <th>news description</th>
                   <th>category</th>
                   <th>sub category</th>
-                  <th>author</th>
                   <th>news type</th>
                   <th>news package</th>
                   <th style="width: 150px;" class="text-right">Option</th>
@@ -32,6 +31,7 @@
               <tbody>
                 <?php
                 $c = 1;
+               
                 foreach ($news_view as $row) : ?>
                   <tr>
                     <td><?= $c++; ?></td>
@@ -43,10 +43,9 @@
 
                     </td>
                     <td><?= $row->publish_date ?></td>
-                    <td><?= substr($row->news_desc,0,100) . '...' ?></td>
+                    <td><?= substr(strip_tags($row->news_desc),0,100 ) ?>....</td>
                     <td><?= $row->category ?></td>
                     <td><?= $row->sub_category ?></td>
-                    <td><?= $row->author ?></td>
                     <td><?= $row->news_type ?></td>
                     <td><?= $row->news_package ?></td>
                     <td class="text-right"><a href="<?= base_url('admin/news/news_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/news/news_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>

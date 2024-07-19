@@ -13,7 +13,7 @@
             </a>
           </div>
           <div class="card-body">
-            <table id="table_id" class="table table-striped">
+            <table id="table_id" class="table">
               <thead>
                 <tr>
                   <th>Sr No</th>
@@ -31,13 +31,15 @@
                     <td><?= $c++; ?></td>
                     <td><?= $row->date ?></td>
                     <td>                      
-    <?php if ($row->pdf) { ?>                        
-        <a href="<?= base_url('uploads/market_primer/') . $row->pdf; ?>" target="_blank">
-            <i class="fas fa-file-pdf" style="height:20px; width:20px;"></i> <br>View Article
-        </a>                      
-    <?php } ?>                    
-</td>
-                    <td class="text-right"><a href="<?= base_url('admin/market_primer/market_primer_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/market_primer/market_primer_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
+                        <?php if ($row->pdf) { ?>                        
+                            <a href="<?= base_url('uploads/market_primer/') . $row->pdf; ?>" target="_blank">
+                                <i class="fas fa-file-pdf" style="height:20px; width:20px;"></i> <br>View Article
+                            </a>                      
+                        <?php } ?>                    
+                    </td>
+                    <td class="text-right">
+                      <a href="<?= base_url('admin/market_primer/market_primer_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

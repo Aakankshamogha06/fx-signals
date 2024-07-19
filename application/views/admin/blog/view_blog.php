@@ -17,10 +17,12 @@
               <thead>
                 <tr>
                   <th>Sr No</th>
+                  <th>slug</th>
+                  <th>seo keywords</th>
+                  <th>meta description</th>
                   <th>blog Name</th>
                   <th>blog image</th>
                   <th>blog category</th>
-                  <th>blog author</th>
                   <th>blog date</th>
                   <th>blog description</th>
                   <th>long description </th>
@@ -33,6 +35,9 @@
                 foreach ($blog_view as $row) : ?>
                   <tr>
                     <td><?= $c++; ?></td>
+                    <td><?= $row->slug ?></td>
+                    <td><?= $row->seo_keywords ?></td>
+                    <td><?= $row->meta_description ?></td>
                     <td><?= $row->blog_name ?></td>
                     <td>
                       <?php if ($row->blog_image) { ?>
@@ -41,10 +46,9 @@
 
                     </td>
                     <td><?= $row->blog_category ?></td>
-                    <td><?= $row->blog_author ?></td>
                     <td><?= $row->blog_date ?></td>
-                    <td><?= substr($row->blog_desc,0,100). '...' ?></td>
-                    <td><?= substr($row->long_desc,0,100). '...' ?></td>
+                    <td><?= substr(strip_tags($row->blog_desc),0,100)?> ... </td>
+                    <td><?= substr(strip_tags($row->long_desc),0,100) ?>....</td>
 
                     <td class="text-right"><a href="<?= base_url('admin/blog/blog_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/blog/blog_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                   </tr>

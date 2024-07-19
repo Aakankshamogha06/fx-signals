@@ -92,9 +92,10 @@ class broker_detail_model extends CI_Model
 		broker.order_id,
 		broker.type,
 		broker.company_name,
-		broker.ranking
+		broker.ranking,
+		broker.min_deposit
  FROM broker_detail 
- JOIN broker ON broker.id = broker_detail.broker_id where id = $id;");
+ JOIN broker ON broker.id = broker_detail.broker_id where broker_detail.id=$id; ");
 
         $fetch = $assign_data->num_rows();
         if ($fetch > 0) {

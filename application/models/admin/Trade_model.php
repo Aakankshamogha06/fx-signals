@@ -3,12 +3,17 @@ class trade_model extends CI_Model
 {
 
 
-	public function trade_data_submit($data)
+	public function trade_data_submit($data,$trade_image)
 	{
+		$aid = $this->session->userdata('admin_id');
 		$data = [
 			'trade_type' => $data['trade_type'],
             'title' => $data['title'],
             'description' => $data['description'],
+			'trade_image' => $trade_image,
+			'date' => $data['date'],
+			// 'author' => $data['author'],
+			'created_by' => $aid,
 		];
 		if ($this->db->insert('trade', $data)) {
 
@@ -18,17 +23,35 @@ class trade_model extends CI_Model
 		}
 	}
 
-	public function trade_view()
+	public function trade_get()
 	{
-		$result = $this->db->query("SELECT * , (SELECT type_name FROM type WHERE type.id = trade.trade_type)AS trade_type 
-		FROM `trade`;");
+		$result = $this->db->query("SELECT * , (SELECT name FROM news_category WHERE news_category.id = trade.trade_type)AS trade_type , (SELECT username from users WHERE users.id = trade.created_by) AS author FROM trade ORDER BY `date` DESC;
+		;
+		");
+
 		if ($result->num_rows() > 0) {
 			return $result->result();
 		} else {
 			return 0;
 		}
 	}
-
+	public function trade_view()
+	{
+		if (($this->session->userdata('role') === '1')) {  
+		$result = $this->db->query("SELECT * , (SELECT name FROM news_category WHERE news_category.id = trade.trade_type)AS trade_type , (SELECT username from users WHERE users.id = trade.created_by) AS author
+		FROM `trade` ORDER BY `date` DESC;
+	");
+		}else{
+			$id= $this->session->userdata('admin_id');
+			$result = $this->db->query("SELECT * , (SELECT name FROM news_category WHERE news_category.id = trade.trade_type)AS trade_type , (SELECT username from users WHERE users.id = trade.created_by) AS author 
+			FROM `trade` where created_by=$id ORDER BY `date` DESC");
+		}
+		if ($result->num_rows() > 0) {
+			return $result->result();
+		} else {
+			return 0;
+		}
+	}
 
 	public function trade_delete($id)
 	{
@@ -37,15 +60,20 @@ class trade_model extends CI_Model
 	}
 
 
-	public function trade_update_data($data)
+	public function trade_update_data($data,$trade_image)
 	{
-		echo ("hi");
+		// echo ("hi");
+		$aid = $this->session->userdata('admin_id');
 		$newdata = [
             'trade_type' => $data['trade_type'],
             'title' => $data['title'],
             'description' => $data['description'],
+			// 'date' => $data['date'],
+			'trade_image' => $trade_image,
+			'date' => $data['date'],
+			'created_by' => $aid,
 		];
-		print_r($newdata);
+		// print_r($newdata);
 		$this->db->where('id', $data['id']);
 		if ($this->db->update('trade', $newdata)) {
 
@@ -68,14 +96,14 @@ class trade_model extends CI_Model
 	}
 
 
-	public function type_fetch()
+	public function category_fetch()
 	{
 
-		$type_data = $this->db->query("SELECT * FROM `type`");
+		$category_data = $this->db->query("SELECT * FROM `news_category`");
 
-		$fetch = $type_data->num_rows();
+		$fetch = $category_data->num_rows();
 		if ($fetch > 0) {
-			return $fetch = $type_data->result_array();
+			return $fetch = $category_data->result_array();
 		} else {
 			return false;
 		}
@@ -97,7 +125,8 @@ class trade_model extends CI_Model
 	public function trade($id)
     {
 
-        $assign_data = $this->db->query("SELECT * FROM `trade` where trade.id=$id ");
+        $assign_data = $this->db->query("SELECT * , (SELECT name FROM news_category WHERE news_category.id = trade.trade_type)AS trade_type ,
+		(SELECT username from users WHERE users.id = trade.created_by) AS author FROM trade where trade.id=$id ORDER BY `date` DESC");
 
         $fetch = $assign_data->num_rows();
         if ($fetch > 0) {

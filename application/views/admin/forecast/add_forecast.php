@@ -50,10 +50,6 @@
                                 <label for="inputEmail4" class="form-label">Description <span class="text-danger">*</span> </label>
                                 <textarea type="text" name="description" parsley-trigger="change" class="form-control" id="description" placeholder="Description " required></textarea>
                             </div>
-                            <div class="form-group col-md-12">
-                                <label for="inputEmail4" class="form-label">Long Description <span class="text-danger">*</span> </label>
-                                <textarea type="text" name="long_description" parsley-trigger="change" class="form-control" id="long_description" placeholder="Long Description " required></textarea>
-                            </div>
                         </div>
                     <div class="widget-footer text-left">
 

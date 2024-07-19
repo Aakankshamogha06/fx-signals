@@ -38,7 +38,7 @@
                                             <select id="type" class="form-control" name="type">
                                                 <option value="">Select type</option>
                                                 <?php
-                                                $category_fetch_data = $this->news_model->category_fetch();
+                                                $category_fetch_data = $this->analysis_model->category_fetch();
                                                 foreach ($category_fetch_data as $data) { ?>
                                                     <option value="<?php echo $data['id']; ?>" <?php if ($data['id'] === $row->type) echo 'selected="selected"' ?>><?php echo $data['name']; ?></option>
                                                 <?php } ?>

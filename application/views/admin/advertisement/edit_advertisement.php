@@ -25,48 +25,48 @@
                                 <div class="row">
                             <div class="form-group col-md-12">
                                     <label for="inputEmail4" class="form-label">page name  <span class="text-danger">*</span> </label>
-                                    <input type="text" name="page_name" parsley-trigger="change" class="form-control" value="<?=$row->page_name?>" id="page_name" placeholder="page name  " required>
+                                    <input type="text" name="page_name" parsley-trigger="change" class="form-control" value="<?=$row->page_name?>" id="page_name" placeholder="page name  " >
                                 </div>
                             </div>
                            
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Image 1 <span class="text-danger">*</span> </label>
-                                    <input type="file" name="image1" parsley-trigger="change" class="form-control" id="image1" value="<?=$row->image1?>" placeholder="Image 1 " required>
+                                    <input type="file" name="image1" parsley-trigger="change" class="form-control" id="image1" value="<?=$row->image1?>" placeholder="Image 1 " >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Image 1 URL <span class="text-danger">*</span> </label>
-                                    <input type="text" name="image1url" parsley-trigger="change" class="form-control" id="image1url" value="<?=$row->image1url?>" placeholder="Image 1 URL " required>
+                                    <input type="text" name="image1url" parsley-trigger="change" class="form-control" id="image1url" value="<?=$row->image1url?>" placeholder="Image 1 URL " >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Image 2 <span class="text-danger">*</span> </label>
-                                    <input type="file" name="image2" parsley-trigger="change" class="form-control" id="image2" value="<?=$row->image2?>" placeholder="Image 2 " required>
+                                    <input type="file" name="image2" parsley-trigger="change" class="form-control" id="image2" value="<?=$row->image2?>" placeholder="Image 2 " >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Image 2 URL <span class="text-danger">*</span> </label>
-                                    <input type="text" name="image2url" parsley-trigger="change" class="form-control" id="image2url" value="<?=$row->image2url?>" placeholder="Image 2 URL " required>
+                                    <input type="text" name="image2url" parsley-trigger="change" class="form-control" id="image2url" value="<?=$row->image2url?>" placeholder="Image 2 URL " >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Image 3 <span class="text-danger">*</span> </label>
-                                    <input type="file" name="image3" parsley-trigger="change" class="form-control" id="image3" value="<?=$row->image3?>" placeholder="Image 3 " required>
+                                    <input type="file" name="image3" parsley-trigger="change" class="form-control" id="image3" value="<?=$row->image3?>" placeholder="Image 3 " >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Image 3 URL <span class="text-danger">*</span> </label>
-                                    <input type="text" name="image3url" parsley-trigger="change" class="form-control" id="image3url" value="<?=$row->image3url?>" placeholder="Image 3 URL " required>
+                                    <input type="text" name="image3url" parsley-trigger="change" class="form-control" id="image3url" value="<?=$row->image3url?>" placeholder="Image 3 URL " >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Image 4 <span class="text-danger">*</span> </label>
-                                    <input type="file" name="image4" parsley-trigger="change" class="form-control" id="image4" value="<?=$row->image4?>" placeholder="Image 4 " required>
+                                    <input type="file" name="image4" parsley-trigger="change" class="form-control" id="image4" value="<?=$row->image4?>" placeholder="Image 4 " >
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4" class="form-label">Image 4 URL <span class="text-danger">*</span> </label>
-                                    <input type="text" name="image4url" parsley-trigger="change" class="form-control" id="image4url" value="<?=$row->image4url?>" placeholder="Image 4 URL " required>
+                                    <input type="text" name="image4url" parsley-trigger="change" class="form-control" id="image4url" value="<?=$row->image4url?>" placeholder="Image 4 URL " >
                                 </div>
                             </div>
                     

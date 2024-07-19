@@ -13,13 +13,17 @@
             </a>
           </div>
           <div class="card-body">
-            <table id="table_id" class="table table-striped">
+            <table id="table_id" class="table">
               <thead>
                 <tr>
                   <th>Sr No</th>
                   <th>trade title</th>
+                  <th>trade author</th>
                   <th>trade type</th>
+                  <th>trade image</th>
+                  <th>trade date</th>
                   <th>trade description</th>
+                
                   <th style="width: 150px;" class="text-right">Option</th>
                 </tr>
               </thead>
@@ -30,8 +34,17 @@
                   <tr>
                     <td><?= $c++; ?></td>
                     <td><?= $row->title ?></td>
+                    <td><?= $row->author?></td>
                     <td><?= $row->trade_type ?></td>
-                    <td><?= $row->description ?></td>
+                    <td>
+                      <?php if ($row->trade_image) { ?>
+                        <img src="<?php echo base_url('uploads/trade/') . $row->trade_image; ?>" style="width:50px;height:80px">
+                      <?php } ?>
+
+                    </td>
+                    <td><?= $row->date?></td>
+                    <!-- substr(strip_tags($row->blog_desc),0,100)?> ...  -->
+                    <td><?= substr(strip_tags($row->description),0,100 ) ?>....</td>
                     <td class="text-right"><a href="<?= base_url('admin/trade/trade_edit/' . $row->id); ?>" class="btn btn-info btn-flat">Edit</a><a href="<?= base_url('admin/trade/trade_delete/' . $row->id); ?>" class="btn btn-danger btn-flat" onclick="return confirm('Are you sure want to delete ?');">Delete</a></td>
                   </tr>
                 <?php endforeach; ?>

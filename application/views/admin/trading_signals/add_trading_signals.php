@@ -79,8 +79,8 @@
                                 <label for="action" class="form-label">Action <span class="text-danger">*</span></label>
                                 <select name="action" id="action" class="form-control" required>
                                     <option value="">--Action--</option>
-                                    <option value="buy">Buy</option>
-                                    <option value="sell">Sell</option>
+                                    <option value="BUY">BUY</option>
+                                    <option value="SELL">SELL</option>
                                 </select>
                                 </div>
                             </div>

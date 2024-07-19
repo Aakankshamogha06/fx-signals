@@ -90,10 +90,10 @@
                                         <label for="inputEmail4" class="form-label">Publish Date <span class="text-danger">*</span> </label>
                                         <input type="date" name="publish_date" parsley-trigger="change" class="form-control" id="publish_date" value="<?= $row->publish_date ?>" placeholder="Publish Date  " required>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <!-- <div class="form-group col-md-6">
                                         <label for="inputEmail4" class="form-label">Author <span class="text-danger">*</span> </label>
                                         <input type="text" name="author" parsley-trigger="change" class="form-control" id="author" value="<?= $row->author ?>" placeholder="Read Time " required>
-                                    </div>
+                                    </div> -->
 
 
                                 </div>
@@ -121,7 +121,7 @@
 
 
     <script>
-        CKEDITOR.replace('long_desc', {
+        CKEDITOR.replace('news_desc', {
 
             format_tags: 'p;h1;h2;h3;h4;h5;h6'
 

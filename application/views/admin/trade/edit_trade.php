@@ -34,16 +34,20 @@
                                     <select id="trade_type" class="form-control" name="trade_type">
                                         <option value="">Select trade tyoe</option>
                                         <?php
-                                        $type_fetch_data = $this->trade_model->type_fetch();
-                                        foreach ($type_fetch_data as $data) { ?>
+                                        $category_fetch_data = $this->trade_model->type_fetch();
+                                        foreach ($category_fetch_data as $data) { ?>
                                             <option value="<?php echo $data['id']; ?>"<?php if ($data['id'] === $row->trade_type) echo 'selected="selected"' ?>><?php echo $data['type_name']; ?></option>
                                         <?php } ?>
 
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputEmail4" class="form-label">trade page name <span class="text-danger">*</span> </label>
-                                    <input type="text" name="page_name" parsley-trigger="change" class="form-control" id="page_name" value="<?=$row->page_name?>" placeholder="trade page name  " required>
+                                    <label for="inputEmail4" class="form-label">trade image <span class="text-danger">*</span> </label>
+                                    <input type="file" name="trade_image" parsley-trigger="change" class="form-control" id="trade_image" value="<?=$row->trade_image?>" placeholder="trade image  " required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4" class="form-label">trade date <span class="text-danger">*</span> </label>
+                                    <input type="date" name="date" parsley-trigger="change" class="form-control" id="date" value="<?=$row->date?>" placeholder="trade date  " required>
                                 </div>
                             </div>
                             <div class="form-row">  
